@@ -13,3 +13,4 @@
 
 
 alert('Hello world!');
+console.log('GM');
