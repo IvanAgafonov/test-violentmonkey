@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         test script
-// @version      0.0
+// @version      0.1
 // @namespace    Violentmonkey Scripts
 // @author       ivan
 // @match        https://www.google.com/*
