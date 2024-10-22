@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Boinkers claim
 // @version      0.0
-// @author       ivan
+// @author       IvanAgafonov
 // @match        https://boink.astronomica.io/*
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/boinkers.js
