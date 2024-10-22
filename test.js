@@ -12,5 +12,5 @@
 
 
 
-alert('Hello world!');
+alert('Hello world!2');
 console.log('GM');
