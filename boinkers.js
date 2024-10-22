@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      1.1
+// @version      0.0
 // @author       ivan
 // @match        https://boink.astronomica.io/*
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/boinkers.js
 // @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/boinkers.js
-// @homepage     https://github.com/IvanAgafonov
+// @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
 
@@ -152,6 +152,50 @@ async function autoBuy() {
     history.back()
     await sleep(getRandomDelay(2000, 4000));
   }
+
+//   // EARN
+//   up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("EARN"));
+//   if (up.length != 0){
+//     up[0].click();
+//     await sleep(getRandomDelay(2000, 4000));
+//   }
+
+//   up = Array.from(document.querySelectorAll("app-rewarded-action"))
+
+//   shuffle(up);
+//   var up2;
+//   var up3;
+//   if (up.length != 0){
+//     for (const item of up) {
+//       up2 = Array.from(item.querySelectorAll("div div span")).filter(el =>
+//                                                                         el.textContent.includes("Follow Boinkers") ||
+//                                                                         el.textContent.includes("Like + Comment + Retweet - verify after 10 minutes") ||
+//                                                                         el.textContent.includes("Like X Post - verify after 10 minutes") ||
+//                                                                         el.textContent.includes("Watch & like Youtube short") ||
+//                                                                         el.textContent.includes("Follow Major on Instagram") ||
+//                                                                         el.textContent.includes("FadeWallet") ||
+//                                                                     el.textContent.includes("Follow Major in Telegram"));
+//       up3 = Array.from(item.querySelectorAll("span span")).filter(el => el.textContent.includes("CLAIMED"));
+//       if (up3.length == 0){
+//         if (up2.length != 0){
+//           up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("GO"));
+//           if (up2.length != 0){
+//             up2[0].click();
+//             await sleep(getRandomDelay(2000, 4000));
+//           }
+//           up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("VERIFY"));
+//           if (up2.length != 0){
+//             up2[0].click();
+//             await sleep(getRandomDelay(2000, 4000));
+//           }
+//         }
+//       }
+//     }
+//   }
+
+
+
+  await sleep(3400);
 }
 
 
