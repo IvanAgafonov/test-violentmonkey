@@ -4,8 +4,8 @@
 // @author       IvanAgafonov
 // @match        https://major.bot/*
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/major.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/major.js
+// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/major.user.js
+// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/major.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
