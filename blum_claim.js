@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.0
+// @version      0.1
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/blum_claim.js
@@ -317,7 +317,7 @@ async function autoBuy() {
 
 function initializeScript() {
 
-    console.log('START Blum claim')
+    console.log('START Blum claim v 0.1')
 
     setTimeout(autoBuy, getRandomDelay(15000, 19500));
 }
