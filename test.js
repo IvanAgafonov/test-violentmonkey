@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         test script
-// @version      2.1
+// @version      2.3
 // @namespace    Violentmonkey Scripts
 // @author       ivan
 // @match        https://www.google.com/*
@@ -13,5 +13,5 @@
 
 
 
-alert('Hello world!3');
+alert('Hello world!5');
 console.log('GM');
