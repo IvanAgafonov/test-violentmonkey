@@ -317,7 +317,7 @@ async function autoBuy() {
 
 function initializeScript() {
 
-    console.log('START Blum claim v 0.1')
+    console.log('START Blum claim ver 0.1')
 
     setTimeout(autoBuy, getRandomDelay(15000, 19500));
 }
