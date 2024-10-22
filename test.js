@@ -5,8 +5,8 @@
 // @author       ivan
 // @match        https://www.google.com/*
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/main/test.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/main/test.js
+// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/test.js
+// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/test.js
 // @homepage     https://github.com/IvanAgafonov
 // ==/UserScript==
 
