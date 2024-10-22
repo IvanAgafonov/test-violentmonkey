@@ -3,8 +3,8 @@
 // @version      0.1
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/blum_claim.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/blum_claim.js
+// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/blum_claim.user.js
+// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/blum_claim.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 // ==/UserScript==
