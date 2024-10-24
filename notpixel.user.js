@@ -103,7 +103,7 @@ function tryChangeColor(random) {
       // Выбираем случайный цвет из списка
       mymColor = colors[Math.floor(Math.random() * colors.length)];
     } else {
-      mymColor = colors[14];
+      mymColor = colors[21];
     }
 
     // Нажимаем на случайный цвет
