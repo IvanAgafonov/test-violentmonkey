@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.0
+// @version      0.1
 // @author       IvanAgafonov
 // @match        https://boink.astronomica.io/*
 // @grant        none
@@ -8,7 +8,6 @@
 // @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/boinkers.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
-
 
 function shuffle(array) {
   let currentIndex = array.length;
@@ -61,10 +60,16 @@ function sleep(ms = 0) {
 
 async function autoBuy() {
 
-  var up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("free"));
+  var up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("COLLECT") ||  el.textContent.includes("ПОЛУЧИТЬ"));
   if (up.length != 0){
-    up[0].click();
-    await sleep(getRandomDelay(2000, 4000));
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3500, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("10 min"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3500, 4000));
   }
 
   up = Array.from(document.querySelectorAll("img[alt='close']"));
@@ -80,7 +85,7 @@ async function autoBuy() {
   }
 
   // upgrade
-  for(var i = 0; i < 7; i++) {
+  for(var i = 0; i < 3; i++) {
     up = Array.from(document.querySelectorAll(".gold-button-diagonal"));
     if (up.length != 0){
       triggerEvents(up[0]);
@@ -90,31 +95,31 @@ async function autoBuy() {
       up = Array.from(document.querySelectorAll("img[alt='close']"));
       if (up.length != 0){
         up[0].click();
-        await sleep(getRandomDelay(1000, 2000));
+        await sleep(getRandomDelay(500, 1000));
       }
     }
-    up = Array.from(document.querySelectorAll("button span span")).filter(el => el.textContent.includes("COLLECT"));
+    up = Array.from(document.querySelectorAll("button span span")).filter(el => el.textContent.includes("COLLECT") ||  el.textContent.includes("ПОЛУЧИТЬ"));
     if (up.length != 0){
-      up[0].click();
+      triggerEvents(up[0]);
       await sleep(getRandomDelay(2000, 4000));
     }
-    up = Array.from(document.querySelectorAll("button span div span")).filter(el => el.textContent.includes("BUILD"));
+    up = Array.from(document.querySelectorAll("button span div span")).filter(el => el.textContent.includes("BUILD") ||  el.textContent.includes("Качать"));
     if (up.length != 0){
-      up[0].click();
+      triggerEvents(up[0]);
       await sleep(getRandomDelay(2000, 4000));
     }
   }
 
   // spin
-  up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("SPIN"));
+  up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("Спин"));
   if (up.length != 0){
-    up[0].click();
+    triggerEvents(up[0]);
     await sleep(getRandomDelay(1000, 3000));
   }
 
   // spin
   for(var i = 0; i < 16; i++) {
-    up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("SPIN"));
+    up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("СПИН"));
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(2000, 4000));
@@ -131,20 +136,26 @@ async function autoBuy() {
         up[j].click();
         await sleep(getRandomDelay(3000, 4000));
       }
+      await sleep(getRandomDelay(2000, 4000));
       up = Array.from(document.querySelectorAll("img[alt='next']"));
       if (up.length != 0){
-        up[0].click();
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(2000, 4000));
+      }
+      up = Array.from(document.querySelectorAll("button span span")).filter(el => el.textContent.includes("COLLECT") || el.textContent.includes("ПОЛУЧИТЬ"));
+      if (up.length != 0){
+        triggerEvents(up[0]);
         await sleep(getRandomDelay(2000, 4000));
       }
     }
   }
-
+  await sleep(getRandomDelay(1000, 2000));
   // daily bonus
   up = Array.from(document.querySelectorAll("img[alt='center']"));
   if (up.length != 0){
-    up[0].click();
+    triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 4000));
-    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("SPIN"));
+    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent == "SPIN ");
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(6000, 7000));
@@ -153,45 +164,67 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 4000));
   }
 
-//   // EARN
-//   up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("EARN"));
-//   if (up.length != 0){
-//     up[0].click();
-//     await sleep(getRandomDelay(2000, 4000));
-//   }
+  // EARN
+  up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("EARN") || el.textContent.includes("Профит"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 4000));
+  }
 
-//   up = Array.from(document.querySelectorAll("app-rewarded-action"))
+  up = Array.from(document.querySelectorAll("app-rewarded-action"))
+  var count = 0;
 
-//   shuffle(up);
-//   var up2;
-//   var up3;
-//   if (up.length != 0){
-//     for (const item of up) {
-//       up2 = Array.from(item.querySelectorAll("div div span")).filter(el =>
-//                                                                         el.textContent.includes("Follow Boinkers") ||
-//                                                                         el.textContent.includes("Like + Comment + Retweet - verify after 10 minutes") ||
-//                                                                         el.textContent.includes("Like X Post - verify after 10 minutes") ||
-//                                                                         el.textContent.includes("Watch & like Youtube short") ||
-//                                                                         el.textContent.includes("Follow Major on Instagram") ||
-//                                                                         el.textContent.includes("FadeWallet") ||
-//                                                                     el.textContent.includes("Follow Major in Telegram"));
-//       up3 = Array.from(item.querySelectorAll("span span")).filter(el => el.textContent.includes("CLAIMED"));
-//       if (up3.length == 0){
-//         if (up2.length != 0){
-//           up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("GO"));
-//           if (up2.length != 0){
-//             up2[0].click();
-//             await sleep(getRandomDelay(2000, 4000));
-//           }
-//           up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("VERIFY"));
-//           if (up2.length != 0){
-//             up2[0].click();
-//             await sleep(getRandomDelay(2000, 4000));
-//           }
-//         }
-//       }
-//     }
-//   }
+  shuffle(up);
+  var up2;
+  var up3;
+  if (up.length != 0){
+    for (const item of up) {
+
+      up2 = Array.from(item.querySelectorAll("div div span")).filter(el => !el.textContent.includes("24h after achievement") &&
+                                                                     !el.textContent.includes("Watch an ad") &&
+                                                                     !el.textContent.includes("Earn USDT in Angry Miner!") &&
+                                                                     !el.textContent.includes("Join Hexacore and earn $AGO") &&
+                                                                     !el.textContent.includes("Join News Channel") &&
+                                                                     !el.textContent.includes("Notcoin Platinum Users") &&
+                                                                     !el.textContent.includes("Play Not Bored Puppies") &&
+                                                                     !el.textContent.includes("Play Diamore") &&
+                                                                     !el.textContent.includes("Subscribe BIRDS Channel") &&
+                                                                     !el.textContent.includes("Play Corn now!") &&
+                                                                     !el.textContent.includes("СМОТРИ рекламу") &&
+                                                                     !el.textContent.includes("Ставь эмодзи") &&
+                                                                     !el.textContent.includes("Boost News Channel") &&
+                                                                     !el.textContent.includes("Опубликуй историю в") &&
+                                                                     !el.textContent.includes("Put emoji on the latest post every 8 hours") &&
+                                                                      !el.textContent.includes("Share a Telegram Story & Forward it to @boinker_bot"));
+
+      up3 = Array.from(item.querySelectorAll("span span")).filter(el => el.textContent.includes("CLAIMED") || el.textContent.includes("ПОЛУЧЕНО"));
+      if (up3.length == 0){
+
+        if (up2.length != 0){
+          count += 1;
+          up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("VERIFY") || el.textContent.includes("ЧЕК"));
+          if (up2.length != 0){
+            up2[0].click();
+            await sleep(getRandomDelay(2000, 4000));
+          } else {
+            up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("GO") || el.textContent.includes("ГО"));
+            if (up2.length != 0){
+              up2[0].click();
+              await sleep(getRandomDelay(2000, 4000));
+            }
+            up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("CLAIM") || el.textContent.includes("ПОЛУЧИТЬ"));
+            if (up2.length != 0){
+              up2[0].click();
+              await sleep(getRandomDelay(2000, 4000));
+            }
+          }
+        }
+      }
+      if (count >= 10){
+        break;
+      }
+    }
+  }
 
 
 
