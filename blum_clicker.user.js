@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      0.3
+// @version      0.4
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
@@ -145,18 +145,22 @@ try {
 		return Math.floor(Math.random() * (GAME_SETTINGS.maxDelayMs - GAME_SETTINGS.minDelayMs + 1) + GAME_SETTINGS.minDelayMs);
 	}
 
-	function checkAndClickPlayButton() {
-		const playButtons = document.querySelectorAll('button.kit-button.is-large.is-primary, a.play-btn[href="/game"], button.kit-button.is-large.is-primary');
-
-		playButtons.forEach(button => {
-			if (!isGamePaused && GAME_SETTINGS.autoClickPlay && (/Play/.test(button.textContent) || /Continue/.test(button.textContent))) {
-				setTimeout(() => {
-					button.click();
-					gameStats.isGameOver = false;
-				}, getNewGameDelay());
-			}
-		});
-	}
+    function checkAndClickPlayButton() {
+      console.log('checkAndClickPlayButton')
+      const playButton = document.querySelectorAll('button.kit-button.is-large.is-primary')[0];
+      const playButton2 = document.querySelectorAll('button.kit-button.is-large.is-primary')[1];
+      if ((!isGamePaused && playButton && playButton.textContent.includes('Play')) || (!isGamePaused && playButton2 && playButton2.textContent.includes('Play'))) {
+          setTimeout(() => {
+              if (playButton && playButton.textContent.includes('Play')) {
+                playButton.click();
+              }
+              if (playButton2 && playButton2.textContent.includes('Play')) {
+                playButton2.click();
+              }
+              gameStats.isGameOver = false;
+          }, getNewGameDelay());
+      };
+    }
 
 
 	function continuousPlayButtonCheck() {
