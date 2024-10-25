@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Major claim
-// @version      0.1
+// @version      0.2
 // @author       IvanAgafonov
 // @match        https://major.bot/*
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/major.user.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/major.user.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/major.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/major.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
