@@ -3,9 +3,9 @@
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        *://*notpx.app/*
-// @version      0.1
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/notpixel.user.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/notpixel.user.js
+// @version      0.2
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 // ==/UserScript==
