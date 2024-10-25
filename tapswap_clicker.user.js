@@ -4,8 +4,8 @@
 // @author       IvanAgafonov
 // @match        *://*.tapswap.club/*
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/tapswap_clicker.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/tapswap_clicker.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tapswap_clicker.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tapswap_clicker.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
