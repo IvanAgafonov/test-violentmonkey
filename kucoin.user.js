@@ -4,8 +4,8 @@
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        *://www.kucoin.com/*
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/kucoin.user.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/kucoin.user.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/kucoin.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/kucoin.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 // ==/UserScript==
