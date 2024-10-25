@@ -3,8 +3,8 @@
 // @version      0.0
 // @author       IvanAgafonov
 // @match        https://miniapp.tabibot.com/*
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/tabi.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/tabi.js
+// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/tabi.user.js
+// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/tabi.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 // ==/UserScript==
