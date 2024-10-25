@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.2
+// @version      0.3
 // @author       IvanAgafonov
 // @match        https://boink.astronomica.io/*
 // @grant        none
@@ -210,9 +210,14 @@ async function autoBuy() {
             up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("GO") || el.textContent.includes("ГО"));
             if (up2.length != 0){
               up2[0].click();
-              await sleep(getRandomDelay(2000, 4000));
+              await sleep(getRandomDelay(13000, 20000));
             }
             up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("CLAIM") || el.textContent.includes("ПОЛУЧИТЬ"));
+            if (up2.length != 0){
+              up2[0].click();
+              await sleep(getRandomDelay(2000, 4000));
+            }
+            up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("VERIFY") || el.textContent.includes("ЧЕК"));
             if (up2.length != 0){
               up2[0].click();
               await sleep(getRandomDelay(2000, 4000));
@@ -220,7 +225,7 @@ async function autoBuy() {
           }
         }
       }
-      if (count >= 10){
+      if (count >= 20){
         break;
       }
     }
