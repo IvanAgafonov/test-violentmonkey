@@ -5,8 +5,8 @@
 // @match        *://mmbump.pro/*
 // @run-at       document-start
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/bump.user.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/bump.user.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/bump.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/bump.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
