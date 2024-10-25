@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      0.2
+// @version      0.3
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/blum_clicker.user.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/blum_clicker.user.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_clicker.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_clicker.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 // ==/UserScript==
