@@ -4,8 +4,8 @@
 // @author       IvanAgafonov
 // @match        https://cats-frontend.tgapps.store/*
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/catsgang.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/catsgang.js
+// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/catsgang.user.js
+// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/catsgang.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
