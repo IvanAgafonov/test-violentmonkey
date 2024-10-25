@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Coub claim
-// @version      0.0
+// @version      0.1
 // @author       IvanAgafonov
 // @match        https://coub.com/*
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/coub.user.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/coub.user.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/coub.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/coub.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
