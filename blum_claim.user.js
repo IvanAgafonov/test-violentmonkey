@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.1
+// @version      0.2
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/blum_claim.user.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/blum_claim.user.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 // ==/UserScript==
