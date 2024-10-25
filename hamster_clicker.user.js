@@ -7,8 +7,8 @@
 // @exclude      https://hamsterkombatgame.io/games/UnblockPuzzle/*
 // @version      0.0
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/hamster_clicker.user.js
-// @updateURL    https://raw.githubusercontent.com/IvanAgafonov/test-violentmonkey/refs/heads/main/hamster_clicker.user.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hamster_clicker.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hamster_clicker.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
