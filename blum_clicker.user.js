@@ -165,7 +165,7 @@ try {
 
 	function continuousPlayButtonCheck() {
 		checkAndClickPlayButton();
-		setTimeout(continuousPlayButtonCheck, 1000);
+		setTimeout(continuousPlayButtonCheck, 3000);
 	}
 
 	const observer = new MutationObserver(mutations => {
