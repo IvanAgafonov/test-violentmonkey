@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      0.4
+// @version      0.5
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
@@ -11,9 +11,9 @@
 // ==/UserScript==
 
 let GAME_SETTINGS = {
-	minBombHits: Math.floor(Math.random() * 2),
+	minBombHits: Math.floor(Math.random()),
 	minIceHits: Math.floor(Math.random() * 2) + 2,
-	flowerSkipPercentage: Math.floor(Math.random() * 11) + 15,
+	flowerSkipPercentage: Math.floor(Math.random() * 11) + 10,
 	minDelayMs: 500,
 	maxDelayMs: 999,
 	autoClickPlay: false,
