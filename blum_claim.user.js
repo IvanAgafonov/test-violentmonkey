@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.2
+// @version      0.3
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -163,6 +163,44 @@ async function verify() {
   }
 }
 
+async function simulateTyping(element, text, delay) {
+  for (const char of text) {
+    const event = new KeyboardEvent('keydown', { key: char });
+    element.dispatchEvent(event);
+    await new Promise(resolve => setTimeout(resolve, delay));
+  }
+    for (const char of text) {
+    const event = new KeyboardEvent('keypress', { key: char });
+    element.dispatchEvent(event);
+    await new Promise(resolve => setTimeout(resolve, delay));
+  }
+    for (const char of text) {
+    const event = new KeyboardEvent('keyup', { key: char });
+    element.dispatchEvent(event);
+    await new Promise(resolve => setTimeout(resolve, delay));
+      element.value += char;
+  }
+}
+
+function triggerEvents(element) {
+  const events = [
+      new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
+      new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseup', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new PointerEvent('click', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerout', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerleave', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseout', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new MouseEvent('mouseleave', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 })
+  ];
+
+  events.forEach((event, index) => {
+      setTimeout(() => element.dispatchEvent(event), index * 100);
+  });
+}
+
+
 async function autoBuy() {
 
   // var up = Array.from(document.querySelectorAll("img[alt='reload']"));
@@ -171,10 +209,76 @@ async function autoBuy() {
   //   await sleep(getRandomDelay(4000, 6000));
   // }
 
+  var up = Array.from(document.querySelectorAll("label input[type='text']"));
+  if (up.length != 0){
+    up[0].click();
+    triggerEvents(up[0]);
+    up[0].parentElement.click();
+    triggerEvents(up[0].parentElement);
+
+    var nameList = [
+                'Time','Past','Future','Dev',
+                'Fly','Flying','Soar','Soaring','Power','Falling',
+                'Fall','Jump','Cliff','Mountain','Rend','Red','Blue',
+                'Green','Yellow','Gold','Demon','Demonic','Panda','Cat',
+                'Kitty','Kitten','Zero','Memory','Trooper','XX','Bandit',
+                'Fear','Light','Glow','Tread','Deep','Deeper','Deepest',
+                'Mine','Your','Worst','Enemy','Hostile','Force','Video',
+                'Game','Donkey','Mule','Colt','Cult','Cultist','Magnum',
+                'Gun','Assault','Recon','Trap','Trapper','Redeem','Code',
+                'Script','Writer','Near','Close','Open','Cube','Circle',
+                'Geo','Genome','Germ','Spaz','Shot','Echo','Beta','Alpha',
+                'Gamma','Omega','Seal','Squid','Money','Cash','Lord','King',
+                'Duke','Rest','Fire','Flame','Morrow','Break','Breaker','Numb',
+                'Ice','Cold','Rotten','Sick','Sickly','Janitor','Camel','Rooster',
+                'Sand','Desert','Dessert','Hurdle','Racer','Eraser','Erase','Big',
+                'Small','Short','Tall','Sith','Bounty','Hunter','Cracked','Broken',
+                'Sad','Happy','Joy','Joyful','Crimson','Destiny','Deceit','Lies',
+                'Lie','Honest','Destined','Bloxxer','Hawk','Eagle','Hawker','Walker',
+                'Zombie','Sarge','Capt','Captain','Punch','One','Two','Uno','Slice',
+                'Slash','Melt','Melted','Melting','Fell','Wolf','Hound',
+                'Legacy','Sharp','Dead','Mew','Chuckle','Bubba','Bubble','Sandwich','Smasher','Extreme','Multi','Universe','Ultimate','Death','Ready','Monkey','Elevator','Wrench','Grease','Head','Theme','Grand','Cool','Kid','Boy','Girl','Vortex','Paradox'
+            ];
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    var finalName = nameList[Math.floor( Math.random() * nameList.length )] + nameList[Math.floor( Math.random() * nameList.length )] + alphabet[Math.floor( Math.random() * alphabet.length )];
+
+    up[0].value = finalName;
+    const event = new Event('input');
+    up[0].dispatchEvent(event);
+
+    await sleep(getRandomDelay(4000, 6000));
+  }
+
   up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Continue"));
   if (up.length != 0){
     up[0].click();
     await sleep(getRandomDelay(4000, 6000));
+  }
+
+  up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Continue"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(4000, 6000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div div a")).filter(el => el.textContent.includes("Open"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(4000, 6000));
+    up = Array.from(document.querySelectorAll("div div div a.pages-tribe-list-item-template"));
+    if (up.length != 0){
+      var item1 = up[Math.floor(Math.random() * up.length)]
+      item1.click();
+      await sleep(getRandomDelay(4000, 6000));
+      up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent.includes("Join"));
+      if (up.length != 0){
+        up[0].click();
+        await sleep(getRandomDelay(4000, 6000));
+        history.back()
+        await sleep(getRandomDelay(1000, 2000));
+        history.back()
+      }
+    }
   }
 
   up = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("Claim"));
@@ -198,7 +302,7 @@ async function autoBuy() {
     }
   } else {
 
-    var up = Array.from(document.querySelectorAll("div a span")).filter(el => el.textContent.includes("Frens"));
+    up = Array.from(document.querySelectorAll("div a span")).filter(el => el.textContent.includes("Frens"));
     if (up.length != 0){
       up[0].click();
       await sleep(getRandomDelay(2000, 4000));
@@ -292,26 +396,6 @@ async function autoBuy() {
   }
 }
 
-  // up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent.includes("+5M Coubers Like & RT") ||
-  //                                                                     el.textContent.includes("Master of highload") ||
-  //                                                                     el.textContent.includes("Complete all tasks") ||
-  //                                                                     el.textContent.includes("Like & Share #FreeDurov") ||
-  //                                                               el.textContent.includes("Follow on Telegram") ||
-  //                                                               el.textContent.includes("Welcome bonus") ||
-  //                                                               el.textContent.includes("Follow on X") ||
-  //                                                               el.textContent.includes("Follow on YouTube") ||
-  //                                                               el.textContent.includes("WTF is Coub") ||
-  //                                                                     el.textContent.includes("#NewFeatures Like & Retweet"));
-  // shuffle(up);
-  // if (up.length != 0){
-  //   for (const item of up) {
-  //     if (item.parentElement.nextElementSibling.textContent.includes("Start")) {
-  //       item.parentElement.nextElementSibling.click();
-  //       await sleep(getRandomDelay(2000, 5000));
-  //     }
-  //   }
-  // }
-
 
 
 
@@ -319,7 +403,7 @@ function initializeScript() {
 
     console.log('START Blum claim ver 0.1')
 
-    setTimeout(autoBuy, getRandomDelay(15000, 19500));
+    setTimeout(autoBuy, getRandomDelay(12000, 16000));
 }
 
 if (document.readyState === 'loading') {
