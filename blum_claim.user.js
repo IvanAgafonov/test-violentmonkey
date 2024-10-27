@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.3
+// @version      0.4
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -261,22 +261,26 @@ async function autoBuy() {
     await sleep(getRandomDelay(4000, 6000));
   }
 
-  up = Array.from(document.querySelectorAll("div div div a")).filter(el => el.textContent.includes("Open"));
+  up = Array.from(document.querySelectorAll("div div div div")).filter(el => el.textContent.includes("Compete for rewards"));
   if (up.length != 0){
-    up[0].click();
-    await sleep(getRandomDelay(4000, 6000));
-    up = Array.from(document.querySelectorAll("div div div a.pages-tribe-list-item-template"));
+    up = Array.from(document.querySelectorAll("div div div a")).filter(el => el.textContent.includes("Open"));
     if (up.length != 0){
-      var item1 = up[Math.floor(Math.random() * up.length)]
-      item1.click();
+      up[0].click();
       await sleep(getRandomDelay(4000, 6000));
-      up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent.includes("Join"));
+      up = Array.from(document.querySelectorAll("div div div a.pages-tribe-list-item-template"));
       if (up.length != 0){
-        up[0].click();
+        var item1 = up[Math.floor(Math.random() * up.length)]
+        item1.click();
         await sleep(getRandomDelay(4000, 6000));
-        history.back()
-        await sleep(getRandomDelay(1000, 2000));
-        history.back()
+        up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent.includes("Join"));
+        if (up.length != 0){
+          up[0].click();
+          await sleep(getRandomDelay(4000, 6000));
+          history.back()
+          await sleep(getRandomDelay(1000, 2000));
+          history.back()
+          await sleep(getRandomDelay(1000, 2000));
+        }
       }
     }
   }
@@ -293,7 +297,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  if (getRandomDelay(100, 2600) > 250) {
+  if (getRandomDelay(100, 2600) > 350) {
 
     up = Array.from(document.querySelectorAll("div div div div a")).filter(el => el.textContent.includes("Play"));
     if (up.length != 0){
