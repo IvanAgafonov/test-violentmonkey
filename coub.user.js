@@ -114,24 +114,24 @@ async function autoBuy() {
       }
     }
   }
-  if (getRandomDelay(1000, 4000) < 3500) {
-    up = Array.from(document.querySelectorAll("div div div div div")).filter(el => el.textContent.includes("Limited time offer") || el.textContent.includes("Временная акция"));
-    if (up.length != 0){
-      up[0].click();
-      await sleep(getRandomDelay(2000, 4000));
-    }
+  // if (getRandomDelay(1000, 4000) < 3500) {
+  //   up = Array.from(document.querySelectorAll("div div div div div")).filter(el => el.textContent.includes("Limited time offer") || el.textContent.includes("Временная акция"));
+  //   if (up.length != 0){
+  //     up[0].click();
+  //     await sleep(getRandomDelay(2000, 4000));
+  //   }
 
-    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Claim") || el.textContent.includes("Получить"));
-    if (up.length != 0){
-      up[0].click();
-      await sleep(getRandomDelay(2000, 4000));
-    }
-  } else {
+  //   up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Claim") || el.textContent.includes("Получить"));
+  //   if (up.length != 0){
+  //     up[0].click();
+  //     await sleep(getRandomDelay(2000, 4000));
+  //   }
+  // } else {
     up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent.includes("Home") || el.textContent.includes("Домой"));
     if (up.length != 0){
       up[0].click();
       await sleep(getRandomDelay(6000, 9000));
-    }
+    // }
   }
 
 
