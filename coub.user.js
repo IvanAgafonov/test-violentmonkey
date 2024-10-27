@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Coub claim
-// @version      0.1
+// @version      0.2
 // @author       IvanAgafonov
 // @match        https://coub.com/*
 // @grant        none
@@ -92,9 +92,11 @@ async function autoBuy() {
                                                                       el.textContent.includes("Master of highload") ||
                                                                       el.textContent.includes("Complete all tasks") ||
                                                                       el.textContent.includes("Like &") ||
+	  							      el.textContent.includes("Выполнить все таски") ||
+	  							      el.textContent.includes("PUMP") ||
                                                                       el.textContent.includes("Подписаться") ||
-																	                                    el.textContent.includes("Share&RT") ||
-																	                                    el.textContent.includes("on X") ||
+								el.textContent.includes("Share&RT") ||
+								el.textContent.includes("on X") ||
                                                                 el.textContent.includes("Follow on Telegram") ||
                                                                 el.textContent.includes("Welcome bonus") ||
                                                                 el.textContent.includes("Follow on X") ||
@@ -102,7 +104,7 @@ async function autoBuy() {
                                                                 el.textContent.includes("Invite 3 frens") ||
                                                                 el.textContent.includes("Пригласить 3 друга") ||
                                                                 el.textContent.includes("WTF is Coub") ||
-                                                                      el.textContent.includes("#NewFeatures Like & Retweet"));
+                                                                el.textContent.includes("#NewFeatures Like & Retweet"));
   shuffle(up);
   if (up.length != 0){
     for (const item of up) {
