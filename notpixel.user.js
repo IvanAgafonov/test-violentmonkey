@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        *://*notpx.app/*
-// @version      0.2
+// @version      0.3
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -103,7 +103,7 @@ function tryChangeColor(random) {
       // Выбираем случайный цвет из списка
       mymColor = colors[Math.floor(Math.random() * colors.length)];
     } else {
-      mymColor = colors[21];
+      mymColor = colors[16];
     }
 
     // Нажимаем на случайный цвет
