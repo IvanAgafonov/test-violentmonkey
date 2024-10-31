@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.3
+// @version      0.4
 // @author       IvanAgafonov
 // @match        https://boink.astronomica.io/*
 // @grant        none
@@ -91,6 +91,12 @@ async function autoBuy() {
       triggerEvents(up[0]);
       await sleep(getRandomDelay(1000, 2000));
     }
+    up = Array.from(document.querySelectorAll("span div div span")).filter(el => el.textContent.includes("ALL"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3500, 4000));
+    }
+
     for(var j = 0; j < 3; j ++) {
       up = Array.from(document.querySelectorAll("img[alt='close']"));
       if (up.length != 0){
