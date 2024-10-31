@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Tabi claim
-// @version      0.0
+// @version      0.1
 // @author       IvanAgafonov
-// @match        https://miniapp.tabibot.com/*
+// @match        https://front.tabibot.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -36,7 +36,19 @@ function sleep(ms = 0) {
 
 async function autoBuy() {
 
-  var up = Array.from(document.querySelectorAll("img[class='w-[28px] h-[28px] absolute right-[-13px]']"));
+  var up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "View Rewards");
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Mining Now");
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("img[class='w-[28px] h-[28px] absolute right-[-13px]']"));
   if (up.length != 0){
     up[0].click();
     await sleep(getRandomDelay(3000, 4000));
