@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tg ton connect
-// @version      0.1
+// @version      0.2
 // @author       IvanAgafonov
 // @match        https://web.telegram.org/k*
 // @grant        none
