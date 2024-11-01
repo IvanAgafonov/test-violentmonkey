@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tg ton connect
-// @version      0.3
+// @version      0.4
 // @author       IvanAgafonov
 // @match        https://web.telegram.org/k*
 // @grant        none
@@ -12,7 +12,7 @@
 
 async function connect() {
 
-  var up = Array.from(document.querySelectorAll("spa.peer-title")).filter(el => el.textContent == 'Wallet');
+  var up = Array.from(document.querySelectorAll("span.peer-title")).filter(el => el.textContent == 'Wallet');
   var up2 = document.evaluate("(//div[contains(@class,'BrowserHeaderTabTitle') and text()='Wallet'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up.length != 0 || up2){
 
