@@ -18,6 +18,7 @@ async function connect() {
   }
 
   up = Array.from(document.querySelectorAll("div button.btn-primary.btn-color-primary.web-app-button")).filter(el => el.textContent.includes("Connect") ||
+                                                                                                               el.textContent.includes("Confirm") ||
                                                                                                                el.textContent.includes("Привязать кошелёк"));
   if (up.length != 0){
     up[0].click();
@@ -37,3 +38,4 @@ if (document.readyState === 'loading') {
 } else {
     setTimeout(initializeScript, 5000);
 }
+
