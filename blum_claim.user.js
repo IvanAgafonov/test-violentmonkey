@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.4
+// @version      0.5
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -78,75 +78,54 @@ async function verify() {
   if (up.length != 0){
     for (const item of up) {
       var title = Array.from(item.parentElement.parentElement.querySelectorAll(".title"))
+      var q_answer = {"Pre-Market Trading?":          "WOWBLUM",
+                     "Doxxing? What's that?":         "NODOXXING",
+                     "$2.5M+ DOGS Airdrop":           "HAPPYDOGS",
+                     "Liquidity Pools Guide":         "BLUMERSSS",
+                     "What Are AMMs?":                "CRYPTOSMART",
+                     "Say No to Rug Pull!":           "SUPERBLUM",
+                     "What are Telegram Mini Apps?":  "CRYPTOBLUM",
+                     "Secure your Crypto!":           "BEST PROJECT EVER",
+                     "Forks Explained":               "GO GET",
+                     "Play track":                    "Blum - Big City Life",
+                     "How to Analyze Crypto?":        "VALUE",
+                     "Navigating Crypto":             "HEYBLUM",
+                     "How to Memecoin?":              "MEMEBLUM",
+                     "Token Burning: How & Why?":     "ONFIRE",
+                     "Bitcoin Rainbow Chart?":        "SOBLUM",
+                     "Crypto Terms. Part 1":          "BLUMEXPLORER",
+                     "How to trade Perps?":           "CRYPTOFAN",
+                     "Sharding Explained":            "BLUMTASTIC",
+                     "DeFi Explained":                "BLUMFORCE",
+                     "How To Find Altcoins?":         "ULTRABLUM",
+                     "Crypto Slang. Part 1":          "BLUMSTORM",
+                     "What is On-chain Analysis?":    "BLUMEXTRA",
+                     "Pumptober Special":             "PUMPIT",
+                     "DeFi Risks: Key Insights":      "BLUMHELPS"}
+
       if (title.length != 0) {
-        if (title[0].textContent.includes("Pre-Market Trading?") ||
-           title[0].textContent.includes("Doxxing? What's that?") ||
-           title[0].textContent.includes("$2.5M+ DOGS Airdrop") ||
-           title[0].textContent.includes("Liquidity Pools Guide") ||
-           title[0].textContent.includes("What Are AMMs?") ||
-           title[0].textContent.includes("Say No to Rug Pull!") ||
-           title[0].textContent.includes("What are Telegram Mini Apps?") ||
-            title[0].textContent.includes("Secure your Crypto!") ||
-            title[0].textContent.includes("Forks Explained") ||
-            title[0].textContent.includes("Play track") ||
-            title[0].textContent.includes("How to Analyze Crypto?") ||
-           title[0].textContent.includes("Navigating Crypto")) {
-          item.click();
-          await sleep(1000)
+        for(const [key, value] of Object.entries(q_answer)) {
+          if (title[0].textContent.includes(key)) {
+            item.click();
+            await sleep(getRandomDelay(1000, 2000));
+            var mytext = value;
 
-          var mytext = "";
-          if (title[0].textContent.includes("Pre-Market Trading?")) {
-            mytext = "WOWBLUM"
-          }
-          if (title[0].textContent.includes("Doxxing? What's that?")) {
-            mytext = "NODOXXING"
-          }
-          if (title[0].textContent.includes("$2.5M+ DOGS Airdrop")) {
-            mytext = "HAPPYDOGS"
-          }
-          if (title[0].textContent.includes("Play track")) {
-            mytext = "Blum - Big City Life"
-          }
-          if (title[0].textContent.includes("Liquidity Pools Guide")) {
-            mytext = "BLUMERSSS"
-          }
-          if (title[0].textContent.includes("What Are AMMs?")) {
-            mytext = "CRYPTOSMART"
-          }
-          if (title[0].textContent.includes("Say No to Rug Pull!")) {
-            mytext = "SUPERBLUM"
-          }
-          if (title[0].textContent.includes("What are Telegram Mini Apps?")) {
-            mytext = "CRYPTOBLUM"
-          }
-          if (title[0].textContent.includes("Secure your Crypto!")) {
-            mytext = "BEST PROJECT EVER"
-          }
-          if (title[0].textContent.includes("Forks Explained")) {
-            mytext = "GO GET"
-          }
-          if (title[0].textContent.includes("How to Analyze Crypto?")) {
-            mytext = "VALUE"
-          }
-          if (title[0].textContent.includes("Navigating Crypto")) {
-            mytext = "HEYBLUM"
-          }
+            var verify = document.querySelector("input[placeholder='Keyword']")
+            verify.click();
+            verify.value = mytext
+            simulateTyping(verify, mytext, 500);
 
-
-          var verify = document.querySelector("input[placeholder='Keyword']")
-          verify.click();
-          verify.value = mytext
-          simulateTyping(verify, mytext, 500);
-
-          verify.dispatchEvent(new Event('input', { bubbles: true }));
-          verify.dispatchEvent(new Event('change'));
-          await sleep(getRandomDelay(2000, 3000));
-          // input.value = text;
-          // verify.setAttribute('value', mytext);
-          up = Array.from(document.querySelectorAll("div div div div div div div button div")).filter(el => el.textContent.includes("Verify") && el.parentElement.getAttribute("class").includes("kit-button"));
-          if (up.length != 0){
-            up[0].click();
-            await sleep(getRandomDelay(2000, 4000));
+            verify.dispatchEvent(new Event('input', { bubbles: true }));
+            verify.dispatchEvent(new Event('change'));
+            await sleep(getRandomDelay(2000, 3000));
+            // input.value = text;
+            // verify.setAttribute('value', mytext);
+            up = Array.from(document.querySelectorAll("div div div div div div div button div")).filter(el => el.textContent.includes("Verify") && el.parentElement.getAttribute("class").includes("kit-button"));
+            if (up.length != 0){
+              up[0].click();
+              await sleep(getRandomDelay(2000, 4000));
+            }
+            break;
           }
         }
       }
@@ -297,7 +276,17 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  if (getRandomDelay(100, 2600) > 350) {
+  up = Array.from(document.querySelectorAll(".pass"));
+  var count_tickets = 0;
+  if (up.length != 0){
+    try{
+      count_tickets = up[0].textContent.trim();
+      count_tickets = Number(count_tickets);
+      await sleep(getRandomDelay(3000, 4000));
+    } catch (error) {}
+  }
+
+  if (getRandomDelay(100, 2600) > 350 && count_tickets > 0) {
 
     up = Array.from(document.querySelectorAll("div div div div a")).filter(el => el.textContent.includes("Play"));
     if (up.length != 0){
@@ -325,7 +314,7 @@ async function autoBuy() {
     }
 
     await start_claim();
-    if (getRandomDelay(100, 2600) > 1600) {
+    if (getRandomDelay(100, 2600) > 160) {
       up = Array.from(document.querySelectorAll(".tasks-pill-inline.is-status-not-started.is-light.pages-tasks-pill, .tasks-pill-inline.is-status-not-started.is-dark.pages-tasks-pill"));
       if (up.length != 0){
         for (const item of up) {
