@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.2
+// @version      0.3
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -75,48 +75,57 @@ async function autoBuy() {
     await sleep(getRandomDelay(4000, 7000));
   }
 
-  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Start");
-  if (up.length != 0){
-    for (const item of up) {
-      triggerEvents(item);
-      await sleep(getRandomDelay(2000, 5000));
-      var up2 = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Send message");
-      if (up2.length != 0){
-        triggerEvents(up2[0]);
-        await sleep(getRandomDelay(2000, 4000));
-        var link = console.logs[console.logs.length-1]
-        try {
-          const response = await fetch("http://127.0.0.1:5000/" + link[2].path_full.split("&text")[0].split("startapp=")[1]);
-        }
-        catch (e) {}
-      }
-      up2 = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("Wallet On"))
-      if (up2.length != 0){
-        triggerEvents(up2[0]);
-        await sleep(getRandomDelay(2000, 2100));
-        up2 = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+  for(var i = 0; i < 2; i++){
+
+    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Start");
+    if (up.length != 0){
+      for (const item of up) {
+        triggerEvents(item);
+        await sleep(getRandomDelay(2000, 5000));
+        var up2 = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Send message");
         if (up2.length != 0){
           triggerEvents(up2[0]);
-          await sleep(getRandomDelay(20000, 21000));
+          await sleep(getRandomDelay(2000, 4000));
+          var link = console.logs[console.logs.length-1]
+          try {
+            const response = await fetch("http://127.0.0.1:5000/" + link[2].path_full.split("&text")[0].split("startapp=")[1]);
+          }
+          catch (e) {}
+        }
+        up2 = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("Wallet On"))
+        if (up2.length != 0){
+          triggerEvents(up2[0]);
+          await sleep(getRandomDelay(2000, 2100));
+          up2 = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+          if (up2.length != 0){
+            triggerEvents(up2[0]);
+            await sleep(getRandomDelay(20000, 21000));
+          }
         }
       }
     }
-  }
 
-  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Check");
-  if (up.length != 0){
-    for (const item of up) {
-      triggerEvents(item);
-      // item.click();
-      await sleep(getRandomDelay(1000, 2000));
+    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Check");
+    if (up.length != 0){
+      for (const item of up) {
+        triggerEvents(item);
+        // item.click();
+        await sleep(getRandomDelay(1000, 2000));
+      }
     }
-  }
-  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Claim");
-  if (up.length != 0){
-    for (const item of up) {
-      triggerEvents(item);
-      // item.click();
-      await sleep(getRandomDelay(1000, 2000));
+    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Claim");
+    if (up.length != 0){
+      for (const item of up) {
+        triggerEvents(item);
+        // item.click();
+        await sleep(getRandomDelay(1000, 2000));
+      }
+    }
+    up = Array.from(document.querySelectorAll("div[class='type-item']"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      // up[0].click();
+      await sleep(getRandomDelay(1000, 3000));
     }
   }
 }
