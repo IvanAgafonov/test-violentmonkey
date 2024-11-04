@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      0.6
+// @version      0.7
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
@@ -10,10 +10,11 @@
 // @grant        none
 // ==/UserScript==
 
+
 let GAME_SETTINGS = {
 	minBombHits: Math.floor(Math.random()),
 	minIceHits: Math.floor(Math.random() * 2) + 2,
-	flowerSkipPercentage: Math.floor(Math.random() * 11) + 9,
+	flowerSkipPercentage: Math.floor(Math.random() * 11) + 15,
 	minDelayMs: 500,
 	maxDelayMs: 999,
 	autoClickPlay: false,
@@ -111,9 +112,11 @@ try {
 				}
 				item.onClick(item);
 			}
+			
+			item.isExplosion = true;
+			item.addedAt = performance.now();
 		}, getClickDelay());
 	}
-
 
 	// Функция для расчета задержки между кликами
 	function getClickDelay() {
@@ -144,25 +147,41 @@ try {
 	function getNewGameDelay() {
 		return Math.floor(Math.random() * (GAME_SETTINGS.maxDelayMs - GAME_SETTINGS.minDelayMs + 1) + GAME_SETTINGS.minDelayMs);
 	}
+	    function checkAndClickPlayButton() {
+	      console.log('checkAndClickPlayButton')
+	      const playButton = document.querySelectorAll('button.kit-button.is-large.is-primary')[0];
+	      const playButton2 = document.querySelectorAll('button.kit-button.is-large.is-primary')[1];
+	      if ((!isGamePaused && playButton && playButton.textContent.includes('Play')) || (!isGamePaused && playButton2 && playButton2.textContent.includes('Play'))) {
+	          setTimeout(() => {
+	              if (playButton && playButton.textContent.includes('Play')) {
+	                playButton.click();
+	              }
+	              if (playButton2 && playButton2.textContent.includes('Play')) {
+	                playButton2.click();
+	              }
+	              gameStats.isGameOver = false;
+	          }, getNewGameDelay());
+	      };
+	    }
 
-    function checkAndClickPlayButton() {
-      console.log('checkAndClickPlayButton')
-      const playButton = document.querySelectorAll('button.kit-button.is-large.is-primary')[0];
-      const playButton2 = document.querySelectorAll('button.kit-button.is-large.is-primary')[1];
-      if ((!isGamePaused && playButton && playButton.textContent.includes('Play')) || (!isGamePaused && playButton2 && playButton2.textContent.includes('Play'))) {
-          setTimeout(() => {
-              if (playButton && playButton.textContent.includes('Play')) {
-                playButton.click();
-              }
-              if (playButton2 && playButton2.textContent.includes('Play')) {
-                playButton2.click();
-              }
-              gameStats.isGameOver = false;
-          }, getNewGameDelay());
-      };
-    }
+	function checkAndClickResetButton() {
+		const errorPage = document.querySelector('div[data-v-26af7de6].error.page.wrapper');
+		if (errorPage) {
+			const resetButton = errorPage.querySelector('button.reset');
+			if (resetButton) {
+				resetButton.click();
+			}
+		}
+	}
 
+	function continuousErrorCheck() {
+		checkAndClickResetButton();
+		const delay = Math.floor(Math.random() * 1000) + 2000;
+		setTimeout(continuousErrorCheck, delay);
+	}
 
+	continuousErrorCheck();
+	
 	function continuousPlayButtonCheck() {
 		checkAndClickPlayButton();
 		setTimeout(continuousPlayButtonCheck, 3000);
