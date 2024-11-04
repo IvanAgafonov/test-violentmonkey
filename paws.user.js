@@ -108,7 +108,7 @@ async function autoBuy() {
     for (const item of up) {
       triggerEvents(item);
       // item.click();
-      await sleep(getRandomDelay(2000, 5000));
+      await sleep(getRandomDelay(1000, 2000));
     }
   }
   up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Claim");
@@ -116,7 +116,7 @@ async function autoBuy() {
     for (const item of up) {
       triggerEvents(item);
       // item.click();
-      await sleep(getRandomDelay(2000, 5000));
+      await sleep(getRandomDelay(1000, 2000));
     }
   }
 }
