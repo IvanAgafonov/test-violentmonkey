@@ -103,7 +103,7 @@ async function autoBuy() {
     }
   }
 
-  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Claim");
+  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Check");
   if (up.length != 0){
     for (const item of up) {
       triggerEvents(item);
@@ -111,7 +111,7 @@ async function autoBuy() {
       await sleep(getRandomDelay(2000, 5000));
     }
   }
-  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Check");
+  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Claim");
   if (up.length != 0){
     for (const item of up) {
       triggerEvents(item);
