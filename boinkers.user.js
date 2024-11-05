@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.4
+// @version      0.5
 // @author       IvanAgafonov
 // @match        https://boink.astronomica.io/*
 // @grant        none
@@ -66,22 +66,18 @@ async function autoBuy() {
     await sleep(getRandomDelay(3500, 4000));
   }
 
-  up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("10 min"));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(3500, 4000));
-  }
+  for(var i = 0; i < 3; i++) {
+    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("10 min"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3500, 4000));
+    }
 
-  up = Array.from(document.querySelectorAll("img[alt='close']"));
-  if (up.length != 0){
-    up[0].click();
-    await sleep(getRandomDelay(2000, 4000));
-  }
-
-  up = Array.from(document.querySelectorAll("img[alt='close']"));
-  if (up.length != 0){
-    up[0].click();
-    await sleep(getRandomDelay(2000, 4000));
+    up = Array.from(document.querySelectorAll("img[alt='close']"));
+    if (up.length != 0){
+      up[0].click();
+      await sleep(getRandomDelay(2000, 4000));
+    }
   }
 
   // upgrade
@@ -116,6 +112,27 @@ async function autoBuy() {
     }
   }
 
+  up = Array.from(document.querySelectorAll(".gold-button-diagonal"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll(".floating"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(5000, 6000));
+      up = Array.from(document.querySelectorAll(".yellow-button-diagonal:not([disabled])"));
+      if (up.length != 0){
+       for (const item of up) {
+        triggerEvents(item);
+        await sleep(getRandomDelay(2000, 3000));
+       }
+      }
+      history.back();
+      await sleep(getRandomDelay(2000, 3000));
+    }
+
   // spin
   up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("Спин"));
   if (up.length != 0){
@@ -124,7 +141,7 @@ async function autoBuy() {
   }
 
   // spin
-  for(var i = 0; i < 16; i++) {
+  for(var i = 0; i < 20; i++) {
     up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("СПИН"));
     if (up.length != 0){
       triggerEvents(up[0]);
@@ -186,16 +203,19 @@ async function autoBuy() {
   if (up.length != 0){
     for (const item of up) {
 
-      up2 = Array.from(item.querySelectorAll("div div span")).filter(el => !el.textContent.includes("24h after achievement") &&
+      up2 = Array.from(item.querySelectorAll("div div span[class='main-label']")).filter(el => !el.textContent.includes("24h after achievement") &&
                                                                      !el.textContent.includes("Watch an ad") &&
                                                                      !el.textContent.includes("Earn USDT in Angry Miner!") &&
                                                                      !el.textContent.includes("Join Hexacore and earn $AGO") &&
+                                                                     !el.textContent.includes("Play Spell & Earn $MANA") &&
                                                                      !el.textContent.includes("Join News Channel") &&
                                                                      !el.textContent.includes("Notcoin Platinum Users") &&
                                                                      !el.textContent.includes("Play Not Bored Puppies") &&
                                                                      !el.textContent.includes("Play Diamore") &&
                                                                      !el.textContent.includes("Subscribe BIRDS Channel") &&
                                                                      !el.textContent.includes("Play Corn now!") &&
+                                                                     !el.textContent.includes("Join News Channel") &&
+                                                                     !el.textContent.includes("Merge to level 3 in Merge Pals") &&
                                                                      !el.textContent.includes("СМОТРИ рекламу") &&
                                                                      !el.textContent.includes("Ставь эмодзи") &&
                                                                      !el.textContent.includes("Boost News Channel") &&
