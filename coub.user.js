@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Coub claim
-// @version      0.2
+// @version      0.3
 // @author       IvanAgafonov
 // @match        https://coub.com/*
 // @grant        none
@@ -100,7 +100,8 @@ async function autoBuy() {
                                                                 el.textContent.includes("Follow on Telegram") ||
                                                                 el.textContent.includes("Welcome bonus") ||
                                                                 el.textContent.includes("Follow on X") ||
-                                                                el.textContent.includes("Follow on YouTube") ||
+                                                                el.textContent.includes("25 coubs in Random") ||
+	  							el.textContent.includes("Follow on YouTube") ||
                                                                 el.textContent.includes("Invite 3 frens") ||
                                                                 el.textContent.includes("Пригласить 3 друга") ||
                                                                 el.textContent.includes("WTF is Coub") ||
