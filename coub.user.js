@@ -131,6 +131,12 @@ async function autoBuy() {
     up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent.includes("Home") || el.textContent.includes("Домой"));
     if (up.length != 0){
       up[0].click();
+      await sleep(getRandomDelay(3000, 4000));
+    // }
+  }
+    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Random") || el.textContent.includes("Случайн"));
+    if (up.length != 0){
+      up[0].click();
       await sleep(getRandomDelay(6000, 9000));
     // }
   }
