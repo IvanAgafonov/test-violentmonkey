@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      0.9
+// @version      0.10
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
@@ -194,8 +194,8 @@ try {
 		if (errorPage) {
 			const resetButton = errorPage.querySelector('button.reset');
 			if (resetButton) {
-				// resetButton.click();
-				history.back();
+				resetButton.click();
+				// history.back();
 			}
 		}
 	}
