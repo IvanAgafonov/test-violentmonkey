@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tg ton connect
-// @version      0.6
+// @version      0.7
 // @author       IvanAgafonov
 // @match        https://web.telegram.org/k*
 // @grant        none
@@ -12,7 +12,7 @@
 
 async function connect() {
 
-  var up = Array.from(document.querySelectorAll("div[class='popup-title'] span[class='peer-title']")).filter(el => el.textContent == 'Wallet');
+  var up = Array.from(document.querySelectorAll("div[class='popup-title'] span[class='peer-title']")).filter(el => el.textContent == 'Wallet' || el.textContent == 'Galactica Node Sale');
   var up2 = document.evaluate("(//div[contains(@class,'BrowserHeaderTabTitle') and text()='Wallet'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up.length != 0 || up2){
 
