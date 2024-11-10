@@ -58,6 +58,19 @@ function sleep(ms = 0) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+async function connectWallet(){
+  var up2 = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Wallet On"))
+  if (up2.length != 0){
+    triggerEvents(up2[0]);
+    await sleep(getRandomDelay(3000, 4100));
+    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+    if (up2.length != 0){
+      triggerEvents(up2[0]);
+      await sleep(getRandomDelay(20000, 21000));
+    }
+  }
+}
+
 async function autoBuy() {
 
   var up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("COLLECT") ||  el.textContent.includes("ПОЛУЧИТЬ"));
@@ -93,7 +106,7 @@ async function autoBuy() {
       await sleep(getRandomDelay(3500, 4000));
     }
 
-    for(var j = 0; j < 3; j ++) {
+    for(var j = 0; j < 4; j ++) {
       up = Array.from(document.querySelectorAll("img[alt='close']"));
       if (up.length != 0){
         up[0].click();
@@ -150,6 +163,21 @@ async function autoBuy() {
         }
         history.back();
         await sleep(getRandomDelay(2000, 3000));
+      }
+    }
+
+    // wallet
+    if (getRandomDelay(1000, 20000) < 2000) {
+      up = Array.from(document.querySelectorAll("img[alt='DROP']"));
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(2000, 3000));
+        up = Array.from(document.querySelectorAll(".main-label.shadow.connect-wallet-btn-label"));
+        if (up.length != 0){
+          triggerEvents(up[0]);
+          await sleep(getRandomDelay(5000, 6000));
+          await connectWallet();
+        }
       }
     }
 
@@ -285,7 +313,7 @@ async function autoBuy() {
           }
         }
       }
-      if (count >= 20){
+      if (count >= 10){
         break;
       }
     }
