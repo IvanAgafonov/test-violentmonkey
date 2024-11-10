@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.3
+// @version      0.4
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -60,6 +60,8 @@ function sleep(ms = 0) {
 }
 
 async function autoBuy() {
+
+
   console.stdlog = console.log.bind(console);
   console.logs = [];
   console.log = function(){
@@ -73,6 +75,11 @@ async function autoBuy() {
     triggerEvents(up[0]);
     // up[0].click();
     await sleep(getRandomDelay(4000, 7000));
+  } else {
+    location.reload();
+    await sleep(getRandomDelay(12000, 13050));
+    await autoBuy();
+    return;
   }
 
   for(var i = 0; i < 2; i++){
