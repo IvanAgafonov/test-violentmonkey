@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.5
+// @version      0.6
 // @author       IvanAgafonov
 // @match        https://boink.astronomica.io/*
 // @grant        none
@@ -112,12 +112,14 @@ async function autoBuy() {
     }
   }
 
+  // ALL upgrade
   up = Array.from(document.querySelectorAll(".gold-button-diagonal"));
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(1000, 2000));
     }
 
+    // Tickets
     up = Array.from(document.querySelectorAll(".floating"));
     if (up.length != 0){
       triggerEvents(up[0]);
@@ -133,6 +135,24 @@ async function autoBuy() {
       await sleep(getRandomDelay(2000, 3000));
     }
 
+    // Mail
+    if (getRandomDelay(1000, 5000) < 2000) {
+      up = Array.from(document.querySelectorAll("img[src='/assets/img/inbox_icon.png']"));
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(5000, 6000));
+        up = Array.from(document.querySelectorAll("button.main-button.mat-mdc-button.ng-star-inserted"));
+        if (up.length != 0){
+         for (const item of up) {
+          triggerEvents(item);
+          await sleep(getRandomDelay(2000, 3000));
+         }
+        }
+        history.back();
+        await sleep(getRandomDelay(2000, 3000));
+      }
+    }
+
   // spin
   up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("Спин"));
   if (up.length != 0){
@@ -141,7 +161,20 @@ async function autoBuy() {
   }
 
   // spin
-  for(var i = 0; i < 20; i++) {
+  while(true) {
+    var spins = Array.from(document.querySelectorAll("span[class='main-label values-label'] span[class='ng-star-inserted']"));
+    var x = Array.from(document.querySelectorAll("span[class='main-label shadow']"));
+    if (spins.length != 0 && x.length != 0){
+      await sleep(getRandomDelay(100, 1000));
+      if (Number(spins[0].textContent.split("/")[0]) - Number(x[0].textContent.split("X")[1]) > 0) {
+        console.log(Number(spins[0].textContent.split("/")[0]))
+        console.log(Number(x[0].textContent.split("X")[1]))
+      } else {
+        break;
+      }
+    }
+
+
     up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("СПИН"));
     if (up.length != 0){
       triggerEvents(up[0]);
@@ -218,6 +251,7 @@ async function autoBuy() {
                                                                      !el.textContent.includes("Merge to level 3 in Merge Pals") &&
                                                                      !el.textContent.includes("СМОТРИ рекламу") &&
                                                                      !el.textContent.includes("Ставь эмодзи") &&
+                                                                     !el.textContent.includes("Animals and Coins participation bonus") &&
                                                                      !el.textContent.includes("Boost News Channel") &&
                                                                      !el.textContent.includes("Опубликуй историю в") &&
                                                                      !el.textContent.includes("Put emoji on the latest post every 8 hours") &&
