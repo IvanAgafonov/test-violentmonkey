@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.5
+// @version      0.6
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -62,6 +62,18 @@ async function start_claim() {
     }
   }
 
+  up = Array.from(document.querySelectorAll("input[type='checkbox'][class='checkbox-legal']"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(4000, 6000));
+    up = Array.from(document.querySelectorAll("div button div")).filter(el => el.textContent.includes("Go to Galactica Nodesale"));
+    if (up.length != 0){
+      up[0].click();
+      await sleep(getRandomDelay(4000, 6000));
+    }
+  }
+
+
   up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Claim"));
   shuffle(up);
   if (up.length != 0){
@@ -101,6 +113,10 @@ async function verify() {
                      "Crypto Slang. Part 1":          "BLUMSTORM",
                      "What is On-chain Analysis?":    "BLUMEXTRA",
                      "Pumptober Special":             "PUMPIT",
+                     "What's Crypto DEX?":            "DEXXX",
+                     "Node Sales in Crypto":          "BLUMIFY",
+                     "Choosing a Crypto Exchange":    "CRYPTOZONE",
+                     "Crypto Slang. Part 2":          "FOMOOO",
                      "DeFi Risks: Key Insights":      "BLUMHELPS"}
 
       if (title.length != 0) {
