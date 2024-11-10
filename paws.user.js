@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.4
+// @version      0.5
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -82,11 +82,17 @@ async function autoBuy() {
     return;
   }
 
-  for(var i = 0; i < 2; i++){
+  var names = ['In-game', 'Partners', 'Limited'];
+
+  for(const name of names){
 
     up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Start");
     if (up.length != 0){
       for (const item of up) {
+        var exclude = Array.from(item.parentElement.parentElement.querySelectorAll("div div")).filter(el => el.textContent == "Boost PAWS channel");
+        if (exclude.length != 0) {
+          continue;
+        }
         triggerEvents(item);
         await sleep(getRandomDelay(2000, 5000));
         var up2 = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Send message");
@@ -128,11 +134,11 @@ async function autoBuy() {
         await sleep(getRandomDelay(1000, 2000));
       }
     }
-    up = Array.from(document.querySelectorAll("div[class='type-item']"));
+    up = Array.from(document.querySelectorAll("div[class='type-item']")).filter(el => el.textContent.includes(name));
     if (up.length != 0){
       triggerEvents(up[0]);
       // up[0].click();
-      await sleep(getRandomDelay(1000, 3000));
+      await sleep(getRandomDelay(3000, 4000));
     }
   }
 }
