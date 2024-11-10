@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.6
+// @version      0.7
 // @author       IvanAgafonov
 // @match        https://boink.astronomica.io/*
 // @grant        none
