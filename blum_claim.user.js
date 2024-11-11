@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.7
+// @version      0.8
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -57,8 +57,19 @@ async function start_claim() {
   shuffle(up);
   if (up.length != 0){
     for (const item of up) {
+      var need_wait = false;
+      try {
+        if (Array.from(item.parentElement.parentElement.parentElement.querySelectorAll("div")).filter(el => el.textContent.includes("Proof of Activity")).length > 0){
+          console.log("wait!")
+          need_wait = true;
+        }
+      } catch (error) {}
       item.click();
-      await sleep(getRandomDelay(2000, 5000));
+      if (need_wait) {
+        await sleep(getRandomDelay(25000, 35000));
+      } else {
+        await sleep(getRandomDelay(2000, 5000));
+      }
     }
   }
 
