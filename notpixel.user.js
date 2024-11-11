@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        *://*notpx.app/*
-// @version      0.4
+// @version      0.5
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -120,6 +120,11 @@ function randomClick() {
     console.log('Скрипт на паузе.');
     setTimeout(randomClick, 1000);
     return;
+  }
+
+  var up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent == "Go to Web version");
+  if (up.length != 0){
+    triggerEvents(up[0]);
   }
 
   const paintButton = document.evaluate('//*[@id="root"]//div[contains(@class,"order_panel")]/div/button', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
