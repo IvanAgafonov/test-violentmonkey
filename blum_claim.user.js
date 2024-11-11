@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.10
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -64,9 +64,7 @@ async function start_claim() {
           need_wait = true;
         }
       } catch (error) {}
-
       if (need_wait) {
-        // await sleep(getRandomDelay(45000, 55000));
       } else {
         item.click();
         await sleep(getRandomDelay(2000, 5000));
@@ -346,12 +344,22 @@ async function autoBuy() {
       up = Array.from(document.querySelectorAll(".tasks-pill-inline.is-status-not-started.is-light.pages-tasks-pill, .tasks-pill-inline.is-status-not-started.is-dark.pages-tasks-pill"));
       if (up.length != 0){
         for (const item of up) {
-          item.click();
-          await sleep(getRandomDelay(2000, 4000));
+          var need_wait = false;
+          try {
+            if (Array.from(item.parentElement.parentElement.parentElement.querySelectorAll("div")).filter(el => el.textContent.includes("Proof of Activity")).length > 0){
+              console.log("wait!")
+              need_wait = true;
+            }
+          } catch (error) {}
+          if (need_wait) {
+          } else {
+            item.click();
+            await sleep(getRandomDelay(2000, 5000));
+          }
           await start_claim();
           await verify();
           var up3 = Array.from(document.querySelectorAll("svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("M6 18L18 6"));
-          if (up3.length != 0){
+          if (up3.length != 0) {
             up3[0].parentElement.parentElement.click();
             await sleep(getRandomDelay(2000, 4000));
           }
