@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.9
+// @version      0.10
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -64,10 +64,11 @@ async function start_claim() {
           need_wait = true;
         }
       } catch (error) {}
-      item.click();
+
       if (need_wait) {
-        await sleep(getRandomDelay(25000, 35000));
+        // await sleep(getRandomDelay(45000, 55000));
       } else {
+        item.click();
         await sleep(getRandomDelay(2000, 5000));
       }
     }
@@ -325,7 +326,7 @@ async function autoBuy() {
     up = Array.from(document.querySelectorAll("div a span")).filter(el => el.textContent.includes("Frens"));
     if (up.length != 0){
       up[0].click();
-      await sleep(getRandomDelay(2000, 4000));
+      await sleep(getRandomDelay(3000, 4000));
     }
 
     up = Array.from(document.querySelectorAll(".claim-button"));
