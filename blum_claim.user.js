@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.8
+// @version      0.9
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -124,6 +124,10 @@ async function verify() {
                      "Crypto Slang. Part 1":          "BLUMSTORM",
                      "What is On-chain Analysis?":    "BLUMEXTRA",
                      "Pumptober Special":             "PUMPIT",
+                     "What's Crypto DEX?":            "DEXXX",
+                     "Node Sales in Crypto":          "BLUMIFY",
+                     "Choosing a Crypto Exchange":    "CRYPTOZONE",
+                     "Crypto Slang. Part 2":          "FOMOOO",
                      "DeFi Risks: Key Insights":      "BLUMHELPS"}
 
       if (title.length != 0) {
