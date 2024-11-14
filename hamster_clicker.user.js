@@ -5,7 +5,7 @@
 // @match        *://*.hamsterkombat.io/*
 // @match        *://*.hamsterkombatgame.io/*
 // @exclude      https://hamsterkombatgame.io/games/UnblockPuzzle/*
-// @version      0.0
+// @version      0.1
 // @grant        none
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hamster_clicker.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hamster_clicker.user.js
@@ -449,6 +449,20 @@
 			console.log(`${logPrefix}'Thank you' button clicked.`, styles.success);
 		}
 	}
+
+  function clickThankYouBybitButton2() {
+    var up = Array.from(document.querySelectorAll("div[class='slider-onb-close'] div[class='icon']"));
+    if (up.length != 0){
+      up[0].click();
+    }
+	}
+
+  function clickThankYouBybitButton3() {
+    var up = Array.from(document.querySelectorAll(".button.button-default.button-primary"));
+    if (up.length != 0){
+      up[0].click();
+    }
+  }
 
 	// thx for *clqkx
 	async function autoBuy() {
@@ -1464,4 +1478,10 @@
 		performRandomClick();
 		autoBuy();
 	}, 9000);
+  	setTimeout(() => {
+		clickThankYouBybitButton2();
+	}, 13000);
+   	setTimeout(() => {
+		clickThankYouBybitButton3();
+	}, 16000);
 })();
