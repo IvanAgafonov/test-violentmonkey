@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Coub claim
-// @version      0.3
+// @version      0.4
 // @author       IvanAgafonov
 // @match        https://coub.com/*
 // @grant        none
@@ -47,7 +47,6 @@ function triggerEvents(element) {
       new PointerEvent('pointerout', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
       new PointerEvent('pointerleave', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
       new MouseEvent('mouseout', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
-      new Event('click'),
       new MouseEvent('mouseleave', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 })
   ];
 
@@ -95,6 +94,7 @@ async function autoBuy() {
                                                                       el.textContent.includes("Like &") ||
 	  							      el.textContent.includes("Выполнить все таски") ||
 	  							      el.textContent.includes("PUMP") ||
+                                                                el.textContent.includes("Join") ||
                                                                       el.textContent.includes("Подписаться") ||
 								el.textContent.includes("Share&RT") ||
 								el.textContent.includes("on X") ||
@@ -102,7 +102,6 @@ async function autoBuy() {
                                                                 el.textContent.includes("Welcome bonus") ||
                                                                 el.textContent.includes("Follow on X") ||
                                                                 el.textContent.includes("25 coubs in Random") ||
-                                                                el.textContent.includes("25 coubs in Rising") ||
 	  							el.textContent.includes("Follow on YouTube") ||
                                                                 el.textContent.includes("Invite 3 frens") ||
                                                                 el.textContent.includes("Пригласить 3 друга") ||
@@ -132,29 +131,17 @@ async function autoBuy() {
   // } else {
     up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent.includes("Home") || el.textContent.includes("Домой"));
     if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(2000, 7000));
-    }
-    if (getRandomDelay(1000, 3000) < 2000) {
-      up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Random" || el.textContent.includes("Случайн"));
-      if (up.length != 0){
-        triggerEvents(up[0]);
-        await sleep(getRandomDelay(7000, 8000));
-      }
-    } else {
-      up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Rising" || el.textContent.includes("Популярное"));
-      if (up.length != 0){
-        triggerEvents(up[0]);
-        await sleep(getRandomDelay(7000, 8000));
-      }
-    }
-
-    up = Array.from(document.querySelectorAll("div[class='viewer__player -no-select']"));
+      up[0].click();
+      await sleep(getRandomDelay(3000, 4000));
+    // }
+  }
+    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Random") || el.textContent.includes("Случайн"));
     if (up.length != 0){
-      triggerEvents(up[0]);
-      // triggerEvents(up[0]);
+      up[0].click();
       await sleep(getRandomDelay(6000, 9000));
-    }
+    // }
+  }
+
 
   await sleep(3400);
 }
