@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Cats claim
-// @version      0.0
+// @version      0.1
 // @author       IvanAgafonov
 // @match        https://cats-frontend.tgapps.store/*
 // @grant        none
@@ -241,7 +241,7 @@ function initializeScript() {
 
     console.log('START Cats claim')
 
-    setTimeout(autoBuy, getRandomDelay(11000, 13500));
+    //setTimeout(autoBuy, getRandomDelay(11000, 13500));
 }
 
 if (document.readyState === 'loading') {
