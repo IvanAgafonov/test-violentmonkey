@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Major claim
-// @version      0.3
+// @version      0.4
 // @author       IvanAgafonov
 // @match        https://major.bot/*
 // @grant        none
@@ -83,6 +83,49 @@ async function autoBuy() {
           await sleep(getRandomDelay(1000, 2000));
         }
       }
+  }
+
+  // profile
+  up = Array.from(document.querySelectorAll("a div span")).filter(el => el.textContent.includes("Profile"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("div:nth-child(7) div:nth-child(2)"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("input:nth-child(1)"));
+  if (up.length != 0){
+    up[0].click();
+    up[0].setAttribute('value', 't');
+    // up[0].value = 't';
+    up[0].dispatchEvent(new Event('input', { bubbles: true }));
+    await sleep(getRandomDelay(1000, 2000));
+  }
+    up = Array.from(document.querySelectorAll("input:nth-child(2)"));
+  if (up.length != 0){
+    up[0].click();
+    up[0].setAttribute('value', 'o');
+    // up[0].value = 'o';
+    up[0].dispatchEvent(new Event('input', { bubbles: true }));
+    await sleep(getRandomDelay(1000, 2000));
+  }
+    up = Array.from(document.querySelectorAll("input:nth-child(3)"));
+  if (up.length != 0){
+    up[0].click();
+    up[0].setAttribute('value', 'n');
+    // up[0].value = 'n';
+    up[0].dispatchEvent(new Event('input', { bubbles: true }));
+    await sleep(getRandomDelay(1000, 2000));
+  }
+  up = Array.from(document.querySelectorAll("div div span")).filter(el => el.textContent.includes("Collect"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
   }
 
   // Games
