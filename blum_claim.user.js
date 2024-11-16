@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -49,6 +49,19 @@ async function simulateTyping(element, text, delay) {
     const event = new KeyboardEvent('keyup', { key: char });
     element.dispatchEvent(event);
     await new Promise(resolve => setTimeout(resolve, delay));
+  }
+}
+
+async function connectWallet(){
+  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On")
+  if (up2.length != 0){
+    triggerEvents(up2[0]);
+    await sleep(getRandomDelay(3000, 4100));
+    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+    if (up2.length != 0){
+      triggerEvents(up2[0]);
+      await sleep(getRandomDelay(20000, 21000));
+    }
   }
 }
 
@@ -333,6 +346,20 @@ async function autoBuy() {
     if (up.length != 0){
       up[0].click();
       await sleep(getRandomDelay(2000, 4000));
+    }
+
+    if (getRandomDelay(100, 2600) > 2000) {
+      up = Array.from(document.querySelectorAll("div a span")).filter(el => el.textContent.includes("Wallet"));
+      if (up.length != 0){
+        up[0].click();
+        await sleep(getRandomDelay(3000, 4000));
+      }
+      up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Connect wallet"));
+      if (up.length != 0){
+        up[0].click();
+        await sleep(getRandomDelay(3000, 4000));
+      }
+      await connectWallet();
     }
 
     up = Array.from(document.querySelectorAll("div a span")).filter(el => el.textContent.includes("Earn"));
