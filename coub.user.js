@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Coub claim
-// @version      0.4
+// @version      0.5
 // @author       IvanAgafonov
 // @match        https://coub.com/*
 // @grant        none
@@ -62,6 +62,12 @@ function sleep(ms = 0) {
 async function autoBuy() {
 
   var up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Claim") || el.textContent.includes("Получить"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Ok, got it!") || el.textContent.includes("Поехали!"));
   if (up.length != 0){
     up[0].click();
     await sleep(getRandomDelay(2000, 4000));
