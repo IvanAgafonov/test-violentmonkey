@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.9
+// @version      0.10
 // @author       IvanAgafonov
 // @match        https://boink.boinkers.co/*
 // @grant        none
@@ -239,10 +239,14 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 4000));
-    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("SPIN ") && !el.textContent.includes("SPIN FOR"));
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(6000, 7000));
+    while (true) {
+      up = Array.from(document.querySelectorAll("button[class='spin-button main-button pink-button-horizontal flex-column scaleOne'] div")).filter(el => el.textContent.includes("SPIN "));
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(9000, 10000));
+      } else {
+        break;
+      }
     }
     history.back()
     await sleep(getRandomDelay(2000, 4000));
