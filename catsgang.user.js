@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Cats claim
-// @version      0.1
+// @version      0.2
 // @author       IvanAgafonov
-// @match        https://cats-frontend.tgapps.store/*
+// @match        https://cats-frontend.catshouse.club/*
 // @grant        none
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/catsgang.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/catsgang.user.js
@@ -71,6 +71,15 @@ async function autoBuy() {
       }
     }
 
+    up = Array.from(document.querySelectorAll("div div button img[alt='Twitter']"));
+    shuffle(up);
+    if (up.length != 0){
+      for (const item of up) {
+        item.click();
+        await sleep(getRandomDelay(3200, 4000));
+      }
+    }
+
     var up = Array.from(document.querySelectorAll("button svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("m10 15 5-3-5-3z"));
     shuffle(up);
     if (up.length != 0){
@@ -98,6 +107,13 @@ async function autoBuy() {
                                                                                   el.textContent.includes("Learned to Code!") ||
                                                                                   el.textContent.includes("EARN $30 PER WORD") ||
 
+                                                                                  el.textContent.includes("EARN Money!") ||
+                                                                                  el.textContent.includes("Stay Safe from Crypto Scams!") ||
+                                                                                  el.textContent.includes("Earn Online by Reuploading") ||
+                                                                                  el.textContent.includes("Protect Your Investments!") ||
+                                                                                  el.textContent.includes("Reupload FREE videos") ||
+
+
                                                                                   el.textContent.includes("Earn Real Money Playing Games") ||
                                                                                   el.textContent.includes("Change Your Life") ||
                                                                                   el.textContent.includes("Get Paid to Play") ||
@@ -107,6 +123,21 @@ async function autoBuy() {
 
           mytext = "";
           if (episod.length != 0){
+            if (episod[0].textContent.includes("EARN Money!")) {
+              mytext = "CURRENCY"
+            }
+            if (episod[0].textContent.includes("Stay Safe from Crypto Scams!")) {
+              mytext = "DYOR"
+            }
+            if (episod[0].textContent.includes("Earn Online by Reuploading")) {
+              mytext = "CUSTODIAL"
+            }
+            if (episod[0].textContent.includes("Protect Your Investments!")) {
+              mytext = "DUMP"
+            }
+            if (episod[0].textContent.includes("Reupload FREE videos")) {
+              mytext = "CRYPTOLOGY"
+            }
             if (episod[0].textContent.includes("Earn Real Money Playing Games")) {
               mytext = "BUBBLE"
             }
@@ -206,6 +237,7 @@ async function autoBuy() {
 
             // Dispatch it.
             // up2[0].dispatchEvent(event2);
+            up2[0].dispatchEvent(new Event('change', { bubbles: true }));
             up2[0].dispatchEvent(new Event('input', { bubbles: true }));
             up2 = Array.from(document.querySelectorAll("div button h6")).filter(el => el.textContent.includes("Check answer"));
             if (up2.length != 0){
@@ -241,7 +273,7 @@ function initializeScript() {
 
     console.log('START Cats claim')
 
-    //setTimeout(autoBuy, getRandomDelay(11000, 13500));
+    setTimeout(autoBuy, getRandomDelay(11000, 13500));
 }
 
 if (document.readyState === 'loading') {
