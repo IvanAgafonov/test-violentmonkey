@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      0.10
+// @version      0.11
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
@@ -18,9 +18,7 @@ let GAME_SETTINGS = {
 	minDelayMs: 500,
 	maxDelayMs: 999,
 	autoClickPlay: false,
-	dogsProbability: (98 + Math.random()) / 100,
-	trumpProbability: (98 + Math.random()) / 100,
-	harrisProbability: (98 + Math.random()) / 100
+	dogsProbability: (98 + Math.random()) / 100
 };
 
 
@@ -32,8 +30,6 @@ try {
 		bombHits: 0,
 		iceHits: 0,
 		dogsHits: 0,
-		trumpHits: 0,
-		harrisHits: 0,
 		flowersSkipped: 0,
 		isGameOver: false,
 	};
@@ -62,12 +58,6 @@ try {
 				break;
 			case "DOGS":
 				processDogs(item);
-				break;
-			case "TRUMP":
-				processTrump(item);
-				break;
-			case "HARRIS":
-				processHarris(item);
 				break;
 		}
 	}
@@ -101,20 +91,6 @@ try {
 		if (Math.random() < GAME_SETTINGS.dogsProbability) {
 			clickElement(item);
 			gameStats.dogsHits++;
-		}
-	}
-
-	function processTrump(item) {
-		if (Math.random() < GAME_SETTINGS.trumpProbability) {
-			clickElement(item);
-			gameStats.trumpHits++;
-		}
-	}
-
-	function processHarris(item) {
-		if (Math.random() < GAME_SETTINGS.harrisProbability) {
-			clickElement(item);
-			gameStats.harrisHits++;
 		}
 	}
 
