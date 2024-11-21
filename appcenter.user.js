@@ -4,8 +4,8 @@
 // @author       IvanAgafonov
 // @match        https://tappscenter.org/*
 // @grant        none
-// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/Appcenter.user.js
-// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/Appcenter.user.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/appcenter.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/appcenter.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
