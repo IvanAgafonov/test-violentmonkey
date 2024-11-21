@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        *://*notpx.app/*
-// @version      0.5
+// @version      0.6
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -59,6 +59,40 @@ function openPaintWindow() {
   });
 }
 
+function getRandomDelay(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function sleep(ms = 0) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+async function myFunc() {
+  var up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent == "Go to Web version");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5500, 6000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent == "Select template");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5500, 6000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.className.includes("template_item_inner"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5500, 6000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent == "Select Template");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5500, 6000));
+  }
+}
 
 // Автосмена цвета
 function tryChangeColor(random) {
@@ -120,11 +154,6 @@ function randomClick() {
     console.log('Скрипт на паузе.');
     setTimeout(randomClick, 1000);
     return;
-  }
-
-  var up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent == "Go to Web version");
-  if (up.length != 0){
-    triggerEvents(up[0]);
   }
 
   const paintButton = document.evaluate('//*[@id="root"]//div[contains(@class,"order_panel")]/div/button', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -260,6 +289,7 @@ function startScript() {
   createPauseButton();
   openPaintWindow();
   setTimeout(randomClick, Math.floor(Math.random() * 3000) + 5000);
+  setTimeout(myFunc, Math.floor(Math.random() * 3000) + 4000);
   checkGameCrash();
 }
 
