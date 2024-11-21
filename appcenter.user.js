@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Appcenter claim
-// @version      0.1
+// @version      0.2
 // @author       IvanAgafonov
 // @match        https://tappscenter.org/*
 // @grant        none
@@ -77,27 +77,21 @@ async function autoBuy() {
   var up = Array.from(document.querySelectorAll("h1")).filter(el => el.textContent.includes("Complete day"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(4000, 5000));
-  }
-
+    
     up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent == "Connect your Wallet");
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    // up[0].click();
-    await sleep(getRandomDelay(3000, 4000));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
+    await connectWallet();
+
+    up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
   }
-  await connectWallet();
-
-  up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open");
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    // up[0].click();
-    await sleep(getRandomDelay(3000, 4000));
-  }
-
-
-
 }
 
 
