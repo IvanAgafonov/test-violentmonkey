@@ -67,7 +67,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 4000));
   }
 
-  up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Ok, got it!") || el.textContent.includes("Поехали!"));
+  up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Ok, got it!") || el.textContent.includes("Круто, спасибо!"));
   if (up.length != 0){
     up[0].click();
     await sleep(getRandomDelay(2000, 4000));
