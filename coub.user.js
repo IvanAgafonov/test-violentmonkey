@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Coub claim
-// @version      0.5
+// @version      0.6
 // @author       IvanAgafonov
 // @match        https://coub.com/*
 // @grant        none
@@ -98,17 +98,18 @@ async function autoBuy() {
                                                                       el.textContent.includes("Master of highload") ||
                                                                       el.textContent.includes("Complete all tasks") ||
                                                                       el.textContent.includes("Like &") ||
-	  							      el.textContent.includes("Выполнить все таски") ||
-	  							      el.textContent.includes("PUMP") ||
+	  							                                              el.textContent.includes("Выполнить все таски") ||
+	  							                                              el.textContent.includes("PUMP") ||
+                                                                el.textContent.includes("Visit") ||
                                                                 el.textContent.includes("Join") ||
                                                                       el.textContent.includes("Подписаться") ||
-								el.textContent.includes("Share&RT") ||
-								el.textContent.includes("on X") ||
+								                                                el.textContent.includes("Share&RT") ||
+								                                                el.textContent.includes("on X") ||
                                                                 el.textContent.includes("Follow on Telegram") ||
                                                                 el.textContent.includes("Welcome bonus") ||
                                                                 el.textContent.includes("Follow on X") ||
                                                                 el.textContent.includes("25 coubs in Random") ||
-	  							el.textContent.includes("Follow on YouTube") ||
+	  							                                              el.textContent.includes("Follow on YouTube") ||
                                                                 el.textContent.includes("Invite 3 frens") ||
                                                                 el.textContent.includes("Пригласить 3 друга") ||
                                                                 el.textContent.includes("WTF is Coub") ||
