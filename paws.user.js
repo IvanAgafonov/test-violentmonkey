@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.5
+// @version      0.6
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -82,9 +82,15 @@ async function autoBuy() {
     return;
   }
 
-  var names = ['In-game', 'Partners', 'Limited'];
+  var names = ['Limited', 'In-game', 'Partners'];
 
   for(const name of names){
+
+    var up3 = Array.from(document.querySelectorAll("div.heart-quest div.main-info div.icon-con"));
+    if (up3.length != 0){
+      triggerEvents(up3[0].childNodes[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
 
     up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Start");
     if (up.length != 0){
