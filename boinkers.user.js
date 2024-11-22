@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://boink.boinkers.co/*
 // @grant        none
@@ -188,6 +188,24 @@ async function autoBuy() {
     await sleep(getRandomDelay(1000, 3000));
   }
 
+    // daily bonus
+  up = Array.from(document.querySelectorAll(".absolute-stretch.z-index-1.overlay-image"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 4000));
+    while (true) {
+      up = Array.from(document.querySelectorAll("button[class='spin-button main-button pink-button-horizontal flex-column scaleOne'] div")).filter(el => el.textContent.includes("SPIN "));
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(9000, 10000));
+      } else {
+        break;
+      }
+    }
+    history.back()
+    await sleep(getRandomDelay(2000, 4000));
+  }
+
   // spin
   while(true) {
     var spins = Array.from(document.querySelectorAll("span[class='main-label values-label'] span[class='ng-star-inserted']"));
@@ -234,23 +252,7 @@ async function autoBuy() {
     }
   }
   await sleep(getRandomDelay(1000, 2000));
-  // daily bonus
-  up = Array.from(document.querySelectorAll(".absolute-stretch.z-index-1.overlay-image"));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(2000, 4000));
-    while (true) {
-      up = Array.from(document.querySelectorAll("button[class='spin-button main-button pink-button-horizontal flex-column scaleOne'] div")).filter(el => el.textContent.includes("SPIN "));
-      if (up.length != 0){
-        triggerEvents(up[0]);
-        await sleep(getRandomDelay(9000, 10000));
-      } else {
-        break;
-      }
-    }
-    history.back()
-    await sleep(getRandomDelay(2000, 4000));
-  }
+
 
   // EARN
   up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("EARN") || el.textContent.includes("Профит"));
