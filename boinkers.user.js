@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://boink.boinkers.co/*
 // @grant        none
@@ -281,6 +281,12 @@ async function autoBuy() {
                                                                      !el.textContent.includes("Play Diamore") &&
                                                                      !el.textContent.includes("Subscribe BIRDS Channel") &&
                                                                      !el.textContent.includes("Play Corn now!") &&
+                                                                     !el.textContent.includes("Earn USDT in Angry Miner!") &&
+                                                                     !el.textContent.includes("Score 10 balls in PiggyBank!") &&
+                                                                     !el.textContent.includes("Join Hexacore and earn $AGO") &&
+                                                                     !el.textContent.includes("Play Not Bored Puppies") &&
+                                                                     !el.textContent.includes("Merge to level 3 in Merge Pals") &&
+                                                                     !el.textContent.includes("Animals and Coins") &&
                                                                      !el.textContent.includes("Join News Channel") &&
                                                                      !el.textContent.includes("Merge to level 3 in Merge Pals") &&
                                                                      !el.textContent.includes("СМОТРИ рекламу") &&
