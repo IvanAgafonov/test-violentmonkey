@@ -212,7 +212,7 @@ async function autoBuy() {
     var x = Array.from(document.querySelectorAll("span[class='main-label shadow']"));
     if (spins.length != 0 && x.length != 0){
       await sleep(getRandomDelay(100, 1000));
-      if (Number(spins[0].textContent.split("/")[0].replace(',', '')) - Number(x[0].textContent.split("X")[1].replace(',', '')) > 0) {
+      if (Number(spins[0].textContent.split("/")[0].replaceAll(',', '')) - Number(x[0].textContent.split("X")[1].replaceAll(',', '')) > 0) {
         console.log(Number(spins[0].textContent.split("/")[0]))
         console.log(Number(x[0].textContent.split("X")[1]))
       } else {
