@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://boink.boinkers.co/*
 // @grant        none
@@ -80,7 +80,7 @@ async function autoBuy() {
   }
 
   for(var i = 0; i < 3; i++) {
-    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("10 min"));
+    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("free"));
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(3500, 4000));
