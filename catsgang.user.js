@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Cats claim
-// @version      0.2
+// @version      0.3
 // @author       IvanAgafonov
 // @match        https://cats-frontend.catshouse.club/*
 // @grant        none
@@ -113,6 +113,12 @@ async function autoBuy() {
                                                                                   el.textContent.includes("Protect Your Investments!") ||
                                                                                   el.textContent.includes("Reupload FREE videos") ||
 
+                                                                                  el.textContent.includes("Blockchain Basics") ||
+                                                                                  el.textContent.includes("YouTube Niches for Earning Big!") ||
+                                                                                  el.textContent.includes("Earn Onlinе") ||
+                                                                                  el.textContent.includes("Blockchain Technology") ||
+                                                                                  el.textContent.includes("Blockchain Really Works") ||
+
 
                                                                                   el.textContent.includes("Earn Real Money Playing Games") ||
                                                                                   el.textContent.includes("Change Your Life") ||
@@ -123,6 +129,21 @@ async function autoBuy() {
 
           mytext = "";
           if (episod.length != 0){
+            if (episod[0].textContent.includes("YouTube Niches for Earning Big!")) {
+              mytext = "DELISTING"
+            }
+            if (episod[0].textContent.includes("Earn Onlinе")) {
+              mytext = "DERIVATIVE"
+            }
+            if (episod[0].textContent.includes("Blockchain Technology")) {
+              mytext = "DIFFICULTY"
+            }
+            if (episod[0].textContent.includes("Blockchain Really Works")) {
+              mytext = "DEFI"
+            }
+            if (episod[0].textContent.includes("Blockchain Basics")) {
+              mytext = "DEPIN"
+            }
             if (episod[0].textContent.includes("EARN Money!")) {
               mytext = "CURRENCY"
             }
@@ -208,6 +229,9 @@ async function autoBuy() {
               mytext = "WEI"
             }
           }
+          if (mytext == "") {
+            continue;
+          }
 
             // up2[0].value = ""
             up2[0].click()
@@ -228,6 +252,7 @@ async function autoBuy() {
               }
               return;
             }
+
             up2[0].setAttribute('value', mytext);
             // event2 = new Event('complete');
 
