@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://boink.boinkers.co/*
 // @grant        none
@@ -185,7 +185,7 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("Спин"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(1000, 3000));
+    await sleep(getRandomDelay(3000, 5000));
   }
 
     // daily bonus
@@ -197,13 +197,13 @@ async function autoBuy() {
       up = Array.from(document.querySelectorAll("button[class='spin-button main-button pink-button-horizontal flex-column scaleOne'] div")).filter(el => el.textContent.includes("SPIN "));
       if (up.length != 0){
         triggerEvents(up[0]);
-        await sleep(getRandomDelay(9000, 10000));
+        await sleep(getRandomDelay(14000, 16000));
       } else {
         break;
       }
     }
     history.back()
-    await sleep(getRandomDelay(2000, 4000));
+    await sleep(getRandomDelay(3000, 4000));
   }
 
   // spin
