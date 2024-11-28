@@ -85,6 +85,12 @@ async function autoBuy() {
     await sleep(getRandomDelay(3200, 4000));
   }
 
+  button = document.evaluate("(//div[text()='Continue'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (button) {
+    triggerEvents(button);
+    await sleep(getRandomDelay(3200, 4000));
+  }
+
   button = document.evaluate("(//div[text()='Make choice'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (button) {
     button.click();
