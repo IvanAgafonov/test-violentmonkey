@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tg ton connect
-// @version      0.9
+// @version      0.10
 // @author       IvanAgafonov
 // @match        https://web.telegram.org/k*
 // @grant        none
@@ -31,7 +31,7 @@ async function connect() {
     }
   }
 
-  up = Array.from(document.querySelectorAll("div div div button[class='btn-primary btn-color-primary web-app-button']")).filter(el => el.textContent.includes("Next") || el.textContent.includes("Done"));
+  up = Array.from(document.querySelectorAll("div div div button[class='btn-primary btn-color-primary web-app-button']")).filter(el => el.textContent.includes("Next") || el.textContent.includes("Done") || el.textContent.includes("Continue"));
   if (up.length != 0){
     up[0].click();
   }
