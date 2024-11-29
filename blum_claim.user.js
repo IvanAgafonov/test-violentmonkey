@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -78,11 +78,10 @@ async function start_claim() {
         }
       } catch (error) {}
       if (need_wait) {
-        item.click();
-        await sleep(getRandomDelay(60000, 65000));
+
       } else {
         item.click();
-        await sleep(getRandomDelay(2000, 5000));
+        await sleep(getRandomDelay(2000, 3000));
       }
     }
   }
@@ -90,11 +89,11 @@ async function start_claim() {
   up = Array.from(document.querySelectorAll("input[type='checkbox'][class='checkbox-legal']"));
   if (up.length != 0){
     up[0].click();
-    await sleep(getRandomDelay(4000, 6000));
+    await sleep(getRandomDelay(2000, 3000));
     up = Array.from(document.querySelectorAll("div button div")).filter(el => el.textContent.includes("Go to Galactica Nodesale"));
     if (up.length != 0){
       up[0].click();
-      await sleep(getRandomDelay(4000, 6000));
+      await sleep(getRandomDelay(2000, 3000));
     }
   }
 
@@ -104,7 +103,7 @@ async function start_claim() {
   if (up.length != 0){
     for (const item of up) {
       item.click();
-      await sleep(getRandomDelay(2000, 5000));
+      await sleep(getRandomDelay(2000, 3000));
     }
   }
 }
@@ -142,7 +141,17 @@ async function verify() {
                      "Node Sales in Crypto":          "BLUMIFY",
                      "Choosing a Crypto Exchange":    "CRYPTOZONE",
                      "Crypto Slang. Part 2":          "FOMOOO",
-                     "DeFi Risks: Key Insights":      "BLUMHELPS"}
+                     "DeFi Risks: Key Insights":      "BLUMHELPS",
+
+                     "Crypto Regulations #2":         "Blumrules",
+                     "P2P Trading Safety Tips":       "BLUMTIPS",
+                     "DEX History":                   "Godex",
+                     "Regulation: Yay or Nay?":       "BLUMSSS",
+                     "Crypto Slang. Part 3":          "BOOBLUM",
+                     "Smart Contracts 101":           "SMARTBLUM",
+                     "What’s Next for DeFi?":         "BLUMNOW",
+                     "What is Slippage?":             "CRYPTOBUZZ",
+                     "Understanding Gas Fees":        "CRYPTOGAS"}
 
       if (title.length != 0) {
         for(const [key, value] of Object.entries(q_answer)) {
@@ -367,9 +376,9 @@ async function autoBuy() {
       up[0].click();
       await sleep(getRandomDelay(2000, 4000));
     }
-
+    var up3;
     await start_claim();
-    if (getRandomDelay(100, 2600) > 160) {
+    if (getRandomDelay(100, 2600) > 1600) {
       up = Array.from(document.querySelectorAll(".tasks-pill-inline.is-status-not-started.is-light.pages-tasks-pill, .tasks-pill-inline.is-status-not-started.is-dark.pages-tasks-pill"));
       if (up.length != 0){
         for (const item of up) {
@@ -386,10 +395,15 @@ async function autoBuy() {
             await sleep(getRandomDelay(2000, 5000));
           }
           await start_claim();
-          await verify();
-          var up3 = Array.from(document.querySelectorAll("svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("M6 18L18 6"));
+          up3 = Array.from(document.querySelectorAll("button.close-btn"));
           if (up3.length != 0) {
-            up3[0].parentElement.parentElement.click();
+            up3[0].click();
+            await sleep(getRandomDelay(2000, 4000));
+          }
+          await verify();
+          up3 = Array.from(document.querySelectorAll("button.close-btn"));
+          if (up3.length != 0) {
+            up3[0].click();
             await sleep(getRandomDelay(2000, 4000));
           }
         }
@@ -397,6 +411,11 @@ async function autoBuy() {
     }
 
     await verify();
+    up3 = Array.from(document.querySelectorAll("button.close-btn"));
+    if (up3.length != 0) {
+      up3[0].click();
+      await sleep(getRandomDelay(2000, 4000));
+    }
 
 
     up = Array.from(document.querySelectorAll("div div label span")).filter(el => el.textContent.includes("OnChain"));
