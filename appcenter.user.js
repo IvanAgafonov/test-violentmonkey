@@ -77,7 +77,7 @@ async function autoBuy() {
   var up = Array.from(document.querySelectorAll("h1")).filter(el => el.textContent.includes("Complete day") ||  el.textContent.includes("days streak"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(4000, 5000));
+    await sleep(getRandomDelay(6000, 8000));
   }
 
     up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent == "Connected Wallet");
