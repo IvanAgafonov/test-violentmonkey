@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Appcenter claim
-// @version      0.2
+// @version      0.21
 // @author       IvanAgafonov
 // @match        https://tappscenter.org/*
 // @grant        none
@@ -74,24 +74,40 @@ function sleep(ms = 0) {
 async function autoBuy() {
 
 
-  var up = Array.from(document.querySelectorAll("h1")).filter(el => el.textContent.includes("Complete day"));
+  var up = Array.from(document.querySelectorAll("h1")).filter(el => el.textContent.includes("Complete day") ||  el.textContent.includes("days streak"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
-    
-    up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent == "Connect your Wallet");
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(3000, 4000));
+  }
+
+    up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent == "Connected Wallet");
+    if (up.length == 0){
+      up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent == "Connect your Wallet");
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(3000, 4000));
+      }
+      await connectWallet();
     }
-    await connectWallet();
 
     up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open");
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(3000, 4000));
     }
-  }
+
+    up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
+
+    up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "50 points");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
+
 }
 
 
