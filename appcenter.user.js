@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Appcenter claim
-// @version      0.21
+// @version      0.22
 // @author       IvanAgafonov
 // @match        https://tappscenter.org/*
 // @grant        none
@@ -88,6 +88,18 @@ async function autoBuy() {
         await sleep(getRandomDelay(3000, 4000));
       }
       await connectWallet();
+    }
+
+    up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
+
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Save "));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
     }
 
     up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open");
