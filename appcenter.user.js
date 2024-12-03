@@ -108,17 +108,17 @@ async function autoBuy() {
       await sleep(getRandomDelay(3000, 4000));
     }
 
-    up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(3000, 4000));
-    }
+    // up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
+    // if (up.length != 0){
+    //   triggerEvents(up[0]);
+    //   await sleep(getRandomDelay(3000, 4000));
+    // }
 
-    up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "50 points");
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(3000, 4000));
-    }
+    // up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "50 points");
+    // if (up.length != 0){
+    //   triggerEvents(up[0]);
+    //   await sleep(getRandomDelay(3000, 4000));
+    // }
 
 }
 
