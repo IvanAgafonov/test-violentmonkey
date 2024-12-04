@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        *://*notpx.app/*
-// @version      0.6
+// @version      0.61
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/notpixel.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -286,9 +286,9 @@ function promptForDate() {
 }
 
 function startScript() {
-  createPauseButton();
-  openPaintWindow();
-  setTimeout(randomClick, Math.floor(Math.random() * 3000) + 5000);
+  // createPauseButton();
+  // openPaintWindow();
+  // setTimeout(randomClick, Math.floor(Math.random() * 3000) + 5000);
   setTimeout(myFunc, Math.floor(Math.random() * 3000) + 4000);
   checkGameCrash();
 }
