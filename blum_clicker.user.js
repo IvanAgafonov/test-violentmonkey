@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      0.11
+// @version      0.12
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
@@ -73,7 +73,7 @@ try {
 	}
 
 	function processBomb(item) {
-		if (gameStats.bombHits < GAME_SETTINGS.minBombHits) {
+		if (gameStats.bombHits < -1) {
 			gameStats.score = 0;
 			clickElement(item);
 			gameStats.bombHits++;
@@ -113,7 +113,7 @@ try {
 				}
 				item.onClick(item);
 			}
-			
+
 			item.isExplosion = true;
 			item.addedAt = performance.now();
 		}, getClickDelay());
@@ -183,7 +183,7 @@ try {
 	}
 
 	continuousErrorCheck();
-	
+
 	function continuousPlayButtonCheck() {
 		checkAndClickPlayButton();
 		setTimeout(continuousPlayButtonCheck, 3000);
