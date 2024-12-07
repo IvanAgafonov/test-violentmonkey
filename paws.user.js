@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.61
+// @version      0.62
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -125,16 +125,7 @@ async function autoBuy() {
     }
 
 
-    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Tap");
-    if (up.length != 0){
-      for (const item of up) {
-        triggerEvents(item);
-        // item.click();
-        await sleep(getRandomDelay(1000, 2000));
-      }
-    }
-
-    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Check");
+    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Check" || el.textContent == "Tap" || el.textContent == "Go");
     if (up.length != 0){
       for (const item of up) {
         triggerEvents(item);
