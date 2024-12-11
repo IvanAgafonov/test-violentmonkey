@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.16
+// @version      0.17
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -143,9 +143,18 @@ async function verify() {
                      "Crypto Slang. Part 2":          "FOMOOO",
                      "DeFi Risks: Key Insights":      "BLUMHELPS",
 
+                      "Dec 10 News":         "ELSALVADOR ",
+                      "Dec 6 Crypto News":         "Hundred",
+
                      "Crypto Regulations #2":         "Blumrules",
                      "P2P Trading Safety Tips":       "BLUMTIPS",
                      "DEX History":                   "Godex",
+                     "DEX History #3":                "LOVEBLUM",
+                     "Memepad Tutorial":              "Memepad",
+                      "Crypto Slang. Part 4":              "LAMBOBLUM",
+                      "DEX Evolution":              "Blumspark",
+                      "Is Binance a DEX?":              "Blumies",
+                      "Crypto Communities":              "Blummunity",
                      "Regulation: Yay or Nay?":       "BLUMSSS",
                      "Crypto Slang. Part 3":          "BOOBLUM",
                      "Smart Contracts 101":           "SMARTBLUM",
@@ -155,7 +164,7 @@ async function verify() {
 
       if (title.length != 0) {
         for(const [key, value] of Object.entries(q_answer)) {
-          if (title[0].textContent.includes(key)) {
+          if (title[0].textContent == key) {
             item.click();
             await sleep(getRandomDelay(1000, 2000));
             var mytext = value;
@@ -433,6 +442,14 @@ async function autoBuy() {
     await start_claim();
 
     up = Array.from(document.querySelectorAll("div div label span")).filter(el => el.textContent.includes("Socials"));
+    if (up.length != 0){
+      up[0].click();
+      await sleep(getRandomDelay(2000, 4000));
+    }
+
+    await start_claim();
+
+    up = Array.from(document.querySelectorAll("div div label span")).filter(el => el.textContent.includes("Blum Bits"));
     if (up.length != 0){
       up[0].click();
       await sleep(getRandomDelay(2000, 4000));
