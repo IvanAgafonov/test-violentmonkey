@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.62
+// @version      0.63
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -86,16 +86,23 @@ async function autoBuy() {
 
   for(const name of names){
 
+    up = Array.from(document.querySelectorAll("div[class='type-item']")).filter(el => el.textContent.includes(name));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      // up[0].click();
+      await sleep(getRandomDelay(3000, 4000));
+    }
+
     var up3 = Array.from(document.querySelectorAll("div.heart-quest div.main-info div.icon-con"));
     if (up3.length != 0){
       triggerEvents(up3[0].childNodes[0]);
       await sleep(getRandomDelay(3000, 4000));
     }
 
-    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Start");
+    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Start") && el.className.includes("start-btn"));
     if (up.length != 0){
       for (const item of up) {
-        var exclude = Array.from(item.parentElement.parentElement.querySelectorAll("div div")).filter(el => el.textContent == "Boost PAWS channel");
+        var exclude = Array.from(item.parentElement.parentElement.querySelectorAll("div div")).filter(el => el.textContent == "Boost PAWS channel" || el.textContent ==  "Add PAWS emoji");
         if (exclude.length != 0) {
           continue;
         }
@@ -121,6 +128,7 @@ async function autoBuy() {
             await sleep(getRandomDelay(20000, 21000));
           }
         }
+        await sleep(getRandomDelay(1000, 4000));
       }
     }
 
@@ -140,12 +148,6 @@ async function autoBuy() {
         // item.click();
         await sleep(getRandomDelay(1000, 2000));
       }
-    }
-    up = Array.from(document.querySelectorAll("div[class='type-item']")).filter(el => el.textContent.includes(name));
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      // up[0].click();
-      await sleep(getRandomDelay(3000, 4000));
     }
   }
 }
