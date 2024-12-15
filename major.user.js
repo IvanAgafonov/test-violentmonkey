@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Major claim
-// @version      0.41
+// @version      0.42
 // @author       IvanAgafonov
 // @match        https://major.bot/*
 // @grant        none
@@ -205,7 +205,7 @@ function initializeScript() {
 
     console.log('START Major claim')
 
-    setTimeout(autoBuy, getRandomDelay(14000, 17500));
+    // setTimeout(autoBuy, getRandomDelay(14000, 17500));
 }
 
 if (document.readyState === 'loading') {
