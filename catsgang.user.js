@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Cats claim
-// @version      0.3
+// @version      0.31
 // @author       IvanAgafonov
 // @match        https://cats-frontend.catshouse.club/*
 // @grant        none
@@ -55,7 +55,7 @@ async function simulateTyping(element, text, delay) {
 
 
 async function autoBuy() {
-  if (getRandomDelay(1000, 3000) < 2000) {
+  if (getRandomDelay(1000, 3000) < 2500) {
     var up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Show "));
     if (up.length != 0){
       up[0].click();
@@ -80,216 +80,225 @@ async function autoBuy() {
       }
     }
 
-    var up = Array.from(document.querySelectorAll("button svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("m10 15 5-3-5-3z"));
+    up = Array.from(document.querySelectorAll("h6")).filter(el => el.textContent.includes("Claim"));
     shuffle(up);
     if (up.length != 0){
       for (const item of up) {
-        item.parentElement.parentElement.click();
-        await sleep(getRandomDelay(3200, 5000));
-        var mytext = "";
-        var up2 = Array.from(document.querySelectorAll("div div input")).filter(el => !el.disabled);
-        if (up2.length != 0){
-
-          var episod = Array.from(document.querySelectorAll("div div h2")).filter(el => el.textContent.includes("How To Make 10x On Crypto") ||
-                                                                                  el.textContent.includes("Boost Your Cats Earnings!") ||
-                                                                                  el.textContent.includes("FREE Crypto") ||
-                                                                                  el.textContent.includes("Futures Trading PART 1") ||
-                                                                                  el.textContent.includes("Watching YouTube Videos!") ||
-                                                                                  el.textContent.includes("Start From ZERO") ||
-                                                                                  el.textContent.includes("GET RICH NOW") ||
-                                                                                  el.textContent.includes("How to stay productive") ||
-                                                                                  el.textContent.includes("Produciviy tips") ||
-                                                                                  el.textContent.includes("Earn $1000 just by Listening to Music") ||
-                                                                                  el.textContent.includes("Make Money Online Free 1") ||
-                                                                                  el.textContent.includes("Pinterest Affiliate Marketing") ||
-                                                                                  el.textContent.includes("Per MONTH") ||
-                                                                                  el.textContent.includes("Job Without a Degree") ||
-                                                                                  el.textContent.includes("Learned to Code!") ||
-                                                                                  el.textContent.includes("EARN $30 PER WORD") ||
-
-                                                                                  el.textContent.includes("EARN Money!") ||
-                                                                                  el.textContent.includes("Stay Safe from Crypto Scams!") ||
-                                                                                  el.textContent.includes("Earn Online by Reuploading") ||
-                                                                                  el.textContent.includes("Protect Your Investments!") ||
-                                                                                  el.textContent.includes("Reupload FREE videos") ||
-
-                                                                                  el.textContent.includes("Blockchain Basics") ||
-                                                                                  el.textContent.includes("YouTube Niches for Earning Big!") ||
-                                                                                  el.textContent.includes("Earn Onlinе") ||
-                                                                                  el.textContent.includes("Blockchain Technology") ||
-                                                                                  el.textContent.includes("Blockchain Really Works") ||
-
-
-                                                                                  el.textContent.includes("Earn Real Money Playing Games") ||
-                                                                                  el.textContent.includes("Change Your Life") ||
-                                                                                  el.textContent.includes("Get Paid to Play") ||
-                                                                                  el.textContent.includes("BLOCKCHAIN TIPS") ||
-
-                                                                                  el.textContent.includes("Futures Trading PART 2"));
-
-          mytext = "";
-          if (episod.length != 0){
-            if (episod[0].textContent.includes("YouTube Niches for Earning Big!")) {
-              mytext = "DELISTING"
-            }
-            if (episod[0].textContent.includes("Earn Onlinе")) {
-              mytext = "DERIVATIVE"
-            }
-            if (episod[0].textContent.includes("Blockchain Technology")) {
-              mytext = "DIFFICULTY"
-            }
-            if (episod[0].textContent.includes("Blockchain Really Works")) {
-              mytext = "DEFI"
-            }
-            if (episod[0].textContent.includes("Blockchain Basics")) {
-              mytext = "DEPIN"
-            }
-            if (episod[0].textContent.includes("EARN Money!")) {
-              mytext = "CURRENCY"
-            }
-            if (episod[0].textContent.includes("Stay Safe from Crypto Scams!")) {
-              mytext = "DYOR"
-            }
-            if (episod[0].textContent.includes("Earn Online by Reuploading")) {
-              mytext = "CUSTODIAL"
-            }
-            if (episod[0].textContent.includes("Protect Your Investments!")) {
-              mytext = "DUMP"
-            }
-            if (episod[0].textContent.includes("Reupload FREE videos")) {
-              mytext = "CRYPTOLOGY"
-            }
-            if (episod[0].textContent.includes("Earn Real Money Playing Games")) {
-              mytext = "BUBBLE"
-            }
-            if (episod[0].textContent.includes("Change Your Life")) {
-              mytext = "BOUNTY"
-            }
-            if (episod[0].textContent.includes("Get Paid to Play")) {
-              mytext = "BULL"
-            }
-            if (episod[0].textContent.includes("BLOCKCHAIN TIPS")) {
-              mytext = "BRIDGES"
-            }
-            if (episod[0].textContent.includes("EARN $30 PER WORD")) {
-              mytext = "BLOCK"
-            }
-            if (episod[0].textContent.includes("Learned to Code!")) {
-              mytext = "LEDGER"
-            }
-            if (episod[0].textContent.includes("Job Without a Degree")) {
-              mytext = "LAMBO"
-            }
-            if (episod[0].textContent.includes("Per MONTH")) {
-              mytext = "BITCOINER"
-            }
-            if (episod[0].textContent.includes("Pinterest Affiliate Marketing")) {
-              mytext = "BITSTREAM"
-            }
-            if (episod[0].textContent.includes("How To Make 10x On Crypto PART 2")) {
-              mytext = "AUCTION"
-            }
-            if (episod[0].textContent.includes("How To Make 10x On Crypto PART 3")) {
-              mytext = "AUDIT"
-            }
-            if (mytext == "" && episod[0].textContent.includes("How To Make 10x On Crypto")) {
-              mytext = "ABSTRACT"
-            }
-            if (episod[0].textContent.includes("Earn $1000 just by Listening to Music")) {
-              mytext = "BAG"
-            }
-            if (episod[0].textContent.includes("Make Money Online Free 1")) {
-              mytext = "AFFILIATE"
-            }
-            if (episod[0].textContent.includes("Produciviy tips")) {
-              mytext = "BAKING"
-            }
-            if (episod[0].textContent.includes("How to stay productive")) {
-              mytext = "ALTCOIN"
-            }
-            if (episod[0].textContent.includes("GET RICH NOW")) {
-              mytext = "BAKERS"
-            }
-            if (episod[0].textContent.includes("Start From ZERO")) {
-              mytext = "ALPHA"
-            }
-            if (episod[0].textContent.includes("Watching YouTube Videos!")) {
-              mytext = "ASIC"
-            }
-            if (episod[0].textContent.includes("Boost Your Cats Earnings!")) {
-              mytext = "dildo"
-            }
-            if (episod[0].textContent.includes("FREE Crypto")) {
-              mytext = "dip"
-            }
-            if (episod[0].textContent.includes("Futures Trading PART 1")) {
-              mytext = "AIRNODE"
-            }
-            if (episod[0].textContent.includes("Futures Trading PART 2")) {
-              mytext = "WEI"
-            }
-          }
-          if (mytext == "") {
-            continue;
-          }
-
-            // up2[0].value = ""
-            up2[0].click()
-            // up2[0].value = ""
-            // var event2 = new Event('focus');
-
-            // Dispatch it.
-            // up2[0].dispatchEvent(event2);
-            // event2 = new Event('change');
-            // simulateTyping(up2[0], mytext, 400);
-            console.log("value")
-            console.log(up2[0].value)
-            console.log(mytext)
-            if (up2[0].value != '') {
-              var up3 = Array.from(document.querySelectorAll("svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("M22 10L10 22"));
-              if (up3.length != 0){
-                up3[0].parentElement.parentElement.click();
-              }
-              return;
-            }
-
-            up2[0].setAttribute('value', mytext);
-            // event2 = new Event('complete');
-
-            // Dispatch it.
-            // up2[0].dispatchEvent(event2);
-            // event2 = new Event('change');
-
-            // Dispatch it.
-            // up2[0].dispatchEvent(event2);
-            up2[0].dispatchEvent(new Event('change', { bubbles: true }));
-            up2[0].dispatchEvent(new Event('input', { bubbles: true }));
-            up2 = Array.from(document.querySelectorAll("div button h6")).filter(el => el.textContent.includes("Check answer"));
-            if (up2.length != 0){
-              up2[0].click();
-              await sleep(getRandomDelay(1000, 3000));
-            }
-            var up4 = Array.from(document.querySelectorAll("svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("M22 10L10 22"));
-            if (up4.length != 0){
-              up4[0].parentElement.parentElement.click();
-            }
-            return;
-
-        }
-        else {
-          up2 = Array.from(document.querySelectorAll("div button h6")).filter(el => el.textContent.includes("Watch video"));
-          if (up2.length != 0){
-            up2[0].click();
-            await sleep(getRandomDelay(1000, 2000));
-          }
-        }
-        var up3 = Array.from(document.querySelectorAll("svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("M22 10L10 22"));
-        if (up3.length != 0){
-          up3[0].parentElement.parentElement.click();
-          await sleep(getRandomDelay(2000, 3000));
-        }
+        item.click();
+        await sleep(getRandomDelay(3200, 4000));
       }
     }
+
+//     var up = Array.from(document.querySelectorAll("button svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("m10 15 5-3-5-3z"));
+//     shuffle(up);
+//     if (up.length != 0){
+//       for (const item of up) {
+//         item.parentElement.parentElement.click();
+//         await sleep(getRandomDelay(3200, 5000));
+//         var mytext = "";
+//         var up2 = Array.from(document.querySelectorAll("div div input")).filter(el => !el.disabled);
+//         if (up2.length != 0){
+
+//           var episod = Array.from(document.querySelectorAll("div div h2")).filter(el => el.textContent.includes("How To Make 10x On Crypto") ||
+//                                                                                   el.textContent.includes("Boost Your Cats Earnings!") ||
+//                                                                                   el.textContent.includes("FREE Crypto") ||
+//                                                                                   el.textContent.includes("Futures Trading PART 1") ||
+//                                                                                   el.textContent.includes("Watching YouTube Videos!") ||
+//                                                                                   el.textContent.includes("Start From ZERO") ||
+//                                                                                   el.textContent.includes("GET RICH NOW") ||
+//                                                                                   el.textContent.includes("How to stay productive") ||
+//                                                                                   el.textContent.includes("Produciviy tips") ||
+//                                                                                   el.textContent.includes("Earn $1000 just by Listening to Music") ||
+//                                                                                   el.textContent.includes("Make Money Online Free 1") ||
+//                                                                                   el.textContent.includes("Pinterest Affiliate Marketing") ||
+//                                                                                   el.textContent.includes("Per MONTH") ||
+//                                                                                   el.textContent.includes("Job Without a Degree") ||
+//                                                                                   el.textContent.includes("Learned to Code!") ||
+//                                                                                   el.textContent.includes("EARN $30 PER WORD") ||
+
+//                                                                                   el.textContent.includes("EARN Money!") ||
+//                                                                                   el.textContent.includes("Stay Safe from Crypto Scams!") ||
+//                                                                                   el.textContent.includes("Earn Online by Reuploading") ||
+//                                                                                   el.textContent.includes("Protect Your Investments!") ||
+//                                                                                   el.textContent.includes("Reupload FREE videos") ||
+
+//                                                                                   el.textContent.includes("Blockchain Basics") ||
+//                                                                                   el.textContent.includes("YouTube Niches for Earning Big!") ||
+//                                                                                   el.textContent.includes("Earn Onlinе") ||
+//                                                                                   el.textContent.includes("Blockchain Technology") ||
+//                                                                                   el.textContent.includes("Blockchain Really Works") ||
+
+
+//                                                                                   el.textContent.includes("Earn Real Money Playing Games") ||
+//                                                                                   el.textContent.includes("Change Your Life") ||
+//                                                                                   el.textContent.includes("Get Paid to Play") ||
+//                                                                                   el.textContent.includes("BLOCKCHAIN TIPS") ||
+
+//                                                                                   el.textContent.includes("Futures Trading PART 2"));
+
+//           mytext = "";
+//           if (episod.length != 0){
+//             if (episod[0].textContent.includes("YouTube Niches for Earning Big!")) {
+//               mytext = "DELISTING"
+//             }
+//             if (episod[0].textContent.includes("Earn Onlinе")) {
+//               mytext = "DERIVATIVE"
+//             }
+//             if (episod[0].textContent.includes("Blockchain Technology")) {
+//               mytext = "DIFFICULTY"
+//             }
+//             if (episod[0].textContent.includes("Blockchain Really Works")) {
+//               mytext = "DEFI"
+//             }
+//             if (episod[0].textContent.includes("Blockchain Basics")) {
+//               mytext = "DEPIN"
+//             }
+//             if (episod[0].textContent.includes("EARN Money!")) {
+//               mytext = "CURRENCY"
+//             }
+//             if (episod[0].textContent.includes("Stay Safe from Crypto Scams!")) {
+//               mytext = "DYOR"
+//             }
+//             if (episod[0].textContent.includes("Earn Online by Reuploading")) {
+//               mytext = "CUSTODIAL"
+//             }
+//             if (episod[0].textContent.includes("Protect Your Investments!")) {
+//               mytext = "DUMP"
+//             }
+//             if (episod[0].textContent.includes("Reupload FREE videos")) {
+//               mytext = "CRYPTOLOGY"
+//             }
+//             if (episod[0].textContent.includes("Earn Real Money Playing Games")) {
+//               mytext = "BUBBLE"
+//             }
+//             if (episod[0].textContent.includes("Change Your Life")) {
+//               mytext = "BOUNTY"
+//             }
+//             if (episod[0].textContent.includes("Get Paid to Play")) {
+//               mytext = "BULL"
+//             }
+//             if (episod[0].textContent.includes("BLOCKCHAIN TIPS")) {
+//               mytext = "BRIDGES"
+//             }
+//             if (episod[0].textContent.includes("EARN $30 PER WORD")) {
+//               mytext = "BLOCK"
+//             }
+//             if (episod[0].textContent.includes("Learned to Code!")) {
+//               mytext = "LEDGER"
+//             }
+//             if (episod[0].textContent.includes("Job Without a Degree")) {
+//               mytext = "LAMBO"
+//             }
+//             if (episod[0].textContent.includes("Per MONTH")) {
+//               mytext = "BITCOINER"
+//             }
+//             if (episod[0].textContent.includes("Pinterest Affiliate Marketing")) {
+//               mytext = "BITSTREAM"
+//             }
+//             if (episod[0].textContent.includes("How To Make 10x On Crypto PART 2")) {
+//               mytext = "AUCTION"
+//             }
+//             if (episod[0].textContent.includes("How To Make 10x On Crypto PART 3")) {
+//               mytext = "AUDIT"
+//             }
+//             if (mytext == "" && episod[0].textContent.includes("How To Make 10x On Crypto")) {
+//               mytext = "ABSTRACT"
+//             }
+//             if (episod[0].textContent.includes("Earn $1000 just by Listening to Music")) {
+//               mytext = "BAG"
+//             }
+//             if (episod[0].textContent.includes("Make Money Online Free 1")) {
+//               mytext = "AFFILIATE"
+//             }
+//             if (episod[0].textContent.includes("Produciviy tips")) {
+//               mytext = "BAKING"
+//             }
+//             if (episod[0].textContent.includes("How to stay productive")) {
+//               mytext = "ALTCOIN"
+//             }
+//             if (episod[0].textContent.includes("GET RICH NOW")) {
+//               mytext = "BAKERS"
+//             }
+//             if (episod[0].textContent.includes("Start From ZERO")) {
+//               mytext = "ALPHA"
+//             }
+//             if (episod[0].textContent.includes("Watching YouTube Videos!")) {
+//               mytext = "ASIC"
+//             }
+//             if (episod[0].textContent.includes("Boost Your Cats Earnings!")) {
+//               mytext = "dildo"
+//             }
+//             if (episod[0].textContent.includes("FREE Crypto")) {
+//               mytext = "dip"
+//             }
+//             if (episod[0].textContent.includes("Futures Trading PART 1")) {
+//               mytext = "AIRNODE"
+//             }
+//             if (episod[0].textContent.includes("Futures Trading PART 2")) {
+//               mytext = "WEI"
+//             }
+//           }
+//           if (mytext == "") {
+//             continue;
+//           }
+
+//             // up2[0].value = ""
+//             up2[0].click()
+//             // up2[0].value = ""
+//             // var event2 = new Event('focus');
+
+//             // Dispatch it.
+//             // up2[0].dispatchEvent(event2);
+//             // event2 = new Event('change');
+//             // simulateTyping(up2[0], mytext, 400);
+//             console.log("value")
+//             console.log(up2[0].value)
+//             console.log(mytext)
+//             if (up2[0].value != '') {
+//               var up3 = Array.from(document.querySelectorAll("svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("M22 10L10 22"));
+//               if (up3.length != 0){
+//                 up3[0].parentElement.parentElement.click();
+//               }
+//               return;
+//             }
+
+//             up2[0].setAttribute('value', mytext);
+//             // event2 = new Event('complete');
+
+//             // Dispatch it.
+//             // up2[0].dispatchEvent(event2);
+//             // event2 = new Event('change');
+
+//             // Dispatch it.
+//             // up2[0].dispatchEvent(event2);
+//             up2[0].dispatchEvent(new Event('change', { bubbles: true }));
+//             up2[0].dispatchEvent(new Event('input', { bubbles: true }));
+//             up2 = Array.from(document.querySelectorAll("div button h6")).filter(el => el.textContent.includes("Check answer"));
+//             if (up2.length != 0){
+//               up2[0].click();
+//               await sleep(getRandomDelay(1000, 3000));
+//             }
+//             var up4 = Array.from(document.querySelectorAll("svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("M22 10L10 22"));
+//             if (up4.length != 0){
+//               up4[0].parentElement.parentElement.click();
+//             }
+//             return;
+
+//         }
+//         else {
+//           up2 = Array.from(document.querySelectorAll("div button h6")).filter(el => el.textContent.includes("Watch video"));
+//           if (up2.length != 0){
+//             up2[0].click();
+//             await sleep(getRandomDelay(1000, 2000));
+//           }
+//         }
+//         var up3 = Array.from(document.querySelectorAll("svg path")).filter(el => el.getAttribute("d") && el.getAttribute("d").includes("M22 10L10 22"));
+//         if (up3.length != 0){
+//           up3[0].parentElement.parentElement.click();
+//           await sleep(getRandomDelay(2000, 3000));
+//         }
+//       }
+//     }
   }
 }
 
