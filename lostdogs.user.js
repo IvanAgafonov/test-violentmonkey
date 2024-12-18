@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LostDogs claim
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://dog-ways.newcoolproject.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/lostdogs.user.js
@@ -25,6 +25,20 @@ function shuffle(array) {
       array[randomIndex], array[currentIndex]];
   }
 }
+
+async function connectWallet(){
+  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On")
+  if (up2.length != 0){
+    triggerEvents(up2[0]);
+    await sleep(getRandomDelay(3000, 4100));
+    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+    if (up2.length != 0){
+      triggerEvents(up2[0]);
+      await sleep(getRandomDelay(20000, 21000));
+    }
+  }
+}
+
 
 function triggerEvents(element) {
   const events = [
@@ -73,72 +87,87 @@ async function simulateTyping(element, text, delay) {
 
 
 async function autoBuy() {
-  var button = document.evaluate("(//div[text()='Confirm'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  var button = document.evaluate("(//div[text()='Profile'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (button) {
     triggerEvents(button);
     await sleep(getRandomDelay(3200, 4000));
   }
 
-  button = document.evaluate("(//div[text()='Continue'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  button = document.evaluate("(//div[text()='Connect'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (button) {
     triggerEvents(button);
     await sleep(getRandomDelay(3200, 4000));
   }
 
-  button = document.evaluate("(//div[text()='Continue'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (button) {
-    triggerEvents(button);
-    await sleep(getRandomDelay(3200, 4000));
-  }
+  await connectWallet();
 
-  button = document.evaluate("(//div[text()='Make choice'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (button) {
-    button.click();
-    await sleep(getRandomDelay(3200, 4000));
-  }
 
-  button = document.evaluate("(//input[@type='range'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (button) {
-    const lastValue = button.value;
-    button.value = 0;
-    const event = new Event("input", { bubbles: true });
-    const tracker = button._valueTracker;
-    if (tracker) {
-      tracker.setValue(lastValue);
-    }
-    button.dispatchEvent(event);
-    await sleep(getRandomDelay(3200, 4000));
-  }
+//   var button = document.evaluate("(//div[text()='Confirm'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     triggerEvents(button);
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
 
-  button = document.evaluate("(//div[text()='Bid 0 $NOT'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (button) {
-    triggerEvents(button);
-    await sleep(getRandomDelay(3200, 4000));
-  }
+//   button = document.evaluate("(//div[text()='Continue'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     triggerEvents(button);
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
 
-  button = document.evaluate("(//div[text()='Share a story'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (button) {
-    triggerEvents(button);
-    await sleep(getRandomDelay(3200, 4000));
-  }
+//   button = document.evaluate("(//div[text()='Continue'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     triggerEvents(button);
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
 
-  button = document.evaluate("(//div[text()='Continue'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (button) {
-    triggerEvents(button);
-    await sleep(getRandomDelay(3200, 4000));
-  }
+//   button = document.evaluate("(//div[text()='Make choice'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     button.click();
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
 
-  button = document.evaluate("(//div[text()='Continue'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (button) {
-    triggerEvents(button);
-    await sleep(getRandomDelay(3200, 4000));
-  }
+//   button = document.evaluate("(//input[@type='range'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     const lastValue = button.value;
+//     button.value = 0;
+//     const event = new Event("input", { bubbles: true });
+//     const tracker = button._valueTracker;
+//     if (tracker) {
+//       tracker.setValue(lastValue);
+//     }
+//     button.dispatchEvent(event);
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
 
-  button = document.evaluate("(//div[text()='What lost dog are you?'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (button) {
-    triggerEvents(button);
-    await sleep(getRandomDelay(3200, 4000));
-  }
+//   button = document.evaluate("(//div[text()='Bid 0 $NOT'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     triggerEvents(button);
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
+
+//   button = document.evaluate("(//div[text()='Share a story'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     triggerEvents(button);
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
+
+//   button = document.evaluate("(//div[text()='Continue'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     triggerEvents(button);
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
+
+//   button = document.evaluate("(//div[text()='Continue'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     triggerEvents(button);
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
+
+//   button = document.evaluate("(//div[text()='What lost dog are you?'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (button) {
+//     triggerEvents(button);
+//     await sleep(getRandomDelay(3200, 4000));
+//   }
 }
 
 
