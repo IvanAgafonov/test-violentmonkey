@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.17
+// @version      0.18
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -72,7 +72,8 @@ async function start_claim() {
     for (const item of up) {
       var need_wait = false;
       try {
-        if (Array.from(item.parentElement.parentElement.parentElement.querySelectorAll("div")).filter(el => el.textContent.includes("Proof of Activity")).length > 0){
+        if (Array.from(item.parentElement.parentElement.parentElement.querySelectorAll("div")).filter(el => el.textContent.includes("Proof of Activity") || el.textContent.includes("Trade any memecoin") || el.textContent.includes("Launch a memecoin")).length > 0)
+        {
           console.log("wait!")
           need_wait = true;
         }
