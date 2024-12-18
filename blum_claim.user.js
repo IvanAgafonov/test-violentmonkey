@@ -394,7 +394,7 @@ async function autoBuy() {
     }
     var up3;
     await start_claim();
-    if (getRandomDelay(100, 2600) > 1600) {
+    if (getRandomDelay(100, 2600) > 1000) {
       up = Array.from(document.querySelectorAll(".tasks-pill-inline.is-status-not-started.is-light.pages-tasks-pill, .tasks-pill-inline.is-status-not-started.is-dark.pages-tasks-pill"));
       if (up.length != 0){
         for (const item of up) {
