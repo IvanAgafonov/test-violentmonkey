@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Appcenter claim
-// @version      0.22
+// @version      0.23
 // @author       IvanAgafonov
 // @match        https://tappscenter.org/*
 // @grant        none
@@ -74,7 +74,7 @@ function sleep(ms = 0) {
 async function autoBuy() {
 
 
-  var up = Array.from(document.querySelectorAll("h1")).filter(el => el.textContent.includes("Complete day") ||  el.textContent.includes("days streak"));
+  var up = Array.from(document.querySelectorAll("h1")).filter(el => el.textContent.includes("Complete day") || el.textContent.includes("Серия") ||  el.textContent.includes("days streak"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(6000, 8000));
@@ -90,35 +90,35 @@ async function autoBuy() {
       await connectWallet();
     }
 
-    up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open");
+    up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open" || el.textContent == "Открыть");
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(3000, 4000));
     }
 
-    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Save "));
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Save ") || el.textContent == "Сохранить ");
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(3000, 4000));
     }
 
-    up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open");
+    up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open" || el.textContent == "Открыть" );
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(3000, 4000));
     }
 
-    // up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
-    // if (up.length != 0){
-    //   triggerEvents(up[0]);
-    //   await sleep(getRandomDelay(3000, 4000));
-    // }
+    up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
 
-    // up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "50 points");
-    // if (up.length != 0){
-    //   triggerEvents(up[0]);
-    //   await sleep(getRandomDelay(3000, 4000));
-    // }
+    up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "50 points");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
 
 }
 
@@ -127,7 +127,7 @@ function initializeScript() {
 
     console.log('START appcenter claim')
 
-    setTimeout(autoBuy, getRandomDelay(12000, 13050));
+    setTimeout(autoBuy, getRandomDelay(18000, 20050));
 }
 
 if (document.readyState === 'loading') {
