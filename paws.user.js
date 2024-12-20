@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.64
+// @version      0.65
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -102,7 +102,7 @@ async function autoBuy() {
     up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Start") && el.className.includes("start-btn"));
     if (up.length != 0){
       for (const item of up) {
-        var exclude = Array.from(item.parentElement.parentElement.querySelectorAll("div div")).filter(el => el.textContent == "Boost PAWS channel" || el.textContent == "Start mining Fomohash" || el.textContent ==  "Add PAWS emoji");
+        var exclude = Array.from(item.parentElement.parentElement.querySelectorAll("div div")).filter(el => el.textContent == "Boost PAWS channel" || el.textContent.includes("Claim Y points") || el.textContent == "Start mining Fomohash" || el.textContent ==  "Add PAWS emoji");
         if (exclude.length != 0) {
           continue;
         }
