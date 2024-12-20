@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.18
+// @version      0.19
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -330,7 +330,15 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  up = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("Claim"));
+  up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("Claim"));
+  if (up.length != 0){
+    for (const item of up) {
+      item.click();
+      await sleep(getRandomDelay(2000, 3000));
+    }
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Claim"));
   if (up.length != 0){
     up[0].click();
     await sleep(getRandomDelay(3000, 4000));
