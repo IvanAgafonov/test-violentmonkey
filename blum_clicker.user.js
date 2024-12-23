@@ -73,7 +73,7 @@ try {
 	}
 
 	function processBomb(item) {
-		if (gameStats.bombHits < -1) {
+		if (gameStats.bombHits < 100) {
 			gameStats.score = 0;
 			clickElement(item);
 			gameStats.bombHits++;
