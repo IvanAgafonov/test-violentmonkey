@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Terminal claim
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://app.0xterminal.game/*
 // @grant        none
@@ -60,15 +60,30 @@ function sleep(ms = 0) {
 }
 
 async function autoBuy() {
-  console.stdlog = console.log.bind(console);
-  console.logs = [];
-  console.log = function(){
-      console.logs.push(Array.from(arguments));
-      console.stdlog.apply(console, arguments);
+
+
+  var up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("Next"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
   }
 
+  up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("Next"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
 
-  var up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent == "Continue");
+  up = Array.from(document.querySelectorAll("a span")).filter(el => el.textContent.includes("Got it"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent == "Continue");
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
@@ -89,7 +104,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  up = Array.from(document.querySelectorAll("a p")).filter(el => el.textContent == "Take 3100 $TRMNL");
+  up = Array.from(document.querySelectorAll("a span")).filter(el => el.textContent.includes("Collect 1000"));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
@@ -111,7 +126,7 @@ async function autoBuy() {
   }
 
 
-  up = Array.from(document.querySelectorAll("div[class='absolute left-1/2']"));
+  up = Array.from(document.querySelectorAll("div[class*='size-full rounded-full']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
@@ -125,7 +140,7 @@ function initializeScript() {
 
     console.log('START terminal claim')
 
-    setTimeout(autoBuy, getRandomDelay(12000, 13050));
+    setTimeout(autoBuy, getRandomDelay(8000, 10050));
 }
 
 if (document.readyState === 'loading') {
