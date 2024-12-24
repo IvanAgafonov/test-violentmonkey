@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.65
+// @version      0.66
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -67,6 +67,20 @@ async function autoBuy() {
   console.log = function(){
       console.logs.push(Array.from(arguments));
       console.stdlog.apply(console, arguments);
+  }
+
+  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "PAWSMAS");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(4000, 7000));
+  }
+
+  up = Array.from(document.querySelectorAll("div.main-info div.icon-con"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(4000, 7000));
   }
 
 
