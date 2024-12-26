@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      0.12
+// @version      0.13
 // @namespace    Violentmonkey Scripts
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
@@ -73,7 +73,7 @@ try {
 	}
 
 	function processBomb(item) {
-		if (gameStats.bombHits < 100) {
+		if (gameStats.bombHits < -1) {
 			gameStats.score = 0;
 			clickElement(item);
 			gameStats.bombHits++;
