@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.67
+// @version      0.68
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -204,7 +204,7 @@ async function autoBuy() {
       for (const item of up) {
         triggerEvents(item);
         // item.click();
-        await sleep(getRandomDelay(1000, 2000));
+        await sleep(getRandomDelay(5000, 8000));
       }
     }
     up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Claim");
