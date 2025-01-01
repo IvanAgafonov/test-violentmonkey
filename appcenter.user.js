@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Appcenter claim
-// @version      0.24
+// @version      0.25
 // @author       IvanAgafonov
 // @match        https://tappscenter.org/*
 // @grant        none
@@ -88,7 +88,7 @@ async function autoBuy() {
       await sleep(getRandomDelay(3000, 4000));
     }
 
-    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Save ") || el.textContent == "Сохранить ");
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Save") || el.textContent.includes("save") || el.textContent.includes("Сохранить") ||  el.textContent.includes("сохранить"));
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(3000, 4000));
@@ -116,17 +116,17 @@ async function autoBuy() {
       await connectWallet();
     }
 
-    up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(3000, 4000));
-    }
+    // up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
+    // if (up.length != 0){
+    //   triggerEvents(up[0]);
+    //   await sleep(getRandomDelay(3000, 4000));
+    // }
 
-    up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "50 points");
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(3000, 4000));
-    }
+    // up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "50 points");
+    // if (up.length != 0){
+    //   triggerEvents(up[0]);
+    //   await sleep(getRandomDelay(3000, 4000));
+    // }
 
 }
 
