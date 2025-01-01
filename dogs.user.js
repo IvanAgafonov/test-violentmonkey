@@ -108,13 +108,13 @@ async function autoBuy() {
       if (up.length != 0){
         triggerEvents(up[0]);
         // up[0].click();
-        await sleep(getRandomDelay(2000, 3000));
+        await sleep(getRandomDelay(4000, 5000));
       }
       up = Array.from(document.querySelectorAll("div div div")).filter(el => (el.textContent.includes("Boost now") || el.textContent.includes("Woof") || el.textContent.includes("Follow us") || el.textContent.includes("Claim") || el.textContent.includes("Subscribe") || el.textContent.includes("Share") ) && el.className.includes('type-gold'));
       if (up.length != 0){
         triggerEvents(up[0]);
         // up[0].click();
-        await sleep(getRandomDelay(2000, 3000));
+        await sleep(getRandomDelay(4000, 5000));
       }
       up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Claim") && el.className.includes('type-gold'));
       if (up.length != 0){
