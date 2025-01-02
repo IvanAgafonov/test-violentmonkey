@@ -91,7 +91,7 @@ async function autoBuy() {
     await connectWallet();
   }
 
-  if (getRandomDelay(1000, 2000) < 1500) {
+  if (getRandomDelay(1000, 2000) < 10500) {
 
     up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes('cell') && el.className.includes('current'));
     if (up.length != 0){
