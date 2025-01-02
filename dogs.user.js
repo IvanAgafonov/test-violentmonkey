@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dogs claim
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://onetime.dog/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/dogs.user.js
