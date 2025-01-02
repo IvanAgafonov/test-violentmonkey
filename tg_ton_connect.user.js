@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tg ton connect
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://web.telegram.org/k*
 // @grant        none
@@ -8,6 +8,31 @@
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tg_ton_connect.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
+
+
+
+function triggerEvents(element) {
+  const events = [
+      new MouseEvent('mouseover', {
+  'view': window,
+  'bubbles': true,
+  'cancelable': true
+}),
+      new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
+      new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseup', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new PointerEvent('click', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerout', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerleave', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseout', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new MouseEvent('mouseleave', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 })
+  ];
+
+  events.forEach((event, index) => {
+      setTimeout(() => element.dispatchEvent(event), index * 100);
+  });
+}
 
 
 async function connect() {
@@ -18,7 +43,7 @@ async function connect() {
 
     up = Array.from(document.querySelectorAll("div div div button.popup-button.btn.primary.rp span")).filter(el => el.textContent.includes("Launch"));
     if (up.length != 0){
-      up[0].click();
+      triggerEvents(up[0]);
     }
 
     up = Array.from(document.querySelectorAll("div button.btn-primary.btn-color-primary.web-app-button")).filter(el => el.textContent.includes("Connect") ||
@@ -27,7 +52,7 @@ async function connect() {
                                                                                                                  //el.textContent.includes("Подтвердить") ||
                                                                                                                  el.textContent.includes("Привязать кошелёк"));
     if (up.length != 0){
-      up[0].click();
+      triggerEvents(up[0]);
     }
   }
 
@@ -37,7 +62,7 @@ async function connect() {
     el.textContent.includes("Continue") ||
     el.textContent.includes("Connect"));
   if (up.length != 0){
-    up[0].click();
+    triggerEvents(up[0]);
   }
 
 
