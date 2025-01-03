@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Terminal claim
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://app.0xterminal.game/*
 // @grant        none
@@ -83,6 +83,13 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
+  up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("Got it"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
   up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent == "Continue");
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -91,6 +98,13 @@ async function autoBuy() {
   }
 
   up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent == "Continue");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+    up = Array.from(document.querySelectorAll("a span")).filter(el => el.textContent.includes("Got it"));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
