@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dogs claim
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://onetime.dog/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/dogs.user.js
@@ -91,63 +91,63 @@ async function autoBuy() {
     await connectWallet();
   }
 
-  if (getRandomDelay(1000, 2000) < 10500) {
+  // if (getRandomDelay(1000, 2000) < 10500) {
 
-    up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes('cell') && el.className.includes('current'));
-    if (up.length != 0){
-      for (const item of up) {
-        item.click();
-        await sleep(getRandomDelay(2000, 3000));
-      }
-    }
+  //   up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes('cell') && el.className.includes('current'));
+  //   if (up.length != 0){
+  //     for (const item of up) {
+  //       item.click();
+  //       await sleep(getRandomDelay(2000, 3000));
+  //     }
+  //   }
 
-    up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes('cell') && el.className.includes('checked'));
-    if (up.length != 0){
-      for (const item of up.slice(18, 27)) {
-        item.click();
-        await sleep(getRandomDelay(2000, 3000));
-        up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Complete") && el.className.includes('type-gold'));
-        if (up.length != 0){
-          triggerEvents(up[0]);
-          // up[0].click();
-          await sleep(getRandomDelay(4000, 5000));
-        }
-        up = Array.from(document.querySelectorAll("div div div")).filter(el => (el.textContent.includes("Boost now") || el.textContent.includes("Woof") || el.textContent.includes("Follow us") || el.textContent.includes("Claim") || el.textContent.includes("Subscribe") || el.textContent.includes("Share") ) && el.className.includes('type-gold'));
-        if (up.length != 0){
-          triggerEvents(up[0]);
-          // up[0].click();
-          await sleep(getRandomDelay(4000, 5000));
-        }
-        up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Claim") && el.className.includes('type-gold'));
-        if (up.length != 0){
-          triggerEvents(up[0]);
-          // up[0].click();
-          await sleep(getRandomDelay(5000, 6000));
-        }
-      }
-    }
+  //   up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes('cell') && el.className.includes('checked'));
+  //   if (up.length != 0){
+  //     for (const item of up.slice(18, 27)) {
+  //       item.click();
+  //       await sleep(getRandomDelay(2000, 3000));
+  //       up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Complete") && el.className.includes('type-gold'));
+  //       if (up.length != 0){
+  //         triggerEvents(up[0]);
+  //         // up[0].click();
+  //         await sleep(getRandomDelay(4000, 5000));
+  //       }
+  //       up = Array.from(document.querySelectorAll("div div div")).filter(el => (el.textContent.includes("Boost now") || el.textContent.includes("Woof") || el.textContent.includes("Follow us") || el.textContent.includes("Claim") || el.textContent.includes("Subscribe") || el.textContent.includes("Share") ) && el.className.includes('type-gold'));
+  //       if (up.length != 0){
+  //         triggerEvents(up[0]);
+  //         // up[0].click();
+  //         await sleep(getRandomDelay(4000, 5000));
+  //       }
+  //       up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Claim") && el.className.includes('type-gold'));
+  //       if (up.length != 0){
+  //         triggerEvents(up[0]);
+  //         // up[0].click();
+  //         await sleep(getRandomDelay(5000, 6000));
+  //       }
+  //     }
+  //   }
+  // }
+
+  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Finish The Holiday Season") && el.className.includes('type-gold'));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
   }
 
-  // up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Finish The Holiday Season") && el.className.includes('type-gold'));
-  // if (up.length != 0){
-  //   triggerEvents(up[0]);
-  //   // up[0].click();
-  //   await sleep(getRandomDelay(2000, 3000));
-  // }
+  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Submit results") && el.className.includes('type-gold'));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
 
-  // up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Submit results") && el.className.includes('type-gold'));
-  // if (up.length != 0){
-  //   triggerEvents(up[0]);
-  //   // up[0].click();
-  //   await sleep(getRandomDelay(2000, 3000));
-  // }
-
-  // up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Submit results") && el.className.includes('type-gold'));
-  // if (up.length != 0){
-  //   triggerEvents(up[1]);
-  //   // up[0].click();
-  //    await sleep(getRandomDelay(2000, 3000)); 
-  //  }
+  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Submit results") && el.className.includes('type-gold'));
+  if (up.length != 0){
+    triggerEvents(up[1]);
+    // up[0].click();
+     await sleep(getRandomDelay(2000, 3000)); 
+   }
 
 
 }
