@@ -146,7 +146,7 @@ async function autoBuy() {
   // if (up.length != 0){
   //   triggerEvents(up[1]);
   //   // up[0].click();
-  //   await sleep(getRandomDelay(2000, 3000)); 
+  //    await sleep(getRandomDelay(2000, 3000)); 
   //  }
 
 
