@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dogs claim
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://onetime.dog/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/dogs.user.js
@@ -128,26 +128,26 @@ async function autoBuy() {
     }
   }
 
-  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Finish The Holiday Season") && el.className.includes('type-gold'));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    // up[0].click();
-    await sleep(getRandomDelay(2000, 3000));
-  }
+  // up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Finish The Holiday Season") && el.className.includes('type-gold'));
+  // if (up.length != 0){
+  //   triggerEvents(up[0]);
+  //   // up[0].click();
+  //   await sleep(getRandomDelay(2000, 3000));
+  // }
 
-  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Submit results") && el.className.includes('type-gold'));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    // up[0].click();
-    await sleep(getRandomDelay(2000, 3000));
-  }
+  // up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Submit results") && el.className.includes('type-gold'));
+  // if (up.length != 0){
+  //   triggerEvents(up[0]);
+  //   // up[0].click();
+  //   await sleep(getRandomDelay(2000, 3000));
+  // }
 
-  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Submit results") && el.className.includes('type-gold'));
-  if (up.length != 0){
-    triggerEvents(up[1]);
-    // up[0].click();
-    await sleep(getRandomDelay(2000, 3000));
-  }
+  // up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Submit results") && el.className.includes('type-gold'));
+  // if (up.length != 0){
+  //   triggerEvents(up[1]);
+  //   // up[0].click();
+  //   await sleep(getRandomDelay(2000, 3000));
+  // }
 
 
 }
