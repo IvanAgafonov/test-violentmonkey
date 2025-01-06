@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Userbot
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://web.billion.tg/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/userbot.user.js
@@ -76,7 +76,28 @@ async function connectWallet(){
 async function autoBuy() {
 
 
-  var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Camps");
+  var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Next"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Next"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Next"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Camps");
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
@@ -104,6 +125,13 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 3000));
   }
 
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Claim"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Home");
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -115,7 +143,17 @@ async function autoBuy() {
   if (up.length != 0){
     for (const item of up) {
       item.click();
-      await sleep(getRandomDelay(2000, 5000));
+      await sleep(getRandomDelay(1000, 2000));
+    }
+  }
+  if (getRandomDelay(1000, 20000) < 2000)) {
+    up = Array.from(document.querySelectorAll("h6")).filter(el => el.textContent == "Connect");
+    if (up.length != 0){
+      for (const item of up) {
+        item.click();
+        await sleep(getRandomDelay(2000, 3000));
+        await connectWallet();
+      }
     }
   }
 
@@ -123,7 +161,7 @@ async function autoBuy() {
   if (up.length != 0){
     for (const item of up) {
       item.click();
-      await sleep(getRandomDelay(2000, 5000));
+      await sleep(getRandomDelay(1000, 2000));
     }
   }
 
