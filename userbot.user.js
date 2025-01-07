@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Userbot
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://web.billion.tg/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/userbot.user.js
@@ -79,49 +79,42 @@ async function autoBuy() {
   var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Next"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Next"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Next"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Camps");
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes("container"));
   if (up.length != 0){
     triggerEvents(up[0].firstElementChild.firstElementChild);
-    // up[0].click();
     await sleep(getRandomDelay(5000, 6000));
   }
 
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Join camp"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("h6")).filter(el => el.textContent.includes("Join"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
 
@@ -146,7 +139,8 @@ async function autoBuy() {
       await sleep(getRandomDelay(1000, 2000));
     }
   }
-  if (getRandomDelay(1000, 20000) < 2000)) {
+
+  if (getRandomDelay(1000, 20000) < 2000) {
     up = Array.from(document.querySelectorAll("h6")).filter(el => el.textContent == "Connect");
     if (up.length != 0){
       for (const item of up) {
@@ -164,40 +158,6 @@ async function autoBuy() {
       await sleep(getRandomDelay(1000, 2000));
     }
   }
-
-  // if (getRandomDelay(1000, 2000) < 10500) {
-
-
-
-  //   up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes('cell') && el.className.includes('checked'));
-  //   if (up.length != 0){
-  //     for (const item of up.slice(18, 27)) {
-  //       item.click();
-  //       await sleep(getRandomDelay(2000, 3000));
-  //       up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Complete") && el.className.includes('type-gold'));
-  //       if (up.length != 0){
-  //         triggerEvents(up[0]);
-  //         // up[0].click();
-  //         await sleep(getRandomDelay(4000, 5000));
-  //       }
-  //       up = Array.from(document.querySelectorAll("div div div")).filter(el => (el.textContent.includes("Boost now") || el.textContent.includes("Woof") || el.textContent.includes("Follow us") || el.textContent.includes("Claim") || el.textContent.includes("Subscribe") || el.textContent.includes("Share") ) && el.className.includes('type-gold'));
-  //       if (up.length != 0){
-  //         triggerEvents(up[0]);
-  //         // up[0].click();
-  //         await sleep(getRandomDelay(4000, 5000));
-  //       }
-  //       up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Claim") && el.className.includes('type-gold'));
-  //       if (up.length != 0){
-  //         triggerEvents(up[0]);
-  //         // up[0].click();
-  //         await sleep(getRandomDelay(5000, 6000));
-  //       }
-  //     }
-  //   }
-  // }
-
-
-
 }
 
 
