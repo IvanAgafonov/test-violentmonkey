@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Bro bot
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://contests.joinbrobot.cc/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/brobot.user.js
@@ -79,40 +79,70 @@ async function autoBuy() {
   var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Let's go!");
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
 
-  // if (getRandomDelay(1000, 2000) < 10500) {
 
 
+  up = Array.from(document.querySelectorAll("#logo-bro"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
 
-  //   up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes('cell') && el.className.includes('checked'));
-  //   if (up.length != 0){
-  //     for (const item of up.slice(18, 27)) {
-  //       item.click();
-  //       await sleep(getRandomDelay(2000, 3000));
-  //       up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Complete") && el.className.includes('type-gold'));
-  //       if (up.length != 0){
-  //         triggerEvents(up[0]);
-  //         // up[0].click();
-  //         await sleep(getRandomDelay(4000, 5000));
-  //       }
-  //       up = Array.from(document.querySelectorAll("div div div")).filter(el => (el.textContent.includes("Boost now") || el.textContent.includes("Woof") || el.textContent.includes("Follow us") || el.textContent.includes("Claim") || el.textContent.includes("Subscribe") || el.textContent.includes("Share") ) && el.className.includes('type-gold'));
-  //       if (up.length != 0){
-  //         triggerEvents(up[0]);
-  //         // up[0].click();
-  //         await sleep(getRandomDelay(4000, 5000));
-  //       }
-  //       up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent.includes("Claim") && el.className.includes('type-gold'));
-  //       if (up.length != 0){
-  //         triggerEvents(up[0]);
-  //         // up[0].click();
-  //         await sleep(getRandomDelay(5000, 6000));
-  //       }
-  //     }
-  //   }
-  // }
+  up = Array.from(document.querySelectorAll("div")).filter(el => (el.textContent == "Follow X [News]" ||
+                                                                 el.textContent == "Follow [News]" ||
+                                                                 el.textContent == "Repost X") && el.className.includes("account-profile__task-title"));
+  if (up.length != 0){
+    for (const item of up) {
+      triggerEvents(item.parentElement.querySelector("button"));
+      await sleep(getRandomDelay(2000, 3000));
+    }
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => (el.textContent == "Follow X [News]" ||
+                                                                 el.textContent == "Follow [News]" ||
+                                                                 el.textContent == "Repost X") && el.className.includes("account-profile__task-title"));
+  if (up.length != 0){
+    for (const item of up) {
+      triggerEvents(item.parentElement.querySelector("button"));
+      await sleep(getRandomDelay(2000, 3000));
+    }
+  }
+
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Connect Wallet" && el.className.includes("account-profile__task-title"));
+  if (up.length != 0){
+    triggerEvents(up[0].parentElement.querySelector("button"));
+    await sleep(getRandomDelay(2000, 3000));
+    await connectWallet();
+  }
+
+  up = Array.from(document.querySelectorAll("#logo-flower"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='contests/tonsociety-small.png']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5000, 6000));
+  }
+
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Claim" && el.className.includes("contest__block-item-claim-button"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5000, 6000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes("contest__block-item"));
+  if (up.length != 0){
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(2000, 3000));
+    }
+  }
 
 
 
