@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Userbot
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://web.billion.tg/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/userbot.user.js
@@ -121,6 +121,19 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Claim"));
   if (up.length != 0){
     triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("h6")).filter(el => el.textContent.includes("Claim"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Claim"));
+  if (up.length == 2){
+    triggerEvents(up[1]);
     // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
