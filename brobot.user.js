@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Bro bot
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://contests.joinbrobot.cc/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/brobot.user.js
@@ -134,6 +134,13 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(5000, 6000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Connect TON Wallet" && el.className.includes("contest__block-item-title"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+    await connectWallet();
   }
 
   up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes("contest__block-item"));
