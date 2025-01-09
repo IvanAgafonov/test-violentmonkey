@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tabi claim
-// @version      0.25
+// @version      0.26
 // @author       IvanAgafonov
 // @match        https://front.tabibot.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
@@ -144,12 +144,27 @@ async function autoBuy() {
       triggerEvents(up[0]);
       await sleep(getRandomDelay(1000, 2000));
     }
+
+    up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("To spin") && el.className.includes("text-nowrap font-changa-one"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(1000, 2000));
+    }
   }
 
   up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Spin") && el.className.includes("flex flex-col justify-center items-center"));
   if (up.length != 0){
     up[0].click();
     await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => (el.textContent.includes("1") || el.textContent.includes("2")) && el.className.includes("absolute top-[-18px] left-[36px] bg-[#FF5C01] flex items-center justify-center py-[2px] font-changa-one leading-[12px] text-[#fff] text-[10px] px-[4px] rounded-[5px_5px_5px_0px]"));
+  if (up.length != 0){
+    up = Array.from(up[0].parentElement.querySelectorAll("img[class='w-[40px] cursor-pointer absolute bottom-0 left-0 h-[28px]']"));
+    if (up.length != 0){
+       triggerEvents(up[0]);
+        await sleep(getRandomDelay(1000, 2000));
+    }
   }
 
   for(let i = 0; i < 17; i++) {
