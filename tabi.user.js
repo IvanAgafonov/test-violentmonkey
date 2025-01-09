@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tabi claim
-// @version      0.23
+// @version      0.25
 // @author       IvanAgafonov
 // @match        https://front.tabibot.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
@@ -75,6 +75,18 @@ async function autoBuy() {
   if (up.length != 0){
     up[0].click();
     await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Join our Telegram Channel") && el.className.includes("flex items-center font-changa-one text-black"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Check") && el.className.includes("font-bold font-changa-one"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("span[class='text-white font-changa-one italic text-[12px]"));
