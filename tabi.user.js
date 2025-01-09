@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tabi claim
-// @version      0.22
+// @version      0.23
 // @author       IvanAgafonov
 // @match        https://front.tabibot.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
@@ -92,11 +92,33 @@ async function autoBuy() {
   history.back()
   await sleep(getRandomDelay(1000, 1100));
 
+  up = Array.from(document.querySelectorAll("img[class='w-[50px] cursor-pointer']")).filter(el => el.src.includes("task_icon"));
+  if (up.length != 0){
+     triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent.includes("Daily Reward") && el.className.includes("text-black font-changa-one text-sm leading-[14px] capitalize"));
+  if (up.length != 0){
+     triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Claim") && el.className.includes("flex items-center gap-[8px]"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
+
+  history.back()
+  await sleep(getRandomDelay(1000, 1100));
+
   up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Draw") && el.className.includes("flex flex-col justify-center items-center"));
   if (up.length != 0){
     up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
+
 
   for(let i = 0; i < 12; i++) {
     up = Array.from(document.querySelectorAll("img[class='w-[96px] h-[56px]']"));
@@ -112,6 +134,25 @@ async function autoBuy() {
     }
   }
 
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Spin") && el.className.includes("flex flex-col justify-center items-center"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  for(let i = 0; i < 17; i++) {
+    up = Array.from(document.querySelectorAll("img[class='w-[118px] h-[48px] cursor-pointer mb-1 mr-1']"));
+    if (up.length != 0){
+       triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
+
+    // up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Watch Ads Now") && el.className.includes("rounded-[47px] mx-auto text-white mt-[30px] text-nowrap font-bold font-changa-one"));
+    // if (up.length != 0){
+    //   triggerEvents(up[0]);
+    //   await sleep(getRandomDelay(2000, 3000));
+    // }
+  }
 
   await sleep(3400);
 }
