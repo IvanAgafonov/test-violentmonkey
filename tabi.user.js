@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tabi claim
-// @version      0.26
+// @version      0.27
 // @author       IvanAgafonov
 // @match        https://front.tabibot.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
@@ -125,6 +125,12 @@ async function autoBuy() {
   history.back()
   await sleep(getRandomDelay(1000, 1100));
 
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Claim") && el.className.includes("mt-[-2px]"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
+
   up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Draw") && el.className.includes("flex flex-col justify-center items-center"));
   if (up.length != 0){
     up[0].click();
@@ -136,7 +142,7 @@ async function autoBuy() {
     up = Array.from(document.querySelectorAll("img[class='w-[96px] h-[56px]']"));
     if (up.length != 0){
        triggerEvents(up[0]);
-      await sleep(getRandomDelay(3000, 4000));
+      await sleep(getRandomDelay(3100, 4000));
     }
 
     up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Claim") && el.className.includes("justify-center items-center self-stretch"));
@@ -145,11 +151,12 @@ async function autoBuy() {
       await sleep(getRandomDelay(1000, 2000));
     }
 
-    up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("To spin") && el.className.includes("text-nowrap font-changa-one"));
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(1000, 2000));
-    }
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("To spin") && el.className.includes("text-nowrap font-changa-one"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
   }
 
   up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Spin") && el.className.includes("flex flex-col justify-center items-center"));
