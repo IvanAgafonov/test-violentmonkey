@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tabi claim
-// @version      0.21
+// @version      0.22
 // @author       IvanAgafonov
 // @match        https://front.tabibot.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
@@ -28,6 +28,29 @@ function shuffle(array) {
 
 function getRandomDelay(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function triggerEvents(element) {
+  const events = [
+      new MouseEvent('mouseover', {
+  'view': window,
+  'bubbles': true,
+  'cancelable': true
+}),
+      new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
+      new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseup', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new PointerEvent('click', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerout', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerleave', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseout', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new MouseEvent('mouseleave', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 })
+  ];
+
+  events.forEach((event, index) => {
+      setTimeout(() => element.dispatchEvent(event), index * 100);
+  });
 }
 
 function sleep(ms = 0) {
@@ -61,13 +84,33 @@ async function autoBuy() {
   }
 
   up = Array.from(document.querySelectorAll("div div div div div.text-white")).filter(el => el.textContent.includes("Upgrade"));
-  // div[class='flex w-[291px] h-[46px] justify-center items-center gap-2.5 shrink-0 [background:#7775E8] shadow-[0px_-2.8px_0px_1px_rgba(0,0,0,0.13)_inset,0px_0.8px_1px_0px_rgba(0,0,0,0.34)] px-[117px] py-3.5 rounded-[47px] text-white font-changa-one mt-3']
   if (up.length != 0){
     up[0].click();
     await sleep(getRandomDelay(2000, 4000));
   }
 
   history.back()
+  await sleep(getRandomDelay(1000, 1100));
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Draw") && el.className.includes("flex flex-col justify-center items-center"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  for(let i = 0; i < 12; i++) {
+    up = Array.from(document.querySelectorAll("img[class='w-[96px] h-[56px]']"));
+    if (up.length != 0){
+       triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
+
+    up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Claim") && el.className.includes("justify-center items-center self-stretch"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+  }
 
 
   await sleep(3400);
