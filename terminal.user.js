@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Terminal claim
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://app.0xterminal.game/*
 // @grant        none
@@ -139,6 +139,37 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
+  if (getRandomDelay(1000, 10000) < 1500) {
+
+    up = Array.from(document.querySelectorAll("a[href='/app/tasks']"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      // up[0].click();
+      await sleep(getRandomDelay(2000, 4000));
+    }
+
+    up = Array.from(document.querySelectorAll("button[class='flex w-full items-center justify-between p-10']"));
+    if (up.length != 0){
+      for (const item of up) {
+        triggerEvents(item);
+        await sleep(getRandomDelay(1200, 2000));
+        var up2 = Array.from(document.querySelectorAll("button[class='space-x-4 py-8 font-bold inline-flex-center h-32 min-w-32 rounded-16 px-12 text-inter-12 bg-black-100 text-zinc-100 w-full']"));
+        if (up2.length != 0){
+          triggerEvents(up2[0]);
+          // up[0].click();
+          await sleep(getRandomDelay(1000, 2000));
+        }
+      }
+    }
+  }
+
+
+  up = Array.from(document.querySelectorAll("a[href='/app']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
 
   up = Array.from(document.querySelectorAll("div[class*='size-full rounded-full']"));
   if (up.length != 0){
