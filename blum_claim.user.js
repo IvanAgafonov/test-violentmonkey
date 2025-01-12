@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.22
+// @version      0.23
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -366,9 +366,12 @@ async function autoBuy() {
     } catch (error) {}
   }
 
-  if (getRandomDelay(100, 2600) > 350 && count_tickets > 0) {
+  console.log('count_tickets');
+  console.log(count_tickets)
 
-    up = Array.from(document.querySelectorAll("div div div div a")).filter(el => el.textContent.includes("Play"));
+  if (getRandomDelay(100, 2600) > 550) {
+
+    up = Array.from(document.querySelectorAll("div div div div")).filter(el => el.textContent == "Play");
     if (up.length != 0){
       up[0].click();
       await sleep(getRandomDelay(60000000, 140000000));
