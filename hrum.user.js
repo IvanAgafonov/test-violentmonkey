@@ -130,12 +130,12 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
-    await sleep(getRandomDelay(1000, 3000));
+    await sleep(getRandomDelay(1500, 3000));
     up = Array.from(document.querySelectorAll("button[type='button']"));
     if (up.length != 0){
       triggerEvents(up[0]);
       // up[0].click();
-      await sleep(getRandomDelay(1000, 3000));
+      await sleep(getRandomDelay(2200, 3000));
       await connectWallet();
     }
   }
