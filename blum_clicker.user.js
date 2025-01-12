@@ -830,5 +830,5 @@ try {
 		pauseResumeButton.textContent = isGameToolPaused ? 'Resume' : 'Pause';
 	}
 } catch (e) {
-	console.error("Blum Autoclicker error:", e);
+	console.error("Blum Autoclicker error: ", e);
 }
