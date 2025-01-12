@@ -193,55 +193,7 @@ try {
 		}, getClickDelay());
 	}
 
-	// Функция проверки обновлений скрипта
-	async function checkForUpdates() {
-		if (!GAME_SETTINGS.checkForUpdates) {
-			console.log('Checking for updates is disabled.');
-			return;
-		}
 
-		try {
-			const response = await fetch(SCRIPT_URL);
-			if (!response.ok) {
-				console.warn('Failed to get the script file to check for updates.');
-				return;
-			}
-
-			const scriptText = await response.text();
-			const remoteVersionMatch = scriptText.match(/@version\s+([\d.]+)/);
-
-			if (!remoteVersionMatch || remoteVersionMatch.length < 2) {
-				console.warn('Failed to detect the deleted version.');
-				return;
-			}
-
-			const remoteVersion = remoteVersionMatch[1];
-
-			if (compareVersions(remoteVersion, SCRIPT_VERSION) > 0) {
-				alert(`A new version of the script is available: ${remoteVersion}. Please update the script at: ${SCRIPT_URL}`);
-			} else {
-				console.log('The script has been updated to the latest version.');
-			}
-		} catch (error) {
-			console.error('Error when checking for updates:', error);
-		}
-	}
-
-	// Сравнение версий
-	function compareVersions(v1, v2) {
-		const v1Parts = v1.split('.').map(Number);
-		const v2Parts = v2.split('.').map(Number);
-
-		for (let i = 0; i < Math.max(v1Parts.length, v2Parts.length); i++) {
-			const part1 = v1Parts[i] || 0;
-			const part2 = v2Parts[i] || 0;
-			if (part1 > part2) return 1;
-			if (part1 < part2) return -1;
-		}
-		return 0;
-	}
-
-	checkForUpdates();
 
 	// Функция для расчета задержки между кликами
 	function getClickDelay() {
