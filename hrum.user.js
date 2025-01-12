@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Hrum
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://game.hrum.me/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hrum.user.js
@@ -88,43 +88,58 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(1000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("button[class='van-button van-button--warning van-button--normal van-button--round']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(1000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("button[type='button']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(1000, 3000));
   }
 
   up = Array.from(document.querySelectorAll(".van-badge__wrapper.van-icon.van-icon-list-switch"));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(1000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("div[class='van-badge__wrapper']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(1000, 3000));
   }
 
   up = Array.from(document.querySelectorAll("button[type='button']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(1000, 3000));
   }
+
+  up = Array.from(document.querySelectorAll("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > span:nth-child(1)")).filter(el => el.textContent.includes("TON"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(1000, 3000));
+    up = Array.from(document.querySelectorAll("button[type='button']"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      // up[0].click();
+      await sleep(getRandomDelay(1000, 3000));
+      await connectWallet();
+    }
+  }
+
 
 }
 
