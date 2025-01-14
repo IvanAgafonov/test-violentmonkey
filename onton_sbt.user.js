@@ -90,7 +90,7 @@ async function autoBuy() {
 
 function initializeScript() {
     // if (document.URL.includes("4a8269d6-f628-4fad-9d9e-134696895457")) {
-      console.log('START ton society claim')
+      console.log('START ton society claim ')
 
       setTimeout(autoBuy, getRandomDelay(10000, 10050));
     // }
