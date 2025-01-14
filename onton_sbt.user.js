@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Onton sbt
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://app.onton.live/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/onton_sbt.user.js
@@ -71,11 +71,14 @@ async function connectWallet(){
       await sleep(getRandomDelay(10000, 21000));
     }
   }
+  await sleep(getRandomDelay(2000, 3100));
 }
 
 async function autoBuy() {
     await connectWallet();
     const inputElement = document.querySelector("input[placeholder='Event password']");
+    inputElement.click();
+    await sleep(getRandomDelay(100, 210));
     inputElement.value = "vibe2025";
     inputElement.setAttribute('value', "vibe2025");
 
