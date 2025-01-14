@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tg ton connect
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://web.telegram.org/k*
 // @grant        none
@@ -60,11 +60,12 @@ async function connect() {
     el.textContent.includes("Purchase for 50 points") ||
     el.textContent.includes("Done") ||
     el.textContent.includes("Enter Password") ||
-    el.textContent.includes("Claim Reward") ||                                                                                                                                
+    el.textContent.includes("Claim Reward") ||
     el.textContent.includes("Continue") ||
+    el.textContent.includes("Подключить") ||
     el.textContent.includes("Connect"));
-  if (up.length != 0){
-    triggerEvents(up[0]);
+  for (const item of up) {
+    triggerEvents(item);
   }
 
 
