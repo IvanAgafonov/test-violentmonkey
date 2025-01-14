@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tg ton connect
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://web.telegram.org/k*
 // @grant        none
@@ -59,6 +59,8 @@ async function connect() {
   up = Array.from(document.querySelectorAll("div div div button[class='btn-primary btn-color-primary web-app-button']")).filter(el => el.textContent.includes("Next") ||
     el.textContent.includes("Purchase for 50 points") ||
     el.textContent.includes("Done") ||
+    el.textContent.includes("Enter Password") ||
+    el.textContent.includes("Claim Reward") ||                                                                                                                                
     el.textContent.includes("Continue") ||
     el.textContent.includes("Connect"));
   if (up.length != 0){
