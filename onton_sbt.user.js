@@ -1,11 +1,9 @@
 // ==UserScript==
 // @name         Onton sbt
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://app.onton.live/*
-// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/onton_sbt.user.js
-// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/onton_sbt.user.js
-// @homepage     https://github.com/IvanAgafonov/test-violentmonkey
+
 // @grant        none
 
 // ==/UserScript==
@@ -61,11 +59,11 @@ function sleep(ms = 0) {
 }
 
 async function connectWallet(){
-  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On")
+  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On" || el.textContent == "Wallet in")
   if (up2.length != 0){
     triggerEvents(up2[0]);
     await sleep(getRandomDelay(3000, 4100));
-    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram") || el.textContent.includes("Connect Wallet in Telegram on desktop"))
     if (up2.length != 0){
       triggerEvents(up2[0]);
       await sleep(getRandomDelay(10000, 21000));
@@ -74,7 +72,7 @@ async function connectWallet(){
 }
 
 async function autoBuy() {
-
+    await connectWallet();
     const inputElement = document.querySelector("input[placeholder='Event password']");
     inputElement.value = "vibe2025";
     inputElement.setAttribute('value', "vibe2025");
@@ -89,7 +87,7 @@ function initializeScript() {
     // if (document.URL.includes("4a8269d6-f628-4fad-9d9e-134696895457")) {
       console.log('START ton society claim')
 
-      setTimeout(autoBuy, getRandomDelay(7000, 10050));
+      setTimeout(autoBuy, getRandomDelay(10000, 10050));
     // }
 }
 
