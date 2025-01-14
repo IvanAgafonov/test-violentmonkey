@@ -3,7 +3,9 @@
 // @version      0.11
 // @author       IvanAgafonov
 // @match        https://app.onton.live/*
-
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/onton_sbt.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/onton_sbt.user.js
+// @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 
 // ==/UserScript==
