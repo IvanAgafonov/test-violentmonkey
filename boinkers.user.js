@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://boink.boinkers.co/*
 // @grant        none
@@ -254,82 +254,82 @@ async function autoBuy() {
   await sleep(getRandomDelay(1000, 2000));
 
 
-  // EARN
-  up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("EARN") || el.textContent.includes("Профит"));
-  if (up.length != 0){
-    up[0].click();
-    await sleep(getRandomDelay(2000, 4000));
-  }
+//   // EARN
+//   up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("EARN") || el.textContent.includes("Профит"));
+//   if (up.length != 0){
+//     up[0].click();
+//     await sleep(getRandomDelay(2000, 4000));
+//   }
 
-  up = Array.from(document.querySelectorAll("app-rewarded-action"))
-  var count = 0;
+//   up = Array.from(document.querySelectorAll("app-rewarded-action"))
+//   var count = 0;
 
-  shuffle(up);
-  var up2;
-  var up3;
-  if (up.length != 0){
-    for (const item of up) {
+//   shuffle(up);
+//   var up2;
+//   var up3;
+//   if (up.length != 0){
+//     for (const item of up) {
 
-      up2 = Array.from(item.querySelectorAll("div div span[class='main-label']")).filter(el => !el.textContent.includes("24h after achievement") &&
-                                                                     !el.textContent.includes("Watch an ad") &&
-                                                                     !el.textContent.includes("Earn USDT in Angry Miner!") &&
-                                                                     !el.textContent.includes("Join Hexacore and earn $AGO") &&
-                                                                     !el.textContent.includes("Play Spell & Earn $MANA") &&
-                                                                     !el.textContent.includes("Join News Channel") &&
-                                                                     !el.textContent.includes("Notcoin Platinum Users") &&
-                                                                     !el.textContent.includes("Play Not Bored Puppies") &&
-                                                                     !el.textContent.includes("Play Diamore") &&
-                                                                     !el.textContent.includes("Subscribe BIRDS Channel") &&
-                                                                     !el.textContent.includes("Play Corn now!") &&
-                                                                     !el.textContent.includes("Earn USDT in Angry Miner!") &&
-                                                                     !el.textContent.includes("Score 10 balls in PiggyBank!") &&
-                                                                     !el.textContent.includes("Join Hexacore and earn $AGO") &&
-                                                                     !el.textContent.includes("Play Not Bored Puppies") &&
-                                                                     !el.textContent.includes("Merge to level 3 in Merge Pals") &&
-                                                                     !el.textContent.includes("Animals and Coins") &&
-                                                                     !el.textContent.includes("Join News Channel") &&
-                                                                     !el.textContent.includes("Merge to level 3 in Merge Pals") &&
-                                                                     !el.textContent.includes("СМОТРИ рекламу") &&
-                                                                     !el.textContent.includes("Ставь эмодзи") &&
-                                                                     !el.textContent.includes("Animals and Coins participation bonus") &&
-                                                                     !el.textContent.includes("Boost News Channel") &&
-                                                                     !el.textContent.includes("Опубликуй историю в") &&
-                                                                     !el.textContent.includes("Put emoji on the latest post every 8 hours") &&
-                                                                      !el.textContent.includes("Share a Telegram Story & Forward it to @boinker_bot"));
+//       up2 = Array.from(item.querySelectorAll("div div span[class='main-label']")).filter(el => !el.textContent.includes("24h after achievement") &&
+//                                                                      !el.textContent.includes("Watch an ad") &&
+//                                                                      !el.textContent.includes("Earn USDT in Angry Miner!") &&
+//                                                                      !el.textContent.includes("Join Hexacore and earn $AGO") &&
+//                                                                      !el.textContent.includes("Play Spell & Earn $MANA") &&
+//                                                                      !el.textContent.includes("Join News Channel") &&
+//                                                                      !el.textContent.includes("Notcoin Platinum Users") &&
+//                                                                      !el.textContent.includes("Play Not Bored Puppies") &&
+//                                                                      !el.textContent.includes("Play Diamore") &&
+//                                                                      !el.textContent.includes("Subscribe BIRDS Channel") &&
+//                                                                      !el.textContent.includes("Play Corn now!") &&
+//                                                                      !el.textContent.includes("Earn USDT in Angry Miner!") &&
+//                                                                      !el.textContent.includes("Score 10 balls in PiggyBank!") &&
+//                                                                      !el.textContent.includes("Join Hexacore and earn $AGO") &&
+//                                                                      !el.textContent.includes("Play Not Bored Puppies") &&
+//                                                                      !el.textContent.includes("Merge to level 3 in Merge Pals") &&
+//                                                                      !el.textContent.includes("Animals and Coins") &&
+//                                                                      !el.textContent.includes("Join News Channel") &&
+//                                                                      !el.textContent.includes("Merge to level 3 in Merge Pals") &&
+//                                                                      !el.textContent.includes("СМОТРИ рекламу") &&
+//                                                                      !el.textContent.includes("Ставь эмодзи") &&
+//                                                                      !el.textContent.includes("Animals and Coins participation bonus") &&
+//                                                                      !el.textContent.includes("Boost News Channel") &&
+//                                                                      !el.textContent.includes("Опубликуй историю в") &&
+//                                                                      !el.textContent.includes("Put emoji on the latest post every 8 hours") &&
+//                                                                       !el.textContent.includes("Share a Telegram Story & Forward it to @boinker_bot"));
 
-      up3 = Array.from(item.querySelectorAll("span span")).filter(el => el.textContent.includes("CLAIMED") || el.textContent.includes("ПОЛУЧЕНО"));
-      if (up3.length == 0){
+//       up3 = Array.from(item.querySelectorAll("span span")).filter(el => el.textContent.includes("CLAIMED") || el.textContent.includes("ПОЛУЧЕНО"));
+//       if (up3.length == 0){
 
-        if (up2.length != 0){
-          count += 1;
-          up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("VERIFY") || el.textContent.includes("ЧЕК"));
-          if (up2.length != 0){
-            up2[0].click();
-            await sleep(getRandomDelay(2000, 4000));
-          } else {
-            up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("GO") || el.textContent.includes("ГО"));
-            if (up2.length != 0){
-              up2[0].click();
-              await sleep(getRandomDelay(13000, 20000));
-            }
-            up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("CLAIM") || el.textContent.includes("ПОЛУЧИТЬ"));
-            if (up2.length != 0){
-              up2[0].click();
-              await sleep(getRandomDelay(2000, 4000));
-            }
-            up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("VERIFY") || el.textContent.includes("ЧЕК"));
-            if (up2.length != 0){
-              up2[0].click();
-              await sleep(getRandomDelay(2000, 4000));
-            }
-          }
-        }
-      }
-      if (count >= 10){
-        break;
-      }
-    }
-  }
+//         if (up2.length != 0){
+//           count += 1;
+//           up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("VERIFY") || el.textContent.includes("ЧЕК"));
+//           if (up2.length != 0){
+//             up2[0].click();
+//             await sleep(getRandomDelay(2000, 4000));
+//           } else {
+//             up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("GO") || el.textContent.includes("ГО"));
+//             if (up2.length != 0){
+//               up2[0].click();
+//               await sleep(getRandomDelay(13000, 20000));
+//             }
+//             up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("CLAIM") || el.textContent.includes("ПОЛУЧИТЬ"));
+//             if (up2.length != 0){
+//               up2[0].click();
+//               await sleep(getRandomDelay(2000, 4000));
+//             }
+//             up2 =  Array.from(item.querySelectorAll("button span")).filter(el => el.textContent.includes("VERIFY") || el.textContent.includes("ЧЕК"));
+//             if (up2.length != 0){
+//               up2[0].click();
+//               await sleep(getRandomDelay(2000, 4000));
+//             }
+//           }
+//         }
+//       }
+//       if (count >= 10){
+//         break;
+//       }
+//     }
+//   }
 
 
 
