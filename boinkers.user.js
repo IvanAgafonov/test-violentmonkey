@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.16
+// @version      0.17
 // @author       IvanAgafonov
 // @match        https://boink.boinkers.co/*
 // @grant        none
@@ -210,9 +210,12 @@ async function autoBuy() {
   while(true) {
     var spins = Array.from(document.querySelectorAll("span[class='main-label values-label'] span[class='ng-star-inserted']"));
     var x = Array.from(document.querySelectorAll("span[class='main-label shadow']"));
+
     if (spins.length != 0 && x.length != 0){
+      console.log(Number(spins[0].textContent.split("/")[0].replaceAll(',', '').replaceAll('.', '')))
+      console.log(x[0].textContent.split("X")[1])
       await sleep(getRandomDelay(100, 1000));
-      if (Number(spins[0].textContent.split("/")[0].replaceAll(',', '')) - Number(x[0].textContent.split("X")[1].replaceAll(',', '')) > 0) {
+      if (Number(spins[0].textContent.split("/")[0].replaceAll(',', '').replaceAll('.', '')) - Number(x[0].textContent.split("X")[1].replaceAll(',', '').replaceAll('.', '').replaceAll('K', '')) > 0) {
         console.log(Number(spins[0].textContent.split("/")[0]))
         console.log(Number(x[0].textContent.split("X")[1]))
       } else {
