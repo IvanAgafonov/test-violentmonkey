@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tabi claim
-// @version      0.28
+// @version      0.29
 // @author       IvanAgafonov
 // @match        https://front.tabibot.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
@@ -174,7 +174,7 @@ async function autoBuy() {
     }
   }
 
-  for(let i = 0; i < 17; i++) {
+  for(let i = 0; i < 30; i++) {
     up = Array.from(document.querySelectorAll("img[class='w-[118px] h-[48px] cursor-pointer mb-1 mr-1']"));
     if (up.length != 0){
        triggerEvents(up[0]);
