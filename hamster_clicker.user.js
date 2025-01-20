@@ -5,7 +5,7 @@
 // @match        *://*.hamsterkombat.io/*
 // @match        *://*.hamsterkombatgame.io/*
 // @exclude      https://hamsterkombatgame.io/games/UnblockPuzzle/*
-// @version      0.1
+// @version      0.111
 // @grant        none
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hamster_clicker.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hamster_clicker.user.js
@@ -41,7 +41,7 @@
 		maxEnergyRefillDelay: 180000, // Максимальная задержка в миллисекундах для пополнения энергии (180 секунд)
 		maxRetries: 5, // Максимальное количество попыток перед перезагрузкой страницы
 		autoBuyEnabled: true, // Автопокупка по умолчанию выключена
-		maxPaybackHours: 10672, // Максимальное время окупаемости в часах для автопокупки (4 недели)
+		maxPaybackHours: 1000672, // Максимальное время окупаемости в часах для автопокупки (4 недели)
 		isPaused: false // Пауза по умолчанию выключена
 	};
 
