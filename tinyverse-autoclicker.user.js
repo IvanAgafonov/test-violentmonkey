@@ -5,9 +5,9 @@
 // @grant        none
 // @version      1.1
 // @author       xz
-// @downloadURL  https://github.com/mudachyo/TinyVerse/raw/main/tinyverse-autoclicker.user.js
-// @updateURL    https://github.com/mudachyo/TinyVerse/raw/main/tinyverse-autoclicker.user.js
-// @homepage     https://github.com/mudachyo/TinyVerse
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
+// @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // ==/UserScript==
 
 (function() {
