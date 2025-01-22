@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @match        https://*.tonverse.app/*
 // @grant        none
-// @version      1.1
+// @version      1.2
 // @author       xz
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
@@ -16,6 +16,29 @@
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+
+    function triggerEvents(element) {
+    const events = [
+        new MouseEvent('mouseover', {
+    'view': window,
+    'bubbles': true,
+    'cancelable': true
+  }),
+        new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
+        new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+        new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+        new MouseEvent('mouseup', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+        new PointerEvent('click', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+        new PointerEvent('pointerout', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+        new PointerEvent('pointerleave', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+        new MouseEvent('mouseout', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+        new MouseEvent('mouseleave', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 })
+    ];
+
+    events.forEach((event, index) => {
+        setTimeout(() => element.dispatchEvent(event), index * 100);
+    });
+  }
 
     function simulateClick(element) {
         const rect = element.getBoundingClientRect();
@@ -261,9 +284,22 @@
     });
 
     (async function waitAndClick() {
-        const elementSelector = '#ui-bottom > a:nth-child(2)';
+
+
+      const elementSelector = '#ui-bottom > a:nth-child(2)';
+
 
         while (true) {
+            var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Begin your own journey");
+            if (up.length != 0){
+              triggerEvents(up[0]);
+            }
+
+            up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Begin Journey");
+            if (up.length != 0){
+              triggerEvents(up[0].parentElement);
+            }
+
             const element = document.querySelector(elementSelector);
 
             if (!element) {
