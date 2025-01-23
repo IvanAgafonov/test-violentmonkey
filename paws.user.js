@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.70
+// @version      0.71
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -205,8 +205,7 @@ async function autoBuy() {
     return;
   }
 
-  emulateFiveFingerTouch();
-  await sleep(getRandomDelay(1000, 1050));
+
 
   var names = ['Limited', 'In-game', 'Partners'];
 
@@ -267,6 +266,10 @@ async function autoBuy() {
         await sleep(getRandomDelay(5000, 8000));
       }
     }
+
+  emulateFiveFingerTouch();
+  await sleep(getRandomDelay(2000, 2050));
+    
     up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Claim");
     if (up.length != 0){
       for (const item of up) {
