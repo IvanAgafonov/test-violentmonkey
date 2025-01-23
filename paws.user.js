@@ -206,6 +206,7 @@ async function autoBuy() {
   }
 
   emulateFiveFingerTouch();
+  await sleep(getRandomDelay(1000, 1050));
 
   var names = ['Limited', 'In-game', 'Partners'];
 
