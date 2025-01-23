@@ -284,7 +284,7 @@ async function autoBuy() {
 
 function initializeScript() {
 
-    console.log('START paws claim ')
+    console.log('START paws claim  ')
 
     setTimeout(autoBuy, getRandomDelay(12000, 13050));
 }
