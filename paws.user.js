@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.69
+// @version      0.70
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
@@ -28,6 +28,63 @@ function shuffle(array) {
 
 function getRandomDelay(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+function createTouchEvent(type, touches) {
+  const event = new TouchEvent(type, {
+    touches: touches,
+    targetTouches: touches,
+    changedTouches: touches,
+    bubbles: true,
+    cancelable: true
+  });
+  document.dispatchEvent(event);
+}
+
+function emulateFiveFingerTouch() {
+  const positions = [
+    { x: 100, y: 100 },
+    { x: 300, y: 100 },
+    { x: 500, y: 100 },
+    { x: 100, y: 300 },
+    { x: 300, y: 300 }
+  ];
+
+  const touches = positions.map((pos, index) => {
+    return new Touch({
+      identifier: index + 1, // Идентификатор касания
+      target: document.body, // Цель касания (весь документ)
+      clientX: pos.x,
+      clientY: pos.y,
+      screenX: pos.x,
+      screenY: pos.y,
+      pageX: pos.x,
+      pageY: pos.y
+    });
+  });
+
+  createTouchEvent("touchstart", touches);
+
+  setTimeout(() => {
+    const movedTouches = touches.map(touch => {
+      return new Touch({
+        identifier: touch.identifier,
+        target: document.body,
+        clientX: touch.clientX + 10,
+        clientY: touch.clientY + 10,
+        screenX: touch.screenX + 10,
+        screenY: touch.screenY + 10,
+        pageX: touch.pageX + 10,
+        pageY: touch.pageY + 10
+      });
+    });
+    createTouchEvent("touchmove", movedTouches);
+  }, 500);
+
+  setTimeout(() => {
+    createTouchEvent("touchend", touches);
+  }, 1000);
 }
 
 
@@ -147,6 +204,8 @@ async function autoBuy() {
     await autoBuy();
     return;
   }
+
+  emulateFiveFingerTouch();
 
   var names = ['Limited', 'In-game', 'Partners'];
 
