@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.23
+// @version      0.24
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -79,7 +79,7 @@ async function start_claim() {
         }
       } catch (error) {}
       if (need_wait) {
-
+        await sleep(getRandomDelay(200, 300));
       } else {
         item.click();
         await sleep(getRandomDelay(2000, 3000));
@@ -356,11 +356,12 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  up = Array.from(document.querySelectorAll(".pass"));
+  up = Array.from(document.querySelectorAll("div[class='content'] div[class='balance']"));
   var count_tickets = 0;
   if (up.length != 0){
     try{
-      count_tickets = up[0].textContent.trim();
+      console.log(up[0]);
+      count_tickets = up[0].textContent.trim().split(' ')[0];
       count_tickets = Number(count_tickets);
       await sleep(getRandomDelay(3000, 4000));
     } catch (error) {}
@@ -369,7 +370,7 @@ async function autoBuy() {
   console.log('count_tickets');
   console.log(count_tickets)
 
-  if (getRandomDelay(100, 2600) > 550) {
+  if (getRandomDelay(100, 2600) > 1550 || count_tickets > 0) {
 
     up = Array.from(document.querySelectorAll("div div div div")).filter(el => el.textContent == "Play");
     if (up.length != 0){
