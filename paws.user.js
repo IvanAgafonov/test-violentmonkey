@@ -45,10 +45,10 @@ function createTouchEvent(type, touches) {
 function emulateFiveFingerTouch() {
   const positions = [
     { x: 100, y: 100 },
-    { x: 300, y: 100 },
-    { x: 500, y: 100 },
-    { x: 100, y: 300 },
-    { x: 300, y: 300 }
+    { x: 290, y: 100 },
+    { x: 500, y: 120 },
+    { x: 110, y: 300 },
+    { x: 300, y: 290 }
   ];
 
   const touches = positions.map((pos, index) => {
