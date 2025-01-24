@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Paws claim
-// @version      0.71
+// @version      0.72
 // @author       IvanAgafonov
 // @match        https://app.paws.community/*
 // @grant        none
