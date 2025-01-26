@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Onton sbt
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://app.onton.live/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/onton_sbt.user.js
@@ -74,26 +74,71 @@ async function connectWallet(){
   await sleep(getRandomDelay(2000, 3100));
 }
 
-async function autoBuy() {
+async function autoBuy1() {
     await connectWallet();
     const inputElement = document.querySelector("input[placeholder='Event password']");
     inputElement.click();
     await sleep(getRandomDelay(100, 210));
-    inputElement.value = "arthurGonzalez";
-    inputElement.setAttribute('value', "arthurGonzalez");
+    inputElement.value = "beeton";
+    inputElement.setAttribute('value', "beeton");
 
     inputElement.dispatchEvent(new Event('input', { bubbles: true }));
     inputElement.dispatchEvent(new Event('change'));
+}
 
+async function autoBuy2() {
+    await connectWallet();
+    const inputElement = document.querySelector("input[placeholder='Event password']");
+    inputElement.click();
+    await sleep(getRandomDelay(100, 210));
+    inputElement.value = "Craken-Sbt";
+    inputElement.setAttribute('value', "Craken-Sbt");
+
+    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+    inputElement.dispatchEvent(new Event('change'));
+}
+
+async function autoBuy3() {
+    await connectWallet();
+    const inputElement = document.querySelector("input[placeholder='Event password']");
+    inputElement.click();
+    await sleep(getRandomDelay(100, 210));
+    inputElement.value = "Craken";
+    inputElement.setAttribute('value', "Craken");
+
+    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+    inputElement.dispatchEvent(new Event('change'));
+}
+
+async function autoBuy4() {
+    await connectWallet();
+    const inputElement = document.querySelector("input[placeholder='Event password']");
+    inputElement.click();
+    await sleep(getRandomDelay(100, 210));
+    inputElement.value = "sadmeow";
+    inputElement.setAttribute('value', "sadmeow");
+
+    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+    inputElement.dispatchEvent(new Event('change'));
 }
 
 
 function initializeScript() {
-    // if (document.URL.includes("4a8269d6-f628-4fad-9d9e-134696895457")) {
-      console.log('START ton society claim ')
+    if (document.URL.includes("66d463c1-2e53-43b0-901b-7a34fd07e9f7")) {
+      console.log('START ton society claim 1')
 
-      setTimeout(autoBuy, getRandomDelay(10000, 10050));
-    // }
+      setTimeout(autoBuy1, getRandomDelay(10000, 10050));
+    }
+    if (document.URL.includes("12195b0d-1e35-44e6-af75-d1208f6fe056")) {
+      console.log('START ton society claim 2')
+
+      setTimeout(autoBuy2, getRandomDelay(10000, 10050));
+    }
+    if (document.URL.includes("67295108-065b-454d-a25c-0095f178cb49")) {
+      console.log('START ton society claim 3')
+
+      setTimeout(autoBuy3, getRandomDelay(10000, 10050));
+    }
 }
 
 if (document.readyState === 'loading') {
