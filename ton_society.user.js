@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         Ton society
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://master.*/*
+// @match        https://app.tonsociety.id/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_society.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_society.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -87,9 +88,9 @@ async function autoBuy() {
 
 function initializeScript() {
 
-    console.log('START ton society claim')
+    console.log('START ton society badge claim')
 
-    setTimeout(autoBuy, getRandomDelay(7000, 10050));
+    setTimeout(autoBuy, getRandomDelay(9000, 12050));
 }
 
 if (document.readyState === 'loading') {
