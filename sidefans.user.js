@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         sidefans
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://game.sidekick.fans/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/sidefans.user.js
@@ -96,11 +96,21 @@ async function autoBuy() {
 
   up = Array.from(document.querySelectorAll("span[class='min-w-[16px] text-left']"));
   if (up.length >=  3) {
-    if (Number(up[2].textContent) > 0) {
-      up = Array.from(document.querySelectorAll("div[class='font-bold text-[#0B0613] text-[16px] leading-5']"));
-      if (up.length != 0){
-        triggerEvents(up[0]);
-        await sleep(getRandomDelay(3000, 4100));
+    var count = Number(up[2].textContent);
+    if (count > 0) {
+      console.log("count:");
+      console.log(count);
+      for(var i = 0; i < count; i++) {
+        up = Array.from(document.querySelectorAll("div[class='font-bold text-[#0B0613] text-[16px] leading-5']"));
+        if (up.length != 0){
+          triggerEvents(up[0]);
+          await sleep(getRandomDelay(3000, 4100));
+          var up3 = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "CONFIRM");
+          if (up3.length != 0){
+            triggerEvents(up3[0]);
+            await sleep(getRandomDelay(2000, 2100));
+          }
+        }
       }
     }
   }
