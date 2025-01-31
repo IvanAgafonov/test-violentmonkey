@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tonton clicker
-// @version      0.0
+// @version      0.1
 // @author       IvanAgafonov
 // @match        https://quest.intract.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tonton.user.js
@@ -65,9 +65,12 @@ function getRandomCoordinateInCircle(radius) {
 }
 
 function getCurrentEnergy() {
-    const energyElement = document.querySelector("._h4_1w1my_1");
-    if (energyElement) {
-        return parseInt(energyElement.textContent);
+    const up = Array.from(document.querySelectorAll("div div div div")).filter(el => el.className.includes("tap_tap_footer_energy"));
+    if (up.length != 0){
+      const en = up[0].querySelector('span');
+      if (en) {
+        return parseInt(en.textContent);
+      }
     }
     return null;
 }
@@ -112,7 +115,7 @@ function clickButton() {
         return;
     }
 
-    const currentEnergy = 500
+    const currentEnergy = getCurrentEnergy();
     if (currentEnergy !== null && currentEnergy < GAME_SETTINGS.energyThreshold) {
         const pauseTime = GAME_SETTINGS.pauseMinTime + Math.random() * (GAME_SETTINGS.pauseMaxTime - GAME_SETTINGS.pauseMinTime);
         console.log(`${logPrefix}The energy is lower ${GAME_SETTINGS.energyThreshold}. Pause for ${Math.round(pauseTime / 1000)} seconds.`, styles.info);
