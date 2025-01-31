@@ -342,7 +342,7 @@
                       simulateClick(element);
                   }
               } else {
-                  console.warn('Could not retrieve text from <span>');
+                  console.warn('Could not retrieve text from <span> ');
               }
             }
 
