@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @match        https://*.tonverse.app/*
 // @grant        none
-// @version      1.2
+// @version      1.3
 // @author       xz
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
@@ -287,48 +287,63 @@
 
 
       const elementSelector = '#ui-bottom > a:nth-child(2)';
+      var count = 0;
 
 
         while (true) {
-            var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Begin your own journey");
-            if (up.length != 0){
-              triggerEvents(up[0]);
+//             var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Begin your own journey");
+//             if (up.length != 0){
+//               triggerEvents(up[0]);
+//             }
+
+//             up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Begin Journey");
+//             if (up.length != 0){
+//               triggerEvents(up[0].parentElement);
+//             }
+            if (count <= 2) {
+              var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Add Stars");
+              if (up.length != 0){
+                triggerEvents(up[0].parentElement);
+              }
+
+              up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Create 100 Stars");
+              if (up.length != 0){
+                triggerEvents(up[0].parentElement);
+              }
             }
+            count = count + 1;
 
-            up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Begin Journey");
-            if (up.length != 0){
-              triggerEvents(up[0].parentElement);
-            }
+            if (count > 2) {
+              const element = document.querySelector(elementSelector);
 
-            const element = document.querySelector(elementSelector);
+              if (!element) {
+                  console.warn('Element not found');
+                  await new Promise(resolve => setTimeout(resolve, 1000));
+                  continue;
+              }
 
-            if (!element) {
-                console.warn('Element not found');
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                continue;
-            }
+              const spanElement = element.querySelector('span');
+              const spanText = spanElement?.textContent?.trim();
 
-            const spanElement = element.querySelector('span');
-            const spanText = spanElement?.textContent?.trim();
+              if (spanText) {
+                  const percentageMatch = spanText.match(/^(\d+)%$/);
+                  if (percentageMatch) {
+                      const percentage = parseInt(percentageMatch[1], 10);
+                      console.log(`Current value: ${percentage}%, Threshold: ${randomThreshold}%`);
 
-            if (spanText) {
-                const percentageMatch = spanText.match(/^(\d+)%$/);
-                if (percentageMatch) {
-                    const percentage = parseInt(percentageMatch[1], 10);
-                    console.log(`Current value: ${percentage}%, Threshold: ${randomThreshold}%`);
-
-                    if (percentage >= randomThreshold) {
-                        simulateClick(element);
-                        console.log(`Clicked element at: ${percentage}%`);
-                        randomThreshold = getRandomInt(settings.min, settings.max);
-                        console.log(`New threshold: ${randomThreshold}%`);
-                    }
-                } else {
-                    console.log(`Clicking element with text: ${spanText}`);
-                    simulateClick(element);
-                }
-            } else {
-                console.warn('Could not retrieve text from <span>');
+                      if (percentage >= randomThreshold) {
+                          simulateClick(element);
+                          console.log(`Clicked element at: ${percentage}%`);
+                          randomThreshold = getRandomInt(settings.min, settings.max);
+                          console.log(`New threshold: ${randomThreshold}%`);
+                      }
+                  } else {
+                      console.log(`Clicking element with text: ${spanText}`);
+                      simulateClick(element);
+                  }
+              } else {
+                  console.warn('Could not retrieve text from <span>');
+              }
             }
 
             await new Promise(resolve => setTimeout(resolve, 500));
