@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @match        https://*.tonverse.app/*
 // @grant        none
-// @version      1.4
+// @version      1.5
 // @author       xz
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
@@ -300,7 +300,7 @@
 //             if (up.length != 0){
 //               triggerEvents(up[0].parentElement);
 //             }
-            if (count <= 3) {
+            if (count <= 8) {
               var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Add Stars");
               if (up.length != 0){
                 triggerEvents(up[0].parentElement);
@@ -314,7 +314,7 @@
             }
             count = count + 1;
 
-            if (count > 3) {
+            if (count > 8) {
               var up2 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Close");
               if (up2.length != 0){
                 triggerEvents(up2[0].parentElement);
