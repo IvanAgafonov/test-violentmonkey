@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Bro bot
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://contests.joinbrobot.cc/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/brobot.user.js
@@ -76,39 +76,39 @@ async function connectWallet(){
 async function autoBuy() {
 
 
-  var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Let's go!");
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(2000, 3000));
-  }
+//   var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Let's go!");
+//   if (up.length != 0){
+//     triggerEvents(up[0]);
+//     await sleep(getRandomDelay(2000, 3000));
+//   }
 
 
 
-  up = Array.from(document.querySelectorAll("#logo-bro"));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(2000, 3000));
-  }
+//   up = Array.from(document.querySelectorAll("#logo-bro"));
+//   if (up.length != 0){
+//     triggerEvents(up[0]);
+//     await sleep(getRandomDelay(2000, 3000));
+//   }
 
-  up = Array.from(document.querySelectorAll("div")).filter(el => (el.textContent == "Follow X [News]" ||
-                                                                 el.textContent == "Follow [News]" ||
-                                                                 el.textContent == "Repost X") && el.className.includes("account-profile__task-title"));
-  if (up.length != 0){
-    for (const item of up) {
-      triggerEvents(item.parentElement.querySelector("button"));
-      await sleep(getRandomDelay(2000, 3000));
-    }
-  }
+//   up = Array.from(document.querySelectorAll("div")).filter(el => (el.textContent == "Follow X [News]" ||
+//                                                                  el.textContent == "Follow [News]" ||
+//                                                                  el.textContent == "Repost X") && el.className.includes("account-profile__task-title"));
+//   if (up.length != 0){
+//     for (const item of up) {
+//       triggerEvents(item.parentElement.querySelector("button"));
+//       await sleep(getRandomDelay(2000, 3000));
+//     }
+//   }
 
-  up = Array.from(document.querySelectorAll("div")).filter(el => (el.textContent == "Follow X [News]" ||
-                                                                 el.textContent == "Follow [News]" ||
-                                                                 el.textContent == "Repost X") && el.className.includes("account-profile__task-title"));
-  if (up.length != 0){
-    for (const item of up) {
-      triggerEvents(item.parentElement.querySelector("button"));
-      await sleep(getRandomDelay(2000, 3000));
-    }
-  }
+//   up = Array.from(document.querySelectorAll("div")).filter(el => (el.textContent == "Follow X [News]" ||
+//                                                                  el.textContent == "Follow [News]" ||
+//                                                                  el.textContent == "Repost X") && el.className.includes("account-profile__task-title"));
+//   if (up.length != 0){
+//     for (const item of up) {
+//       triggerEvents(item.parentElement.querySelector("button"));
+//       await sleep(getRandomDelay(2000, 3000));
+//     }
+//   }
 
 
   // up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Connect Wallet" && el.className.includes("account-profile__task-title"));
@@ -118,38 +118,38 @@ async function autoBuy() {
   //   await connectWallet();
   // }
 
-  // up = Array.from(document.querySelectorAll("#logo-flower"));
-  // if (up.length != 0){
-  //   triggerEvents(up[0]);
-  //   await sleep(getRandomDelay(2000, 3000));
-  // }
+  up = Array.from(document.querySelectorAll("#logo-flower"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
 
-  // up = Array.from(document.querySelectorAll("img[src='contests/tonsociety-small.png']"));
-  // if (up.length != 0){
-  //   triggerEvents(up[0]);
-  //   await sleep(getRandomDelay(5000, 6000));
-  // }
+  up = Array.from(document.querySelectorAll("img[src='contests/xrock-small.png']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5000, 6000));
+  }
 
-  // up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Claim" && el.className.includes("contest__block-item-claim-button"));
-  // if (up.length != 0){
-  //   triggerEvents(up[0]);
-  //   await sleep(getRandomDelay(5000, 6000));
-  // }
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Claim" && el.className.includes("contest__block-item-claim-button"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5000, 6000));
+  }
 
-  // up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Connect TON Wallet" && el.className.includes("contest__block-item-title"));
-  // if (up.length != 0){
-  //   triggerEvents(up[0]);
-  //   await sleep(getRandomDelay(2000, 3000));
-  //   await connectWallet();
-  // }
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Connect TON Wallet" && el.className.includes("contest__block-item-title"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+    await connectWallet();
+  }
 
-  // up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes("contest__block-item"));
-  // if (up.length != 0){
-  //   for (const item of up) {
-  //     triggerEvents(item);
-  //     await sleep(getRandomDelay(2000, 3000));
-  //   }
-  // }
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes("contest__block-item"));
+  if (up.length != 0){
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(2000, 3000));
+    }
+  }
 
 
 
