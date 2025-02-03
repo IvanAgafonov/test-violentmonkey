@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @match        https://*.tonverse.app/*
 // @grant        none
-// @version      1.6
+// @version      1.7
 // @author       xz
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
@@ -305,6 +305,12 @@
               if (up.length != 0){
                 triggerEvents(up[0].parentElement);
               }
+
+              up = Array.from(document.querySelectorAll("path[d='M10 2L12.5392 6.50505L17.6085 7.52786L14.1086 11.335L14.7023 16.4721L10 14.32L5.29772 16.4721L5.89144 11.335L2.39155 7.52786L7.46077 6.50505L10 2Z']"));
+              if (up.length != 0){
+                triggerEvents(up[0].parentElement);
+              }
+              console.log(`New randomThreshold: ${up}`);
 
               up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Create 100 Stars");
               if (up.length != 0){
