@@ -191,7 +191,7 @@ function initializeScript() {
 
     console.log('START intract claim')
 
-    setTimeout(autoBuy, getRandomDelay(9000, 12050));
+    setTimeout(autoBuy, getRandomDelay(15000, 18050));
 }
 
 if (document.readyState === 'loading') {
