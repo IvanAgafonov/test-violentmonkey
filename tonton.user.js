@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tonton clicker
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://quest.intract.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tonton.user.js
@@ -100,7 +100,7 @@ function checkCoinAndClick() {
               setTimeout(checkCoinAndClick, checkInterval);
           } else {
               console.log(`${logPrefix}Coin not found after 3 attempts. Reloading the page.`, styles.error);
-              location.reload();
+              // location.reload();
           }
       } else {
           console.log(`${logPrefix}Coin not found. Attempt ${checkAttempts}/${maxCheckAttempts}. Check again after 3 seconds.`, styles.error);
