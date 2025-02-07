@@ -94,7 +94,7 @@ function initializeScript() {
 
     console.log('START hume claim')
 
-    setTimeout(autoBuy, getRandomDelay(15000, 18050));
+    setTimeout(autoBuy, getRandomDelay(7000, 11050));
 }
 
 if (document.readyState === 'loading') {
