@@ -92,7 +92,7 @@ async function autoBuy() {
 
 function initializeScript() {
 
-    console.log('START hume claim')
+    console.log('START hume claim ')
 
     setTimeout(autoBuy, getRandomDelay(7000, 11050));
 }
