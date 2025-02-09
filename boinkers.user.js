@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.17
+// @version      0.18
 // @author       IvanAgafonov
 // @match        https://boink.boinkers.co/*
 // @grant        none
@@ -167,19 +167,19 @@ async function autoBuy() {
     }
 
     // wallet
-    if (getRandomDelay(1000, 20000) < 3000) {
-      up = Array.from(document.querySelectorAll("img[alt='DROP']"));
-      if (up.length != 0){
-        triggerEvents(up[0]);
-        await sleep(getRandomDelay(2000, 3000));
-        up = Array.from(document.querySelectorAll(".main-label.shadow.connect-wallet-btn-label"));
-        if (up.length != 0){
-          triggerEvents(up[0]);
-          await sleep(getRandomDelay(5000, 6000));
-          await connectWallet();
-        }
-      }
-    }
+    // if (getRandomDelay(1000, 20000) < 3000) {
+    //   up = Array.from(document.querySelectorAll("img[alt='DROP']"));
+    //   if (up.length != 0){
+    //     triggerEvents(up[0]);
+    //     await sleep(getRandomDelay(2000, 3000));
+    //     up = Array.from(document.querySelectorAll(".main-label.shadow.connect-wallet-btn-label"));
+    //     if (up.length != 0){
+    //       triggerEvents(up[0]);
+    //       await sleep(getRandomDelay(5000, 6000));
+    //       await connectWallet();
+    //     }
+    //   }
+    // }
 
   // spin
   up = Array.from(document.querySelectorAll("span span span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("Спин"));
