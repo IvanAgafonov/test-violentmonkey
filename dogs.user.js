@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dogs claim
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://onetime.dog/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/dogs.user.js
@@ -76,20 +76,34 @@ async function connectWallet(){
 async function autoBuy() {
 
 
-  var up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Start the journey") && el.className.includes('fixedBottom'));
+  var up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Claim My Gift" && el.className.includes('type-gold'));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
 
-  up = Array.from(document.querySelectorAll("div")).filter(el =>  el.textContent.includes("Connect $DOGS Wallet") && el.className.includes('button'));
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Claim" && el.className.includes('type-gold'));
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
-    await connectWallet();
   }
+
+//   var up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Start the journey") && el.className.includes('fixedBottom'));
+//   if (up.length != 0){
+//     triggerEvents(up[0]);
+//     // up[0].click();
+//     await sleep(getRandomDelay(2000, 3000));
+//   }
+
+//   up = Array.from(document.querySelectorAll("div")).filter(el =>  el.textContent.includes("Connect $DOGS Wallet") && el.className.includes('button'));
+//   if (up.length != 0){
+//     triggerEvents(up[0]);
+//     // up[0].click();
+//     await sleep(getRandomDelay(2000, 3000));
+//     await connectWallet();
+//   }
 
   // if (getRandomDelay(1000, 2000) < 10500) {
 
@@ -146,7 +160,7 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[1]);
     // up[0].click();
-     await sleep(getRandomDelay(2000, 3000)); 
+     await sleep(getRandomDelay(2000, 3000));
    }
 
 
