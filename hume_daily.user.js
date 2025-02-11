@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hume daily
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://humeworld.xyz/daily-spin
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hume_daily.user.js
@@ -94,7 +94,7 @@ function initializeScript() {
 
     console.log('START hume claim ')
 
-    setTimeout(autoBuy, getRandomDelay(7000, 11050));
+    setTimeout(autoBuy, getRandomDelay(10000, 15050));
 }
 
 if (document.readyState === 'loading') {
