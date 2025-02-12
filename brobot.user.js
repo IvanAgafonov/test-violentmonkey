@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Bro bot
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://contests.joinbrobot.cc/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/brobot.user.js
@@ -124,10 +124,18 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 3000));
   }
 
-  up = Array.from(document.querySelectorAll("img[src='contests/xrock-small.png']"));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(5000, 6000));
+  if (getRandomDelay(1000, 3000) < 2000) {
+    up = Array.from(document.querySelectorAll("img[src='contests/dedust-small.png']"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(5000, 6000));
+    }
+  } else {
+    up = Array.from(document.querySelectorAll("img[src='contests/tonsociety-small.png']"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(5000, 6000));
+    }
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Claim" && el.className.includes("contest__block-item-claim-button"));
