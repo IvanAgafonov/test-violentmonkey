@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tbook
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://i.tbook.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tbook.user.js
@@ -81,7 +81,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(12000, 14000));
   }
 
-  up = Array.from(document.querySelectorAll("div[class='text-center'] button"));
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check In"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
