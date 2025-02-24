@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tonton clicker
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://quest.intract.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tonton.user.js
@@ -12,8 +12,8 @@
 
 
 let GAME_SETTINGS = {
-    minClickDelay: 50,
-    maxClickDelay: 150,
+    minClickDelay: 35,
+    maxClickDelay: 120,
     pauseMinTime: 100000,
     pauseMaxTime: 300000,
     energyThreshold: 25
