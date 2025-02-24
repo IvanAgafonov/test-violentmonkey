@@ -16,7 +16,7 @@ let GAME_SETTINGS = {
     maxClickDelay: 120,
     pauseMinTime: 100000,
     pauseMaxTime: 300000,
-    energyThreshold: 25
+    energyThreshold: 2
 };
 
 const checkInterval = 1500;
