@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         ton society quests
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://commquest.xyz/*
-// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_quests.js
-// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_quests.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_quests.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_quests.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 
