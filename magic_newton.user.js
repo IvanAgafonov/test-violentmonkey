@@ -3,8 +3,8 @@
 // @version      0.1
 // @author       IvanAgafonov
 // @match        https://www.magicnewton.com/portal/rewards
-// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/magic_newton.js
-// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/magic_newton.js
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/magic_newton.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/magic_newton.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 // ==/UserScript==
