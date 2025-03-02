@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ton society quests
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://commquest.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_quests.user.js
@@ -413,6 +413,63 @@ async function autoBuy() {
   }
 
   // TODO
+
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "TONAPI Airdrop: Простое распределение токенов");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Открыть");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Проверить");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Перейти");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    var answers = ["10 миллионов",
+                   "Загрузить .csv файл с адресами, выбрать токен и запустить раздачу",
+                   "Более 80% децентрализованных приложений на TON",
+                   "Если приобретает через Fragment",
+                   "Оплачивается только деплой токена"]
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => answers.includes(el.textContent));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Ответить");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(6000, 7000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Завершить квест");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    window.location.href = 'https://commquest.xyz/ton-cis/';
+    await sleep(getRandomDelay(4000, 5000));
+  }
 
 }
 
