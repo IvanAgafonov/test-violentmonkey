@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ton society quests
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://commquest.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_quests.user.js
@@ -97,6 +97,12 @@ async function autoBuy() {
   }
 
   up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Поддержать ребят из AdsGram");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Поддержать ребят из Magnetto");
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(1000, 2000));
@@ -447,6 +453,64 @@ async function autoBuy() {
                    "Более 80% децентрализованных приложений на TON",
                    "Если приобретает через Fragment",
                    "Оплачивается только деплой токена"]
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => answers.includes(el.textContent));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Ответить");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(6000, 7000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Завершить квест");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    window.location.href = 'https://commquest.xyz/ton-cis/';
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+  // TODO
+
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Анализ данных блокчейна TON через Dune");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Открыть");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Проверить");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Перейти");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    var answers = ["В ноябре прошлого года",
+                   "Анализировать данные и строить визуализации",
+                   "SELECT block_date, COUNT(*) * 1e0 / (24 * 60 * 60) AS tps_avg FROM ton.transactions WHERE block_date >= NOW() - INTERVAL ‘30’ DAY GROUP BY 1",
+                   "Raw, User-friendly, Bounceable"]
 
     up = Array.from(document.querySelectorAll("div p")).filter(el => answers.includes(el.textContent));
     shuffle(up);
