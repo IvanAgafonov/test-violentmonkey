@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Ton society
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://master.*/*
 // @match        https://app.tonsociety.id/*
@@ -76,8 +76,19 @@ async function connectWallet(){
 
 async function autoBuy() {
 
+  var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Choose Wallet to Get Badge");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
 
-  var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Get Badge");
+  up = Array.from(document.querySelectorAll("button[class='flex w-full items-center gap-2.5 rounded-xl bg-secondary px-4 py-2']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Get Badge");
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
