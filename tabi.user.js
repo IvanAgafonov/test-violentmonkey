@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tabi claim
-// @version      0.29
+// @version      0.30
 // @author       IvanAgafonov
 // @match        https://front.tabibot.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
@@ -134,6 +134,58 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Draw") && el.className.includes("flex flex-col justify-center items-center"));
   if (up.length != 0){
     up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+
+  up = Array.from(document.querySelectorAll("img[src='/assets/casting-plLDyzK1.webp']"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("div[class='absolute top-[-4px] right-[-4px] visible'] span[class='absolute top-[16px] left-[12px] rotate-45 text-white text-center font-changa-one text-[10px] w-[51px] font-normal leading-[normal] capitalize']"));
+    if (up.length != 0){
+      up[0].click();
+      await sleep(getRandomDelay(2000, 3000));
+      up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent.includes("Casting") && el.className.includes("justify-center items-center gap-2.5"));
+      if (up.length != 0){
+        up[0].click();
+        await sleep(getRandomDelay(2000, 3000));
+      }
+    }
+    history.back()
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+
+
+
+  up = Array.from(document.querySelectorAll("img[src='/assets/tabipool-E2YStjK9.webp']"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(7) > div:nth-child(1) > div:nth-child(4)"));
+    if (up.length != 0){
+      up[0].click();
+      await sleep(getRandomDelay(2000, 3000));
+      up = Array.from(document.querySelectorAll("div[class='font-changa-one text-[16px] text-center font-normal leading-[20px] capitalize flex w-[335px] justify-center items-center gap-2.5 shadow-[0px_0.8px_1px_0px_rgba(0,0,0,0.34),0px_-2.8px_0px_1px_rgba(0,0,0,0.13)_inset] px-[16px] py-[14px] rounded-[47px] text-white [background:#FD6019] cursor-pointer']"));
+      if (up.length != 0){
+        up[0].click();
+        await sleep(getRandomDelay(2000, 3000));
+      }
+      up = Array.from(document.querySelectorAll("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(7) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)"));
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(2000, 3000));
+      }
+      up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent.includes("Stake") && el.className.includes("relative overflow-hidden cursor-pointer flex text-white"));
+      if (up.length != 0){
+        up[0].click();
+        await sleep(getRandomDelay(2000, 3000));
+      }
+    }
+    history.back()
+    await sleep(getRandomDelay(2000, 3000));
+    history.back()
     await sleep(getRandomDelay(2000, 3000));
   }
 
