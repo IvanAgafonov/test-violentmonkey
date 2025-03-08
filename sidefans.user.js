@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         sidefans
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://game.sidekick.fans/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/sidefans.user.js
@@ -61,22 +61,36 @@ function sleep(ms = 0) {
 }
 
 async function connectWallet(){
-  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On")
+  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On" || el.textContent == "Wallet in")
   if (up2.length != 0){
     triggerEvents(up2[0]);
     await sleep(getRandomDelay(3000, 4100));
-    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram") || el.textContent.includes("Connect Wallet in Telegram on desktop"))
     if (up2.length != 0){
       triggerEvents(up2[0]);
       await sleep(getRandomDelay(10000, 21000));
     }
   }
+  await sleep(getRandomDelay(2000, 3100));
 }
 
 async function autoBuy() {
 
 
-  var up = Array.from(document.querySelectorAll("svg[xmlns='http://www.w3.org/2000/svg'][width='19']"));
+  var up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Connect Wallet");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div span")).filter(el => el.textContent == "TON Wallet");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+    await connectWallet();
+  }
+
+  up = Array.from(document.querySelectorAll("svg[xmlns='http://www.w3.org/2000/svg'][width='19']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
