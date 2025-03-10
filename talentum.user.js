@@ -115,7 +115,7 @@ function initializeScript() {
 
     console.log('START claim ')
 
-    setTimeout(autoBuy, getRandomDelay(10000, 15050));
+    setTimeout(autoBuy, getRandomDelay(15000, 17050));
 }
 
 if (document.readyState === 'loading') {
