@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         talentum
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://monad.talentum.id/tasks/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/talentum.user.js
@@ -85,13 +85,13 @@ async function autoBuy() {
   const paintButton = document.evaluate("//img[@alt='linkIcon']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (paintButton) {
     triggerEvents(paintButton);
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(4000, 5000));
   }
 
   up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == "Verify");
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(5000, 6000));
+    await sleep(getRandomDelay(5500, 6000));
   }
 
   up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == "Claim Reward");
