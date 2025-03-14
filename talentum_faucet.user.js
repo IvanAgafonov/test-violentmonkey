@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         talentum faucet
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://monad.talentum.id/quests
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/talentum_faucet.user.js
@@ -97,13 +97,13 @@ async function autoBuy() {
   up = document.evaluate("//div[contains(normalize-space(), 'Done') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up) {
     triggerEvents(up);
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(3000, 4000));
   }
 
   up = document.evaluate("//div[contains(normalize-space(), 'Check Eligibility') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up) {
     triggerEvents(up);
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(3700, 4000));
   }
 
   up = document.evaluate("//div[contains(normalize-space(), 'Get Now!') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
