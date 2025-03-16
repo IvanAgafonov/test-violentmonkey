@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tbook
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://i.tbook.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tbook.user.js
@@ -84,7 +84,32 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check In"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(4000, 5000));
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("a div")).filter(el => el.textContent.includes("My Rewards"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(10000, 11000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div div div div")).filter(el => el.textContent.includes("My Streak SBTs") && el.className.includes("text-base") );
+  console.log(up)
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(7000, 9000));
+  }
+
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Claim" || el.textContent == "View");
+  shuffle(up);
+  for (const item of up) {
+    triggerEvents(item);
+    await sleep(getRandomDelay(3000, 4000));
+    var up2 = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("Mint SBT on") || el.textContent.includes("View the SBT"));
+    if (up2.length != 0){
+      triggerEvents(up2[0]);
+      await sleep(getRandomDelay(21000, 24000));
+    }
   }
 
 }
