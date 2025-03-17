@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         talentum faucet
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://monad.talentum.id/quests
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/talentum_faucet.user.js
@@ -85,13 +85,13 @@ async function autoBuy() {
   up = document.evaluate("//div[contains(normalize-space(), 'Connect Your Wallet') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up) {
     triggerEvents(up);
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(2500, 3000));
   }
 
   up = document.evaluate("//div[contains(@class, 'flex justify-between items-center cursor-pointer px-3 py-2')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up) {
     triggerEvents(up);
-    await sleep(getRandomDelay(2000, 3000));
+    await sleep(getRandomDelay(2500, 3000));
   }
 
   up = document.evaluate("//div[contains(normalize-space(), 'Done') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -127,7 +127,7 @@ function initializeScript() {
 
     console.log('START claim ')
 
-    setTimeout(autoBuy, getRandomDelay(13000, 15050));
+    setTimeout(autoBuy, getRandomDelay(15000, 15050));
 }
 
 if (document.readyState === 'loading') {
