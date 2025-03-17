@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         talentum faucet
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://monad.talentum.id/quests
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/talentum_faucet.user.js
@@ -127,7 +127,7 @@ function initializeScript() {
 
     console.log('START claim ')
 
-    setTimeout(autoBuy, getRandomDelay(15000, 15050));
+    setTimeout(autoBuy, getRandomDelay(25000, 25050));
 }
 
 if (document.readyState === 'loading') {
