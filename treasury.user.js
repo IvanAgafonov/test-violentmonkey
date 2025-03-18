@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -83,6 +83,68 @@ async function autoBuy() {
     // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
     await connectWallet();
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='/icons/tasks.svg']")).filter(el => el.className.includes("icons"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "Start");
+  shuffle(up);
+  if (up.length != 1){
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+  }
+
+  up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
+  shuffle(up);
+  for (const item of up) {
+    triggerEvents(item);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Activities");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "Start");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  var verify = document.querySelector("input[placeholder='Type code here']")
+  if (verify) {
+    verify.click();
+    // verify.value = "Du rove"
+    verify.setAttribute('value', "Du rove");
+
+    verify.dispatchEvent(new Event('input', { bubbles: true }));
+    verify.dispatchEvent(new Event('change'));
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Check");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 3000));
+    }
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Claim") && el.className.includes("modalButton"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 3000));
+    }
+  }
+
+  up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
+  shuffle(up);
+  for (const item of up) {
+    triggerEvents(item);
+    await sleep(getRandomDelay(2000, 3000));
   }
 }
 
