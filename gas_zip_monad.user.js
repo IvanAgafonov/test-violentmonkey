@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gas zip monad
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://www.gas.zip/faucet/monad
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gas_zip_monad.user.js
@@ -72,7 +72,34 @@ async function connectWallet(){
   }
 }
 
+
+function querySelectorAllShadows(selector, el = document.body) {
+  // recurse on childShadows
+  const childShadows = Array.from(el.querySelectorAll('*')).
+    map(el => el.shadowRoot).filter(Boolean);
+
+  // console.log('[querySelectorAllShadows]', selector, el, `(${childShadows.length} shadowRoots)`);
+
+  const childResults = childShadows.map(child => querySelectorAllShadows(selector, child));
+
+  // fuse all results into singular, flat array
+  const result = Array.from(el.querySelectorAll(selector));
+  return result.concat(childResults).flat();
+}
+
 async function autoBuy() {
+
+  var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Connect Wallet"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3100));
+
+    up = querySelectorAllShadows('span').filter(el => el.textContent == "Rabby"); // all `td`s in body
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 4100));
+    }
+  }
 
   var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("CLAIM"));
   if (up.length != 0){
