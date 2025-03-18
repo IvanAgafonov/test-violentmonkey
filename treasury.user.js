@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -93,7 +93,7 @@ async function autoBuy() {
 
   up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "Start");
   shuffle(up);
-  if (up.length != 1){
+  if (up.length != 0){
     for (const item of up) {
       triggerEvents(item);
       await sleep(getRandomDelay(1000, 2000));
@@ -119,11 +119,17 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 3000));
   }
 
+  var mytext = "Du rove";
+
+  if (up.length == 1){
+    mytext = "1455";
+  }
+
   var verify = document.querySelector("input[placeholder='Type code here']")
   if (verify) {
     verify.click();
     // verify.value = "Du rove"
-    verify.setAttribute('value', "Du rove");
+    verify.setAttribute('value', mytext);
 
     verify.dispatchEvent(new Event('input', { bubbles: true }));
     verify.dispatchEvent(new Event('change'));
