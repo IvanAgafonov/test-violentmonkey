@@ -157,7 +157,7 @@ async function autoBuy() {
 
 function initializeScript() {
 
-    console.log('START claim ')
+    console.log('START claim  ')
 
     setTimeout(autoBuy, getRandomDelay(10000, 13050));
 }
