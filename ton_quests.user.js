@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ton society quests
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://commquest.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_quests.user.js
@@ -479,7 +479,6 @@ async function autoBuy() {
 
   // TODO
 
-
   up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Анализ данных блокчейна TON через Dune");
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -534,6 +533,179 @@ async function autoBuy() {
     window.location.href = 'https://commquest.xyz/ton-cis/';
     await sleep(getRandomDelay(4000, 5000));
   }
+
+  // TODO
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "LayerZero: как устроен кросс-чейн на TON");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Открыть");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Проверить");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Перейти");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    var answers = ["Технология прямого соединения блокчейнов",
+                   "Блокируются в исходном блокчейне и выпускаются идентичные в другом",
+                   "Хранение токенов на централизованном сервере",
+                   "USDT (TON)"]
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => answers.includes(el.textContent));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Ответить");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(6000, 7000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Завершить квест");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    window.location.href = 'https://commquest.xyz/ton-cis/';
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+
+  // TODO
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Тестнет Bidask Protocol");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Открыть");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Проверить");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Перейти");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    var answers = ["Он предлагает концентрированную ликвидность",
+                   "Возможность задавать диапазоны цен и избегать потерь",
+                   "Позволяет исполнить часть сделки даже при выходе цены за диапазон",
+                   "Гибкий контроль ликвидности и тестирование стратегий без риска"]
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => answers.includes(el.textContent));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Ответить");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(6000, 7000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Завершить квест");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    window.location.href = 'https://commquest.xyz/ton-cis/';
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+  // TODO
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Создайте дашборд для DeDust на Dune и выиграйте до $3000!");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Открыть");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Проверить");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Перейти");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    var answers = ["$6000",
+                   "24 марта",
+                   "Общий объем торгов, уникальные кошельки, ликвидность, комиссии, историческая аналитика и дополнительные инсайты",
+                   "Идентифицировать владельцев активных TON-адресов и отправить подтверждение"]
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => answers.includes(el.textContent));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Ответить");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(6000, 7000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Завершить квест");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    window.location.href = 'https://commquest.xyz/ton-cis/';
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
 
 }
 
