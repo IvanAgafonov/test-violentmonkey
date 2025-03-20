@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Gemswall
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://app.gleam.bot/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gemswall.user.js
@@ -76,10 +76,11 @@ async function connectWallet(){
 async function autoBuy() {
 
 
+
   var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Claim gifts");
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(4000, 50000));
+    await sleep(getRandomDelay(4000, 5000));
   }
 
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Connect TON Wallet");
@@ -87,6 +88,47 @@ async function autoBuy() {
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
     await connectWallet();
+  }
+
+
+  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "winners");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Go");
+  shuffle(up);
+  for (const item of up) {
+    console.log(item);
+    triggerEvents(item);
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Start quest");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(12000, 12100));
+    }
+    up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Check completion");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(8000, 8100));
+    }
+    up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Claim rewards");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 3100));
+    }
+    up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Close");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 3100));
+    }
+  }
+
+  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Claim" && el.className.includes("text-black text-body-1-500"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3100));
   }
 
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Quests");
