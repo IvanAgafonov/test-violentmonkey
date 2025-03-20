@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tbook
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://i.tbook.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tbook.user.js
@@ -61,16 +61,17 @@ function sleep(ms = 0) {
 }
 
 async function connectWallet(){
-  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On")
+  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On" || el.textContent == "Wallet in")
   if (up2.length != 0){
     triggerEvents(up2[0]);
     await sleep(getRandomDelay(3000, 4100));
-    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram") || el.textContent.includes("Connect Wallet in Telegram on desktop"))
     if (up2.length != 0){
       triggerEvents(up2[0]);
       await sleep(getRandomDelay(10000, 21000));
     }
   }
+  await sleep(getRandomDelay(2000, 3100));
 }
 
 async function autoBuy() {
@@ -105,9 +106,12 @@ async function autoBuy() {
   for (const item of up) {
     triggerEvents(item);
     await sleep(getRandomDelay(3000, 4000));
+
     var up2 = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("Mint SBT on") || el.textContent.includes("View the SBT"));
     if (up2.length != 0){
       triggerEvents(up2[0]);
+      await sleep(getRandomDelay(1000, 2000));
+      await connectWallet();
       await sleep(getRandomDelay(21000, 24000));
     }
   }
