@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -119,15 +119,29 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 3000));
   }
 
-  var mytext = "Du rove";
+  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/key.png']"));
+  if (up.length == 2){
+    mytext = "6699";
+  }
 
-  if (up.length == 1){
+  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/durone.png']"));
+  if (up.length == 2){
+    mytext = "Du rove";
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/watch_icon.png']"));
+  if (up.length == 2){
     mytext = "1455";
   }
 
   up = Array.from(document.querySelectorAll("img[src='/images/icons/social/strawberry.png']"));
   if (up.length == 2){
     mytext = "3392";
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/Icon knok.png']"));
+  if (up.length == 2){
+    mytext = "2703";
   }
 
   up = Array.from(document.querySelectorAll("img[src='/images/icons/social/Icon knok.png']"));
@@ -145,6 +159,11 @@ async function autoBuy() {
     verify.dispatchEvent(new Event('change'));
     await sleep(getRandomDelay(2000, 3000));
     up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Check");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 3000));
+    }
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Continue") && el.className.includes("modalButton"));
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(2000, 3000));
