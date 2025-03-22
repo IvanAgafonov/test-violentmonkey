@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.16
+// @version      0.17
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -117,6 +117,11 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/wallpaper.png']"));
+  if (up.length == 2){
+    mytext = "5783";
   }
 
   up = Array.from(document.querySelectorAll("img[src='/images/icons/social/key.png']"));
