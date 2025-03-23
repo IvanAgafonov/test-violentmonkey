@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.17
+// @version      0.18
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -85,6 +85,12 @@ async function autoBuy() {
     await connectWallet();
   }
 
+  up = Array.from(document.querySelectorAll("div[id='record']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
   up = Array.from(document.querySelectorAll("img[src='/icons/tasks.svg']")).filter(el => el.className.includes("icons"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -117,6 +123,11 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/player.png']"));
+  if (up.length == 2){
+    mytext = "mozart";
   }
 
   up = Array.from(document.querySelectorAll("img[src='/images/icons/social/wallpaper.png']"));
