@@ -4,6 +4,8 @@
 // @author       IvanAgafonov
 // @match        https://testnet.monad.xyz/
 // @match        https://app.layer3.xyz/quests
+// @match        https://layer3.xyz/quests
+// @match        https://solana.layer3.xyz/quests
 // @match        https://app.nodepay.ai/login
 // @match        https://app.nodepay.ai/dashboard
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/cloudflare.user.js
