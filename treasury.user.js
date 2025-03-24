@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.18
+// @version      0.19
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -85,7 +85,7 @@ async function autoBuy() {
     await connectWallet();
   }
 
-  up = Array.from(document.querySelectorAll("div[id='record']"));
+  up = Array.from(document.querySelectorAll("div[id='ducks']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
@@ -123,6 +123,11 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/icon_activities_duck_quest_day12.png']"));
+  if (up.length == 2){
+    mytext = "I love ducks";
   }
 
   up = Array.from(document.querySelectorAll("img[src='/images/icons/social/player.png']"));
