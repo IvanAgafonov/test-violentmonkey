@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         dinero
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://abstract.dinero.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/dinero.user.js
@@ -102,7 +102,7 @@ async function autoBuy() {
   if (up.length > 1){
     // triggerEvents(up[1]);
     up[1].click();
-    await sleep(getRandomDelay(20000, 2100));
+    await sleep(getRandomDelay(25000, 26000));
   }
 
   up = document.querySelector("input");
