@@ -1,11 +1,8 @@
 // ==UserScript==
 // @name         dinero
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://abstract.dinero.xyz/*
-// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/dinero.user.js
-// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/dinero.user.js
-// @homepage     https://github.com/IvanAgafonov/test-violentmonkey
 // @grant        none
 
 // ==/UserScript==
@@ -108,7 +105,7 @@ async function autoBuy() {
   up = document.querySelector("input");
   if (up) {
     // up.value = "0.000001024"
-    up.setAttribute('value', "0.00000" + getRandomDelay(1025, 9999)1025);
+    up.setAttribute('value', "0.00000" + getRandomDelay(1025, 9999));
     up.dispatchEvent(new Event('input', { bubbles: true }));
     up.dispatchEvent(new Event('change'));
     // up.setAttribute('value', "0.00001024");
