@@ -99,7 +99,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(1000, 2100));
   }
 
-  for(var i=0;i<100;i++) {
+  for(var i=0;i<100000;i++) {
     up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Spin"));
     if (up.length != 0){
       triggerEvents(up[0]);
