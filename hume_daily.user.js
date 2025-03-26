@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hume daily
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://humeworld.xyz/daily-spin
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hume_daily.user.js
@@ -97,6 +97,20 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(1000, 2100));
+  }
+
+  for(var i=0;i<100;i++) {
+    up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Spin"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4100));
+    }
+
+    up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Continue"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(1000, 2100));
+    }
   }
 
 }
