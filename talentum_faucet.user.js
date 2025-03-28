@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         talentum faucet
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://monad.talentum.id/quests
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/talentum_faucet.user.js
@@ -82,7 +82,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  up = document.evaluate("//div[contains(normalize-space(), 'Connect Your Wallet') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  up = document.evaluate("//div[contains(normalize-space(), 'Connect Your Wallet') and contains(@class, 'text-md normal bg-button-primary text-text-invert')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up) {
     triggerEvents(up);
     await sleep(getRandomDelay(2500, 3000));
@@ -94,25 +94,25 @@ async function autoBuy() {
     await sleep(getRandomDelay(2500, 3000));
   }
 
-  up = document.evaluate("//div[contains(normalize-space(), 'Done') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  up = document.evaluate("//div[contains(normalize-space(), 'Done') and contains(@class, 'text-md normal bg-button-primary text-text-invert')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up) {
     triggerEvents(up);
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  up = document.evaluate("//div[contains(normalize-space(), 'Check Eligibility') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  up = document.evaluate("//div[contains(normalize-space(), 'Check Eligibility') and contains(@class, 'text-md normal bg-button-primary text-text-invert')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up) {
     triggerEvents(up);
     await sleep(getRandomDelay(4700, 5000));
   }
 
-  up = document.evaluate("//div[contains(normalize-space(), 'Get Now!') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  up = document.evaluate("//div[contains(normalize-space(), 'Get Now!') and contains(@class, 'text-md normal bg-button-primary text-text-invert')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up) {
     triggerEvents(up);
     await sleep(getRandomDelay(2000, 3000));
   }
 
-  up = document.evaluate("//div[contains(normalize-space(), 'Get Now!') and contains(@class, 'normal !bg-button-primary-base')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  up = document.evaluate("//div[contains(normalize-space(), 'Get Now!') and contains(@class, 'text-md normal bg-button-primary text-text-invert')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up) {
     triggerEvents(up);
     await sleep(getRandomDelay(2000, 3000));
