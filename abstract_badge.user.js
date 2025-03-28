@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         abstract badge
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://portal.abs.xyz/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/abstract_badge.user.js
@@ -101,6 +101,13 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Claim Badge" );
   if (up.length != 0){
     triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='https://abs.xyz/imagetransform/width=500,quality=100/https%3A%2F%2Fabstract-assets.abs.xyz%2Fbadges%2Fbadge-dinero.png']"));
+  if (up.length != 2){
+     const response = fetch("http://127.0.0.1:5000/tasks?address=" + rabby.selectedAddress);
     // up[0].click();
     await sleep(getRandomDelay(3000, 4000));
   }
