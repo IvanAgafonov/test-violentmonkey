@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.21
+// @version      0.22
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -91,7 +91,7 @@ async function autoBuy() {
   //   await sleep(getRandomDelay(2000, 3000));
   // }
 
-  up = Array.from(document.querySelectorAll("img[src='/icons/tasks.svg']")).filter(el => el.className.includes("icons"));
+  up = Array.from(document.querySelectorAll("img[src='/icons/tabs/tasks.svg']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
@@ -125,6 +125,8 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 3000));
   }
 
+
+
   up = Array.from(document.querySelectorAll("img[src='/images/icons/social/mouse.png']"));
   if (up.length == 2){
     mytext = "CHEESE";
@@ -138,6 +140,16 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("img[src='/images/icons/social/icon_activities_duck_quest_day12.png']"));
   if (up.length == 2){
     mytext = "I love ducks";
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_lamp.png']"));
+  if (up.length == 2){
+    mytext = "ion";
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_day_2.png']"));
+  if (up.length == 2){
+    mytext = "116";
   }
 
   up = Array.from(document.querySelectorAll("img[src='/images/icons/social/player.png']"));
@@ -219,7 +231,7 @@ function initializeScript() {
 
     console.log('START claim     ')
 
-    setTimeout(autoBuy, getRandomDelay(10000, 13050));
+    setTimeout(autoBuy, getRandomDelay(18000, 18050));
 }
 
 if (document.readyState === 'loading') {
