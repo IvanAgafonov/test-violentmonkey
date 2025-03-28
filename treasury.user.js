@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.22
+// @version      0.23
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -231,7 +231,7 @@ function initializeScript() {
 
     console.log('START claim     ')
 
-    setTimeout(autoBuy, getRandomDelay(18000, 18050));
+    setTimeout(autoBuy, getRandomDelay(19900, 19950));
 }
 
 if (document.readyState === 'loading') {
