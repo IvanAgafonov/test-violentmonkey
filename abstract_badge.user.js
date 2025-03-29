@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         abstract badge
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://portal.abs.xyz/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/abstract_badge.user.js
@@ -128,7 +128,7 @@ function initializeScript() {
 
     console.log('START claim  ')
 
-    setTimeout(autoBuy, getRandomDelay(14000, 14050));
+    setTimeout(autoBuy, getRandomDelay(17000, 17050));
 }
 
 if (document.readyState === 'loading') {
