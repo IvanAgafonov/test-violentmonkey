@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.25
+// @version      0.26
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -131,116 +131,117 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 3000));
   }
 
+
   up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "Start");
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(2000, 3000));
-  }
-
-
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/mouse.png']"));
-  if (up.length == 2){
-    mytext = "CHEESE";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/enter_code_quest_icon.png']"));
-  if (up.length == 2){
-    mytext = "579";
-  }
-
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/sponge.png']"));
-  if (up.length == 2){
-    mytext = "911";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/icon_activities_duck_quest_day12.png']"));
-  if (up.length == 2){
-    mytext = "I love ducks";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_lamp.png']"));
-  if (up.length == 2){
-    mytext = "ion";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_day_2.png']"));
-  if (up.length == 2){
-    mytext = "116";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/player.png']"));
-  if (up.length == 2){
-    mytext = "mozart";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/wallpaper.png']"));
-  if (up.length == 2){
-    mytext = "5783";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/key.png']"));
-  if (up.length == 2){
-    mytext = "6699";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/durone.png']"));
-  if (up.length == 2){
-    mytext = "Du rove";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/watch_icon.png']"));
-  if (up.length == 2){
-    mytext = "1455";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/strawberry.png']"));
-  if (up.length == 2){
-    mytext = "3392";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/Icon knok.png']"));
-  if (up.length == 2){
-    mytext = "2703";
-  }
-
-  up = Array.from(document.querySelectorAll("img[src='/images/icons/social/Icon knok.png']"));
-  if (up.length == 2){
-    mytext = "2703";
-  }
-
-  var verify = document.querySelector("input[placeholder='Type code here']")
-  if (verify) {
-    verify.click();
-    // verify.value = "Du rove"
-    verify.setAttribute('value', mytext);
-
-    verify.dispatchEvent(new Event('input', { bubbles: true }));
-    verify.dispatchEvent(new Event('change'));
-    await sleep(getRandomDelay(2000, 3000));
-    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Check");
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(2000, 3000));
-    }
-    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Continue") && el.className.includes("modalButton"));
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(2000, 3000));
-    }
-    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Claim") && el.className.includes("modalButton"));
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(2000, 3000));
-    }
-  }
-
-  up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
   shuffle(up);
   for (const item of up) {
     triggerEvents(item);
     await sleep(getRandomDelay(2000, 3000));
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/mouse.png']"));
+    if (up.length == 2){
+      mytext = "CHEESE";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/enter_code_quest_icon.png']"));
+    if (up.length == 2){
+      mytext = "0101";
+    }
+
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/sponge.png']"));
+    if (up.length == 2){
+      mytext = "911";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/icon_activities_duck_quest_day12.png']"));
+    if (up.length == 2){
+      mytext = "I love ducks";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_lamp.png']"));
+    if (up.length == 2){
+      mytext = "ion";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_day_2.png']"));
+    if (up.length == 2){
+      mytext = "116";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/player.png']"));
+    if (up.length == 2){
+      mytext = "mozart";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/wallpaper.png']"));
+    if (up.length == 2){
+      mytext = "5783";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/key.png']"));
+    if (up.length == 2){
+      mytext = "6699";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/durone.png']"));
+    if (up.length == 2){
+      mytext = "Du rove";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/watch_icon.png']"));
+    if (up.length == 2){
+      mytext = "1455";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/strawberry.png']"));
+    if (up.length == 2){
+      mytext = "3392";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/Icon knok.png']"));
+    if (up.length == 2){
+      mytext = "2703";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/Icon knok.png']"));
+    if (up.length == 2){
+      mytext = "2703";
+    }
+
+    var verify = document.querySelector("input[placeholder='Type code here']")
+    if (verify) {
+      verify.click();
+      // verify.value = "Du rove"
+      verify.setAttribute('value', mytext);
+
+      verify.dispatchEvent(new Event('input', { bubbles: true }));
+      verify.dispatchEvent(new Event('change'));
+      await sleep(getRandomDelay(2000, 3000));
+      up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Check");
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(2000, 3000));
+      }
+      up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Continue") && el.className.includes("modalButton"));
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(2000, 3000));
+      }
+      up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Claim") && el.className.includes("modalButton"));
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(2000, 3000));
+      }
+    }
+
+
+    up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(2000, 3000));
+    }
   }
 }
 
