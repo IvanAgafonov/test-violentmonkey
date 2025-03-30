@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         privy
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://privy.abs.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/privy.user.js
@@ -91,24 +91,27 @@ async function connectWallet(){
 async function autoBuy() {
 
 
-  var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Approve" );
+  var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Rabby Wallet" );
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
+    await sleep(getRandomDelay(17000, 17100));
+  }
+
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Approve" );
+  if (up.length != 0){
+    triggerEvents(up[0]);
     await sleep(getRandomDelay(17000, 17100));
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "All Done" );
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(3000, 4000));
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Sign and continue" );
   if (up.length != 0){
     triggerEvents(up[0]);
-    // up[0].click();
     await sleep(getRandomDelay(3000, 4000));
   }
 
