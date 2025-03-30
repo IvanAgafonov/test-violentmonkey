@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         gas zip monad
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://www.gas.zip/faucet/monad
+// @match        https://www.gas.zip/faucet/megaeth
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gas_zip_monad.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gas_zip_monad.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
