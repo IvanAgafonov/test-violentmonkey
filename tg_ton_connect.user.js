@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tg ton connect
-// @version      0.16
+// @version      0.17
 // @author       IvanAgafonov
 // @match        https://web.telegram.org/k*
 // @grant        none
@@ -66,6 +66,15 @@ async function connect() {
     el.textContent.includes("Connect"));
   for (const item of up) {
     triggerEvents(item);
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "friends" && el.className == "peer-title chat-title");
+  if (up.length != 0){
+    up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Join Group");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 3000));
+    }
   }
 
 
