@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.26
+// @version      0.27
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -148,6 +148,10 @@ async function autoBuy() {
       mytext = "0101";
     }
 
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/enter_code_quest_icon2.png']"));
+    if (up.length == 2){
+      mytext = "Iloveyou";
+    }
 
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/sponge.png']"));
     if (up.length == 2){
@@ -242,7 +246,26 @@ async function autoBuy() {
       triggerEvents(item);
       await sleep(getRandomDelay(2000, 3000));
     }
+    up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(2000, 3000));
+    }
   }
+
+    up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(5000, 6000));
+    }
+    up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(2000, 3000));
+    }
 }
 
 
