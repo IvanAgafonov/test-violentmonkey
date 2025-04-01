@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.27
+// @version      0.28
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -91,6 +91,18 @@ async function autoBuy() {
   //   await sleep(getRandomDelay(2000, 3000));
   // }
 
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Knock to continue");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(17000, 18000));
+    up = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("Claim"));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(3000, 4000));
+    }
+  }
+
   up = Array.from(document.querySelectorAll("img[src='/icons/giveaway/beta.svg']"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -141,6 +153,17 @@ async function autoBuy() {
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/mouse.png']"));
     if (up.length == 2){
       mytext = "CHEESE";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_day_6.png']"));
+    if (up.length == 2){
+      mytext = "NFT";
+    }
+
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_day_6.png']"));
+    if (up.length == 2){
+      mytext = "NFT";
     }
 
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/enter_code_quest_icon.png']"));
@@ -253,7 +276,12 @@ async function autoBuy() {
       await sleep(getRandomDelay(2000, 3000));
     }
   }
-
+    up = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("Claim"));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(3000, 4000));
+    }
     up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
     shuffle(up);
     for (const item of up) {
