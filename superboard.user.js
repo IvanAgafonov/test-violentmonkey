@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         superboard
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://superboard.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/superboard.user.js
@@ -160,6 +160,13 @@ async function autoBuy() {
       // up[0].click();
       await sleep(getRandomDelay(3000, 4100));
     }
+
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Completed" );
+    if (up.length != 0){
+      fetch("http://127.0.0.1:5000/superform?address=" + evm_addr + "&page=" + document.URL);
+      await sleep(getRandomDelay(3000, 4100));
+    }
+
 
     await sleep(getRandomDelay(1000, 1100));
   }
