@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         abstract badge
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://portal.abs.xyz/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/abstract_badge.user.js
@@ -114,11 +114,11 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  up = Array.from(document.querySelectorAll("img[src='https://abs.xyz/imagetransform/width=500,quality=100/https%3A%2F%2Fabstract-assets.abs.xyz%2Fbadges%2Fbadge-dinero.png']"));
-  if (up.length != 2){
-     const response = fetch("http://127.0.0.1:5000/tasks?address=" + rabby.selectedAddress);
-    await sleep(getRandomDelay(3000, 4000));
-  }
+  // up = Array.from(document.querySelectorAll("img[src='https://abs.xyz/imagetransform/width=500,quality=100/https%3A%2F%2Fabstract-assets.abs.xyz%2Fbadges%2Fbadge-dinero.png']"));
+  // if (up.length != 1){
+  //    const response = fetch("http://127.0.0.1:5000/abstract?address=" + rabby.selectedAddress);
+  //   await sleep(getRandomDelay(3000, 4000));
+  // }
 
 
   // up = querySelectorAllShadows('button').filter(el => el.textContent.includes("Abstract")); // all `td`s in body
