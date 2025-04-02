@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.25
+// @version      0.26
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -402,7 +402,7 @@ async function autoBuy() {
   console.log('count_tickets');
   console.log(count_tickets)
 
-  if (getRandomDelay(100, 2600) > 1550 || count_tickets > 0) {
+  if (getRandomDelay(100, 2600) > 2050 || count_tickets > 0) {
 
     up = Array.from(document.querySelectorAll("div div div div")).filter(el => el.textContent == "Play");
     if (up.length != 0){
@@ -505,6 +505,7 @@ async function autoBuy() {
     }
 
     await start_claim();
+    await verify();
 
     up = Array.from(document.querySelectorAll("div div label span")).filter(el => el.textContent.includes("Blum Bits"));
     if (up.length != 0){
@@ -513,6 +514,7 @@ async function autoBuy() {
     }
 
     await start_claim();
+    await verify();
 
     up = Array.from(document.querySelectorAll("div div label span")).filter(el => el.textContent.includes("Academy"));
     if (up.length != 0){
