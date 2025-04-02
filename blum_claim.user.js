@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.24
+// @version      0.25
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -146,6 +146,38 @@ async function verify() {
 
                       "Dec 10 News":         "ELSALVADOR ",
                       "Dec 6 Crypto News":         "Hundred",
+
+                      "Limit Orders at Blum":         "Limitorderslive",
+                      "Blum's TGE teaser":         "TGETHISSPRING",
+                      "How to Work at Blum?":         "GROWWITHBLUM",
+                      "S1 Weekly Giveaway":         "GIVEAWAY",
+                      "Blum Latest Updates":         "Blumgoesai",
+                      "Telegram Trends #4":         "GOTAP",
+                      "Telegram Trends #3":         "megablum",
+                      "Telegram Trends #2":         "bluuum",
+                      "Blum CEO @ Binance Blockchain Week":         "blumgoals",
+                      "Future of Telegram. Part 1":         "tapblum",
+                      "Blum COO @ Blockchain Life":         "lifeisblum",
+                      "History of Bitcoin":         "bigpizza",
+
+                      "Crypto Slang. Part 5":         "gonnablum",
+                      "How to Work at Blum?":         "Growwithblum",
+                      "Fake AI vs. Real AI":         "ai coin",
+                      "Season 1 First Giveaway":         "BLUMCHATS",
+                      "Chartered Cities Explained":         "PROSPERA",
+                      "BITGET on TON with Vlad Smerkis":         "BITGET",
+                      "Blum and TOP":         "TOP",
+                      "Can Bitcoin be Hacked?":         "QuantumBTC",
+                      "Community Building":         "BUILD",
+                      "Crypto market 2025":         "Crypto2025",
+                      "What is Uniswap?":         "blumshine",
+                      "Dec 20 News":         "TRUMP",
+                      "Dec 18 News":         "MARK",
+                      "Dec 17 News":         "Kendrick",
+                      "Dec 16 News":         "BITCOIN",
+                      "Dec 13 News":         "BITCOINJESUS",
+                      "Dec 12 News":         "RIPPLE",
+                      "Crypto in Everyday Life":         "blumance",
 
                      "Crypto Regulations #2":         "Blumrules",
                      "P2P Trading Safety Tips":       "BLUMTIPS",
