@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         monad faucet
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://testnet.monad.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/monad_faucet.user.js
@@ -93,7 +93,7 @@ async function autoBuy() {
 
   var up = document.querySelector("input");
   if (up) {
-    up.setAttribute('value', rabby.selectedAddress);
+    up.setAttribute('value', evm_addr);
     up.dispatchEvent(new Event('input', { bubbles: true }));
     up.dispatchEvent(new Event('change'));
     await sleep(getRandomDelay(2000, 3100));
