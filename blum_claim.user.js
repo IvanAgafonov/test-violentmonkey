@@ -150,7 +150,7 @@ async function verify() {
 
 
                       "Limit Orders at Blum":         "Limitorderslive",
-                      "Blum's TGE teaser":         "TGETHISSPRING",
+                      "Blum's TGE teaser ":         "TGETHISSPRING",
                       "How to Work at Blum?":         "GROWWITHBLUM",
                       "S1 Weekly Giveaway":         "GIVEAWAY",
                       "Blum Latest Updates":         "Blumgoesai",
