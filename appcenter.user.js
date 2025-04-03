@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Appcenter claim
-// @version      0.26
+// @version      0.27
 // @author       IvanAgafonov
 // @match        https://tappscenter.org/*
 // @grant        none
@@ -31,17 +31,19 @@ function getRandomDelay(min, max) {
 }
 
 async function connectWallet(){
-  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On")
+  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On" || el.textContent == "Wallet in")
   if (up2.length != 0){
     triggerEvents(up2[0]);
     await sleep(getRandomDelay(3000, 4100));
-    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram") || el.textContent.includes("Connect Wallet in Telegram on desktop"))
     if (up2.length != 0){
       triggerEvents(up2[0]);
-      await sleep(getRandomDelay(20000, 21000));
+      await sleep(getRandomDelay(10000, 21000));
     }
   }
+  await sleep(getRandomDelay(2000, 3100));
 }
+
 
 // Триггеры событий
 function triggerEvents(element) {
@@ -80,6 +82,17 @@ async function autoBuy() {
     await sleep(getRandomDelay(6000, 8000));
   }
 
+    if (getRandomDelay(1000, 4000) > 3000) {
+      up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent == "Connected Wallet");
+      if (up.length == 0){
+        up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent == "Connect your Wallet");
+        if (up.length != 0){
+          triggerEvents(up[0]);
+          await sleep(getRandomDelay(3000, 4000));
+        }
+        await connectWallet();
+      }
+    }
 
 
     up = Array.from(document.querySelectorAll("div button span")).filter(el => el.textContent == "Open" || el.textContent == "Открыть");
@@ -106,15 +119,7 @@ async function autoBuy() {
       await sleep(getRandomDelay(3000, 4000));
     }
 
-    //   up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent == "Connected Wallet");
-    // if (up.length == 0){
-    //   up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent == "Connect your Wallet");
-    //   if (up.length != 0){
-    //     triggerEvents(up[0]);
-    //     await sleep(getRandomDelay(3000, 4000));
-    //   }
-    //   await connectWallet();
-    // }
+
 
     // up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
     // if (up.length != 0){
