@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.26
+// @version      0.27
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -146,6 +146,8 @@ async function verify() {
 
                       "Dec 10 News":         "ELSALVADOR ",
                       "Dec 6 Crypto News":         "Hundred",
+                      "Join WTF on X": "WTF",
+
 
                       "Limit Orders at Blum":         "Limitorderslive",
                       "Blum's TGE teaser":         "TGETHISSPRING",
@@ -279,6 +281,13 @@ async function autoBuy() {
   //   up[0].click();
   //   await sleep(getRandomDelay(4000, 6000));
   // }
+
+  console.stdlog = console.log.bind(console);
+  console.logs = [];
+  console.log = function(){
+      console.logs.push(Array.from(arguments));
+      console.stdlog.apply(console, arguments);
+  }
 
   var up = Array.from(document.querySelectorAll("label input[type='text']"));
   if (up.length != 0){
@@ -416,6 +425,22 @@ async function autoBuy() {
       up[0].click();
       await sleep(getRandomDelay(3000, 4000));
     }
+
+    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent == "Invite a fren");
+    if (up.length != 0){
+      up[0].click();
+      await sleep(getRandomDelay(2000, 3000));
+    }
+
+    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent == "Send");
+    if (up.length != 0){
+      up[0].click();
+      try{
+        await fetch("http://127.0.0.1:5000/blum?link=" + console.logs[console.logs.length-1]['2']['path_full']);
+      } catch (error) {}
+      await sleep(getRandomDelay(2000, 3000));
+    }
+
 
     up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Points"));
     if (up.length != 0){
