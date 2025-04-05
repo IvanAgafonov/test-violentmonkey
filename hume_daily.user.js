@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hume daily
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://humeworld.xyz/daily-spin
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hume_daily.user.js
@@ -75,32 +75,9 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Free spin"));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(6000, 7100));
-  }
 
-  up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Continue"));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(6000, 7100));
-  }
-
-  up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Free spin"));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(6000, 7100));
-  }
-
-  up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Continue"));
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(1000, 2100));
-  }
-
-  for(var i=0;i<100000;i++) {
-    up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Spin"));
+  for(var i=0;i<100;i++) {
+    var up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Spin") || el.textContent.includes("Free spin"));
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(3000, 4100));
