@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.30
+// @version      0.31
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -186,6 +186,16 @@ async function autoBuy() {
       mytext = "Hello";
     }
 
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/living_room_day_3.png']"));
+    if (up.length == 2){
+      mytext = "112";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/living_room_day_4.png']"));
+    if (up.length == 2){
+      mytext = "AAA";
+    }
+
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/sponge.png']"));
     if (up.length == 2){
       mytext = "911";
@@ -285,6 +295,7 @@ async function autoBuy() {
       triggerEvents(item);
       await sleep(getRandomDelay(2000, 3000));
     }
+    await sleep(getRandomDelay(1000, 2000));
   }
     up = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("Claim"));
     shuffle(up);
