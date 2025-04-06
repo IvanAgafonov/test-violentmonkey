@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         monad faucet
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://testnet.monad.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/monad_faucet.user.js
@@ -96,7 +96,7 @@ async function autoBuy() {
     up.setAttribute('value', evm_addr);
     up.dispatchEvent(new Event('input', { bubbles: true }));
     up.dispatchEvent(new Event('change'));
-    await sleep(getRandomDelay(2000, 3100));
+    await sleep(getRandomDelay(7000, 8100));
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Get Testnet MON" );
