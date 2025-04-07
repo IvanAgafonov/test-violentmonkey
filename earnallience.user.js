@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         earnallience
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://www.playfull.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/earnallience.user.js
@@ -105,6 +105,17 @@ async function autoBuy() {
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(13000, 14000));
+    }
+  }
+
+  up = Array.from(document.querySelectorAll("input[value='ally-to-pie-conversion-opt-out'] + span"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("path[d='M4.568 15.833a.426.426 0 0 1-.281-.1.297.297 0 0 1-.12-.233.34.34 0 0 1 .08-.217L8.837 9.9l-4.37-5.183a.34.34 0 0 1-.08-.217c0-.089.04-.167.12-.233.08-.067.174-.1.281-.1h1.143c.187 0 .36.094.52.283l3.59 4.217 3.547-4.217a.612.612 0 0 1 .521-.283h1.063c.107 0 .2.033.28.1.08.066.12.144.12.233a.34.34 0 0 1-.08.217l-4.33 5.2 4.591 5.366c.054.067.08.14.08.217 0 .089-.046.167-.14.233a.426.426 0 0 1-.28.1H14.27c-.2 0-.374-.088-.521-.266l-3.79-4.4-3.768 4.4c-.147.178-.32.266-.52.266H4.567Z']"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 4000));
     }
   }
 
