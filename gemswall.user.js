@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Gemswall
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://app.gleam.bot/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gemswall.user.js
@@ -169,10 +169,19 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Open GemBox");
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(8000, 10000));
+  for(var i=0;i<20;i++) {
+    up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Open GemBox");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(11000, 12000));
+    }
+
+    up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Continue");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 3000));
+    }
+    await sleep(getRandomDelay(1000, 2000));
   }
 
   // up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Profile");
