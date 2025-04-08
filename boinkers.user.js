@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Boinkers claim
-// @version      0.19
+// @version      0.20
 // @author       IvanAgafonov
 // @match        https://boink.boinkers.co/*
 // @grant        none
@@ -73,14 +73,20 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("COLLECT") ||  el.textContent.includes("ПОЛУЧИТЬ"));
+  var up = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("COLLECT") ||  el.textContent.includes("ПОЛУЧИТЬ"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3500, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("COLLECT") ||  el.textContent.includes("ПОЛУЧИТЬ"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(3500, 4000));
   }
 
   for(var i = 0; i < 7; i++) {
-    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent.includes("free") || el.textContent.includes("Free"));
+    up = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("free") || el.textContent.includes("Free") || el.textContent.includes("FREE"));
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(3500, 4000));
@@ -224,7 +230,7 @@ async function autoBuy() {
     }
 
 
-    up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("СПИН"));
+    up = Array.from(document.querySelectorAll("button div span")).filter(el => el.textContent.includes("SPIN") ||  el.textContent.includes("СПИН"));
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(2000, 4000));
