@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.31
+// @version      0.32
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -115,6 +115,12 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 3000));
   }
 
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Take part");
+  if (up.length > 1){
+    triggerEvents(up[1]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
   up = Array.from(document.querySelectorAll("img[src='/icons/tabs/tasks.svg']"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -160,6 +166,11 @@ async function autoBuy() {
       mytext = "NFT";
     }
 
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/basement_icon_day1.png']"));
+    if (up.length == 2){
+      mytext = "TMNT";
+    }
 
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_day_6.png']"));
     if (up.length == 2){
@@ -295,6 +306,16 @@ async function autoBuy() {
       triggerEvents(item);
       await sleep(getRandomDelay(2000, 3000));
     }
+    up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Share story +");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(16000, 16000));
+    }
+    up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Claim +");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 2100));
+    }
     await sleep(getRandomDelay(1000, 2000));
   }
     up = Array.from(document.querySelectorAll("button div div")).filter(el => el.textContent.includes("Claim"));
@@ -307,7 +328,7 @@ async function autoBuy() {
     shuffle(up);
     for (const item of up) {
       triggerEvents(item);
-      await sleep(getRandomDelay(5000, 6000));
+      await sleep(getRandomDelay(3000, 4000));
     }
     up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
     shuffle(up);
