@@ -93,10 +93,51 @@ async function autoBuy() {
   for (const item of up) {
     triggerEvents(item);
     await sleep(getRandomDelay(3000, 4000));
-    up2 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Done")
+    var up2 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Done")
     if (up2.length != 0){
       triggerEvents(up2[0]);
       await sleep(getRandomDelay(2000, 3000));
+    }
+  }
+   // //div[text()='AI vs. Human: Who Do You Trust? 🤖']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']
+  const paintButton = document.evaluate("//div[text()='AI vs. Human: Who Do You Trust? 🤖']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (paintButton) {
+    triggerEvents(paintButton);
+    await sleep(getRandomDelay(2000, 3000));
+    var up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Yes, I use them regularly.")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Yes, AI summaries are just as good (or better).")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Missing context – AI skips important details.")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Human-written summary – I trust human judgment more.")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Yes, I already do.")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Yes, it would help me decide when to trust AI.")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Submit")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
     }
   }
 
