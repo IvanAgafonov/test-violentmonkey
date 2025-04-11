@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.32
+// @version      0.33
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -129,7 +129,7 @@ async function autoBuy() {
 
   up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "Start");
   shuffle(up);
-  if (up.length > 1){
+  if (up.length > 2){
     for (const item of up) {
       triggerEvents(item);
       await sleep(getRandomDelay(1000, 2000));
@@ -164,6 +164,11 @@ async function autoBuy() {
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_day_6.png']"));
     if (up.length == 2){
       mytext = "NFT";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/basement_icon_day2.png']"));
+    if (up.length == 2){
+      mytext = "42";
     }
 
 
@@ -336,6 +341,28 @@ async function autoBuy() {
       triggerEvents(item);
       await sleep(getRandomDelay(2000, 3000));
     }
+
+
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Partners");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+
+  up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "Start");
+  shuffle(up);
+  for (const item of up) {
+    triggerEvents(item);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
+  for (const item of up) {
+    triggerEvents(item);
+    await sleep(getRandomDelay(5000, 6000));
+  }
+
 }
 
 
