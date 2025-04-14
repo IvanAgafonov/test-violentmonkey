@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ton society quests
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://commquest.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ton_quests.user.js
@@ -651,7 +651,7 @@ async function autoBuy() {
 
   // TODO
 
-  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Создайте дашборд для DeDust на Dune и выиграйте до $3000!");
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent.includes("Создайте дашборд для DeDust на Dune и выиграйте"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
@@ -695,6 +695,181 @@ async function autoBuy() {
       triggerEvents(up[0]);
       await sleep(getRandomDelay(6000, 7000));
     }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Завершить квест");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    window.location.href = 'https://commquest.xyz/ton-cis/';
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+
+  // TODO
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Виды поддержки для проектов в TON");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Открыть");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Проверить");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Перейти");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    var answers = ["Менторство, воркшопы и продвижение через Open League",
+                   "Локальный проект с аудиторией от 3К человек и интеграцией TON",
+                   "Рабочее TMA и соответствие Telegram App Standards",
+                   "Сетап кампании и подбор инфлюенсеров"]
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => answers.includes(el.textContent));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Ответить");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(6000, 7000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Завершить квест");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    window.location.href = 'https://commquest.xyz/ton-cis/';
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+  // TODO
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Виды поддержки для проектов в TON");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Открыть");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Проверить");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Перейти");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    var answers = ["Менторство, воркшопы и продвижение через Open League",
+                   "Локальный проект с аудиторией от 3К человек и интеграцией TON",
+                   "Рабочее TMA и соответствие Telegram App Standards",
+                   "Сетап кампании и подбор инфлюенсеров"]
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => answers.includes(el.textContent));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Ответить");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(6000, 7000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Завершить квест");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    window.location.href = 'https://commquest.xyz/ton-cis/';
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+
+  // TODO
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Что стоит билдить на блокчейне TON");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Открыть");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    await sleep(getRandomDelay(4000, 5000));
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Проверить");
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Перейти");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000, 5000));
+    }
+
+    var answers = ["Менторство, воркшопы и продвижение через Open League",
+                   "Локальный проект с аудиторией от 3К человек и интеграцией TON",
+                   "Рабочее TMA и соответствие Telegram App Standards",
+                   "Сетап кампании и подбор инфлюенсеров"]
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => answers.includes(el.textContent));
+    shuffle(up);
+    for (const item of up) {
+      triggerEvents(item);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Ответить");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(6000, 7000));
+    }
+
+    await sleep(getRandomDelay(6000, 7000));
 
     up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Завершить квест");
     if (up.length != 0){
