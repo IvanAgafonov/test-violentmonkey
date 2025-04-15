@@ -395,6 +395,12 @@ async function autoBuy() {
     await sleep(getRandomDelay(5000, 6000));
   }
 
+  up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
+  for (const item of up) {
+    triggerEvents(item);
+    await sleep(getRandomDelay(5000, 6000));
+  }
+
 }
 
 
