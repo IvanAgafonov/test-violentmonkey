@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         nodepay
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://app.nodepay.ai/missions
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/nodepay.user.js
@@ -104,36 +104,55 @@ async function autoBuy() {
   if (paintButton) {
     triggerEvents(paintButton);
     await sleep(getRandomDelay(2000, 3000));
-    var up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Yes, I use them regularly.")
+
+    var answers = ["Yes, I use them regularly.", "Yes, but only occasionally.", "No, I’ve never used one.", "I’m not sure if I have."];
+    shuffle(answers);
+    var up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
     if (up3.length != 0){
       triggerEvents(up3[0]);
       await sleep(getRandomDelay(1000, 1200));
     }
-    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Yes, AI summaries are just as good (or better).")
+
+    answers = ["Yes, AI summaries are just as good (or better).", "Sometimes, but they still need improvement.", "No, human-written summaries are still better.", "No, human-written summaries are still better.", "I don’t read summaries, I prefer full content."];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
     if (up3.length != 0){
       triggerEvents(up3[0]);
       await sleep(getRandomDelay(1000, 1200));
     }
-    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Missing context – AI skips important details.")
+
+    answers = ["Missing context – AI skips important details.", "Oversimplification – The summary removes too much depth.", "Misinterpretation – AI sometimes gets the meaning wrong.", "Repetitiveness – AI often summarizes content in a generic way.", "Inaccuracy – AI sometimes includes wrong or misleading information."];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
     if (up3.length != 0){
       triggerEvents(up3[0]);
       await sleep(getRandomDelay(1000, 1200));
     }
-    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Human-written summary – I trust human judgment more.")
+
+    answers = ["Human-written summary – I trust human judgment more.", "AI-generated summary – AI is less biased than humans.", "Depends on the source – I’ll compare both before deciding.", "I wouldn’t trust either without fact-checking myself."];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
     if (up3.length != 0){
       triggerEvents(up3[0]);
       await sleep(getRandomDelay(1000, 1200));
     }
-    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Yes, I already do.")
+
+    answers = ["Yes, I already do.", "Yes, but only if I can verify key details.", "No, AI summaries are too unreliable for that.", "No, I prefer reading the full content myself."];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
     if (up3.length != 0){
       triggerEvents(up3[0]);
       await sleep(getRandomDelay(1000, 1200));
     }
-    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Yes, it would help me decide when to trust AI.")
+
+    answers = ["Yes, it would help me decide when to trust AI.", "Maybe, but I’d still double-check important details.", "No, confidence scores wouldn’t change my trust in AI.", "I don’t trust AI summaries at all, regardless of confidence scores."];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
     if (up3.length != 0){
       triggerEvents(up3[0]);
       await sleep(getRandomDelay(1000, 1200));
     }
+
     up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Submit")
     if (up3.length != 0){
       triggerEvents(up3[0]);
