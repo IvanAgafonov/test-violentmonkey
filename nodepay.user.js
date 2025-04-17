@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         nodepay
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://app.nodepay.ai/missions
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/nodepay.user.js
@@ -99,8 +99,8 @@ async function autoBuy() {
       await sleep(getRandomDelay(2000, 3000));
     }
   }
-   // //div[text()='AI vs. Human: Who Do You Trust? 🤖']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']
-  const paintButton = document.evaluate("//div[text()='AI vs. Human: Who Do You Trust? 🤖']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+   // AI vs. Human: Who Do You Trust? 🤖
+  var paintButton = document.evaluate("//div[text()='AI vs. Human: Who Do You Trust? 🤖']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (paintButton) {
     triggerEvents(paintButton);
     await sleep(getRandomDelay(2000, 3000));
@@ -148,6 +148,197 @@ async function autoBuy() {
     answers = ["Yes, it would help me decide when to trust AI.", "Maybe, but I’d still double-check important details.", "No, confidence scores wouldn’t change my trust in AI.", "I don’t trust AI summaries at all, regardless of confidence scores."];
     shuffle(answers);
     up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Submit")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+  }
+
+  // User understanding (part 1)
+  paintButton = document.evaluate("//div[text()='User understanding (part 1)']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (paintButton) {
+    triggerEvents(paintButton);
+    await sleep(getRandomDelay(2000, 3000));
+
+    var answers = ["Yes ", "No "];
+    shuffle(answers);
+    var up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("#basic_location"));
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == answers[0] && el.className == 'ant-select-item-option-content')
+    console.log(up3)
+
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Male", "Female "];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Software Engineer", "Data Scientist", "Financial Analyst"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("#basic_occupation"));
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == answers[0] && el.className == 'ant-select-item-option-content')
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Finance", "Retail", "Manufacturing"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("#basic_industry"));
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == answers[0] && el.className == 'ant-select-item-option-content')
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Under 18", "18-24 ", "25-34", "35-44", "45-54"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Submit")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+  }
+
+  // Understanding your trading experience in Web3
+  paintButton = document.evaluate("//div[text()='Understanding your trading experience in Web3']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (paintButton) {
+    triggerEvents(paintButton);
+    await sleep(getRandomDelay(2000, 3000));
+
+    var answers = ["Less than 1 month", "Less than 6 months", "More than 1 year", "More than 3 years"];
+    shuffle(answers);
+    var up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["I traded on CEXs (eg: Binance, OKX, Coinbase) before.", "I traded on DEXs (Liquid, Raydium, Uniswap) before.", "I used both before.", "I do not know how to trade."];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Yes", "No", "I do not know how to trade."];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Submit")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+  }
+
+  // Understanding CEXs / DEXs used by our community
+  paintButton = document.evaluate("//div[text()='Understanding CEXs / DEXs used by our community']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (paintButton) {
+    triggerEvents(paintButton);
+    await sleep(getRandomDelay(2000, 3000));
+
+    var answers = ["Binance", "OKX", "Kucoin", "Coinbase", "Bitget"];
+    shuffle(answers);
+    var up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Binance", "OKX", "Kucoin", "Coinbase", "Bitget", "BingX", "Upbit", "Bithumb", "MEXC"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length > 1){
+      triggerEvents(up3[1]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[1])
+    if (up3.length > 1){
+      triggerEvents(up3[1]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[2])
+    if (up3.length > 1){
+      triggerEvents(up3[1]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Raydium", "Orca", "Jupiter", "Saber", "Meteora"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Once a month", "2–4 times a month", "5–9 times a month", "10 or more times a month"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Bitget Wallet", "Bybit Wallet", "Binance Wallet", "Solflare"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("#basic_country"));
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == answers[0] && el.className == 'ant-select-item-option-content')
     if (up3.length != 0){
       triggerEvents(up3[0]);
       await sleep(getRandomDelay(1000, 1200));
