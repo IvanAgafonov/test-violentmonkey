@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum claim
-// @version      0.27
+// @version      0.28
 // @author       IvanAgafonov
 // @match        https://telegram.blum.codes/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/blum_claim.user.js
@@ -426,20 +426,20 @@ async function autoBuy() {
       await sleep(getRandomDelay(3000, 4000));
     }
 
-    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent == "Invite a fren");
-    if (up.length != 0){
-      up[0].click();
-      await sleep(getRandomDelay(2000, 3000));
-    }
+    // up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent == "Invite a fren");
+    // if (up.length != 0){
+    //   up[0].click();
+    //   await sleep(getRandomDelay(2000, 3000));
+    // }
 
-    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent == "Send");
-    if (up.length != 0){
-      up[0].click();
-      try{
-        await fetch("http://127.0.0.1:5000/blum?link=" + console.logs[console.logs.length-1]['2']['path_full']);
-      } catch (error) {}
-      await sleep(getRandomDelay(2000, 3000));
-    }
+    // up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent == "Send");
+    // if (up.length != 0){
+    //   up[0].click();
+    //   try{
+    //     await fetch("http://127.0.0.1:5000/blum?link=" + console.logs[console.logs.length-1]['2']['path_full']);
+    //   } catch (error) {}
+    //   await sleep(getRandomDelay(2000, 3000));
+    // }
 
 
     up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Points"));
