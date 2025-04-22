@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hume daily
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://humeworld.xyz/daily-spin
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hume_daily.user.js
@@ -87,6 +87,23 @@ async function autoBuy() {
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(12000, 12100));
+    }
+
+    up = Array.from(document.querySelectorAll("button div")).filter(el => el.textContent == "More options");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 3100));
+      up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "Rabby Wallet");
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(15000, 15100));
+      }
+    }
+
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Accept");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 2100));
     }
 
     up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent.includes("Continue"));
