@@ -83,6 +83,12 @@ async function autoBuy() {
       await sleep(getRandomDelay(3000, 4100));
     }
 
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Accept");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 2100));
+    }
+
     up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "Rabby Wallet");
     if (up.length != 0){
       triggerEvents(up[0]);
