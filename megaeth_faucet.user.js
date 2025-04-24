@@ -109,6 +109,12 @@ async function autoBuy() {
     triggerEvents(up[0]);
     await sleep(getRandomDelay(1000, 2000));
   }
+  await sleep(getRandomDelay(2300, 2000));
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "GET TESTNET ETH" );
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
 
 
 }
