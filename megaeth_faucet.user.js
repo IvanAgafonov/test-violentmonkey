@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         megaETH faucet
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://testnet.megaeth.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/megaeth_faucet.user.js
@@ -95,13 +95,19 @@ async function autoBuy() {
     up.setAttribute('value', evm_addr);
     up.dispatchEvent(new Event('input', { bubbles: true }));
     up.dispatchEvent(new Event('change'));
-    await sleep(getRandomDelay(3000, 5100));
+    await sleep(getRandomDelay(3200, 5100));
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "GET TESTNET ETH" );
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(3000, 4000));
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "GET TESTNET ETH" );
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
   }
 
 
