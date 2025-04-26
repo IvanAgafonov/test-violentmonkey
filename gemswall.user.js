@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Gemswall
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://app.gleam.bot/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gemswall.user.js
@@ -75,6 +75,12 @@ async function connectWallet(){
 
 async function autoBuy() {
 
+  console.stdlog = console.log.bind(console);
+  console.logs = [];
+  console.log = function(){
+      console.logs.push(Array.from(arguments));
+      console.stdlog.apply(console, arguments);
+  }
 
 
   var up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Claim gifts");
@@ -91,7 +97,7 @@ async function autoBuy() {
   }
 
 
-  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "winners");
+  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Participants:");
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
@@ -123,7 +129,34 @@ async function autoBuy() {
       triggerEvents(up[0]);
       await sleep(getRandomDelay(2000, 3100));
     }
+
+    // try{
+    //   await fetch("http://127.0.0.1:5000/gemswall?link=" + console.logs[console.logs.length-1]['url'] + "&address=" + evm_addr);
+    // } catch (error) {}
   }
+
+
+  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Completed");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Participants:");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Claim SBT");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3100));
+    try{
+      await fetch("http://127.0.0.1:5000/gemswall?link=" + console.logs[console.logs.length-1]['2']['url'] + "&profile_number=" + profile_number);
+    } catch (error) {}
+  }
+
 
   up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Claim" && el.className.includes("text-black text-body-1-500"));
   if (up.length != 0){
