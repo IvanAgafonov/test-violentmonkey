@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Gemswall
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://app.gleam.bot/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gemswall.user.js
@@ -196,6 +196,24 @@ async function autoBuy() {
   //   await sleep(getRandomDelay(4000, 5000));
   // }
 
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Profile");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == "Claimable" && el.className.includes("text-xs font-medium"));
+  shuffle(up);
+  for (const item of up) {
+    triggerEvents(item);
+    await sleep(getRandomDelay(2000, 2100));
+    var up2 = Array.from(document.querySelectorAll("path[d='M6 18 18 6M6 6l12 12']"));
+    if (up2.length != 0){
+      triggerEvents(up2[0]);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+  }
+
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Prizes");
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -216,6 +234,9 @@ async function autoBuy() {
     }
     await sleep(getRandomDelay(1000, 2000));
   }
+
+
+
 
   // up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Profile");
   // if (up.length != 0){
