@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.43
+// @version      0.44
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -141,7 +141,7 @@ async function autoBuy() {
 
   up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "Start");
   shuffle(up);
-  if (up.length > 3){
+  if (up.length > 4){
     for (const item of up) {
       triggerEvents(item);
       await sleep(getRandomDelay(1000, 2000));
@@ -176,6 +176,11 @@ async function autoBuy() {
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/kitchen_day_6.png']"));
     if (up.length == 2){
       mytext = "NFT";
+    }
+
+    up = Array.from(document.querySelectorAll("img[src='/images/icons/social/ton_garage_quest_icon_3.png']"));
+    if (up.length == 2){
+      mytext = "Ton";
     }
 
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/basement_icon_day_3.png']"));
@@ -249,8 +254,8 @@ async function autoBuy() {
     }
 
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/enter_code_quest_icon2.png']"));
-    if (up.length == 2){
-      mytext = "the end";
+    if (up.length >= 4){
+      mytext = "capital";
     }
 
     up = Array.from(document.querySelectorAll("img[src='/images/icons/social/icon_tg.png']"));
@@ -375,7 +380,7 @@ async function autoBuy() {
     up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Share story +");
     if (up.length != 0){
       triggerEvents(up[0]);
-      await sleep(getRandomDelay(16000, 16000));
+      await sleep(getRandomDelay(2000, 3000));
     }
     up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Claim +");
     if (up.length != 0){
