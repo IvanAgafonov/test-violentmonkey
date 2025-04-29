@@ -254,7 +254,7 @@ async function autoBuy() {
   // if (up.length != 0){
   //   triggerEvents(up[0]);
   //   await sleep(getRandomDelay(8000, 10000));
-  // }
+  // } 
 
 }
 
