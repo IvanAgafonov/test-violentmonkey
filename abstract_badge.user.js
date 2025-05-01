@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         abstract badge
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://portal.abs.xyz/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/abstract_badge.user.js
@@ -100,6 +100,12 @@ async function autoBuy() {
       triggerEvents(up[0]);
       await sleep(getRandomDelay(15000, 19000));
     }
+  }
+
+  up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "Continue");
+  for (const item of up) {
+    triggerEvents(item);
+    await sleep(getRandomDelay(3000, 4000));
   }
 
   up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Claim" );
