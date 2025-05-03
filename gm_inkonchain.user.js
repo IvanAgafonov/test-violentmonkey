@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm ink
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://gm.inkonchain.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_inkonchain.user.js
@@ -123,7 +123,7 @@ function initializeScript() {
 
     console.log('START claim  ')
 
-    setTimeout(autoBuy, getRandomDelay(12000, 13050));
+    setTimeout(autoBuy, getRandomDelay(9000, 11050));
 }
 
 if (document.readyState === 'loading') {
