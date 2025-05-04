@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         RFL_BLAST_bot
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://webapp.rflblast.ru/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/RFL_BLAST_bot.user.js
@@ -102,9 +102,11 @@ async function autoBuy() {
 
   for(var i=0;i<110;i++) {
     up = Array.from(document.querySelectorAll("div")).filter(el => el.className.includes("home-page_stars_count__"));
-    console.log(up);
+    // console.log(up);
     if (up.length != 0) {
-      if (parseInt(up[0].textContent) < 495) {
+      // console.log(up[0].textContent.replace(/\s/g, ''));
+      // console.log(parseInt(up[0].textContent.replaceAll(" ", "")));
+      if (parseInt(up[0].textContent.replace(/\s/g, '')) < 495) {
         up = Array.from(document.querySelectorAll("svg[width='512']"));
         if (up.length != 0){
           triggerEvents(up[0]);
@@ -112,7 +114,7 @@ async function autoBuy() {
         }
       }
       else {
-          if (parseInt(up[0].textContent) < 500) {
+          if (parseInt(up[0].textContent.replace(/\s/g, '')) < 500) {
           up = Array.from(document.querySelectorAll("svg[width='512']"));
           if (up.length != 0){
             triggerEvents(up[0]);
