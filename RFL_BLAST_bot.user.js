@@ -79,7 +79,25 @@ async function autoBuy() {
   var up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == "Next");
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(4000, 5000));
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == "Next");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == "Next");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == "Next");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
   }
 
   for(var i=0;i<110;i++) {
