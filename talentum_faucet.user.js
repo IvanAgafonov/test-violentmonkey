@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         talentum faucet
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://monad.talentum.id/quests
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/talentum_faucet.user.js
@@ -75,8 +75,19 @@ async function connectWallet(){
 
 async function autoBuy() {
 
+  var up = document.evaluate("//div[normalize-space()='Sign In']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (up){
+    triggerEvents(up);
+    await sleep(getRandomDelay(3000, 4000));
+  }
 
-  var up = document.evaluate("//div[contains(normalize-space(), 'MON Faucet') and contains(@class, 'flex flex-row gap-2 max-w-[190px] items-center streak-bg')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  up = document.evaluate("//div[@class='socials-btn']//button[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (up){
+    triggerEvents(up);
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = document.evaluate("//div[contains(normalize-space(), 'MON Faucet') and contains(@class, 'flex flex-row gap-2 max-w-[190px] items-center streak-bg')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (up){
     triggerEvents(up);
     await sleep(getRandomDelay(3000, 4000));
