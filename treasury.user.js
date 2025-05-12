@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.55
+// @version      0.56
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -483,7 +483,13 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
   for (const item of up) {
     triggerEvents(item);
-    await sleep(getRandomDelay(5000, 6000));
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("button p")).filter(el => el.textContent.includes("Claim"));
+  for (const item of up) {
+    triggerEvents(item);
+    await sleep(getRandomDelay(2000, 3000));
   }
 
 }
