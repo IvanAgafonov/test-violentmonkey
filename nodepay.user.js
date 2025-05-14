@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         nodepay
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://app.nodepay.ai/missions
+// @match        https://app.nodepay.ai/medal
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/nodepay.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/nodepay.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -99,6 +100,22 @@ async function autoBuy() {
       await sleep(getRandomDelay(2000, 3000));
     }
   }
+
+  up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == "Claim" && el.className.includes("items-center text-white") && !el.parentElement.className.includes("hidden"));
+  console.log(up);
+  if (up.length != 0) {
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 1100));
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='https://cdn.nodepay.org/medal/Medal_1.png']")).filter(el => !el.style.cssText || !el.style.cssText.includes("grayscale"))
+  var up3 = Array.from(document.querySelectorAll("img[src='https://cdn.nodepay.org/medal/Medal_6.png']")).filter(el => !el.style.cssText || !el.style.cssText.includes("grayscale"))
+  if (up.length != 0 && up3.length != 0) {
+    try{
+      await fetch("http://127.0.0.1:5000/nodepay?profile_number=" + profile_number);
+    } catch (error) {}
+  }
+
    // AI vs. Human: Who Do You Trust? 🤖
   var paintButton = document.evaluate("//div[text()='AI vs. Human: Who Do You Trust? 🤖']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (paintButton) {
@@ -182,7 +199,6 @@ async function autoBuy() {
       await sleep(getRandomDelay(1000, 1200));
     }
     up3 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == answers[0] && el.className == 'ant-select-item-option-content')
-    console.log(up3)
 
     if (up3.length != 0){
       triggerEvents(up3[0]);
