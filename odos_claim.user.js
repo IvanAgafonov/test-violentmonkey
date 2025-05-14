@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         odos claim
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://app.odos.xyz/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/odos_claim.user.js
@@ -108,7 +108,7 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "Rabby Wallet");
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(3000, 4000));
+    await sleep(getRandomDelay(13000, 14000));
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Switch chain to claim");
@@ -130,7 +130,7 @@ function initializeScript() {
 
     console.log('START claim  ')
 
-    setTimeout(autoBuy, getRandomDelay(9000, 11050));
+    setTimeout(autoBuy, getRandomDelay(19000, 20050));
 }
 
 if (document.readyState === 'loading') {
