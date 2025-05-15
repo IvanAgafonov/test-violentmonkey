@@ -114,7 +114,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(4000, 5000));
   }
 
-  var chains = ['Soneium', 'Base', 'Scroll', 'zkSync Era'];
+  var chains = ['Soneium', 'Base', 'Scroll', 'zkSync Era', 'Linea'];
   shuffle(chains);
 
   up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == chains[0]);
