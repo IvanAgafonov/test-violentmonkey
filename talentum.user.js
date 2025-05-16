@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         talentum
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://monad.talentum.id/tasks/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/talentum.user.js
@@ -79,13 +79,19 @@ async function autoBuy() {
   var up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Start Work");
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(8000, 9000));
+    await sleep(getRandomDelay(12000, 13000));
   }
 
   const paintButton = document.evaluate("//img[@alt='linkIcon']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (paintButton) {
     triggerEvents(paintButton);
     await sleep(getRandomDelay(4000, 5000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == " Mint" && el.className.includes("task-condition_card_title"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5500, 6000));
   }
 
   up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == "Verify");
@@ -115,7 +121,7 @@ function initializeScript() {
 
     console.log('START claim ')
 
-    setTimeout(autoBuy, getRandomDelay(15000, 17050));
+    setTimeout(autoBuy, getRandomDelay(19000, 19050));
 }
 
 if (document.readyState === 'loading') {
