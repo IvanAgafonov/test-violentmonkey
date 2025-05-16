@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         debank claim
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://debank.com/badge/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/debank_claim.user.js
@@ -79,6 +79,13 @@ async function autoBuy() {
   if (up.length != 0) {
     triggerEvents(up[0]);
     await sleep(getRandomDelay(6000, 7100));
+  }
+
+  up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Minted" && el.className.includes('MintBadgeButton_mintedTitle'))
+  if (up.length != 0) {
+    try{
+      await fetch("http://127.0.0.1:5000/debank?profile_number=" + profile_number + "&badge=" + document.URL.split('/').slice(-1)[0]);
+    } catch (error) {}
   }
 
 }
