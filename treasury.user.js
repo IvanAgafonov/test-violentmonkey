@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         treasury
-// @version      0.58
+// @version      0.59
 // @author       IvanAgafonov
 // @match        https://cdn.thetreasury.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasury.user.js
@@ -128,7 +128,7 @@ async function autoBuy() {
     up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == " You don't have any gifts yet");
     if (up.length == 0){
       try{
-        await fetch("http://127.0.0.1:5000/treasury?address=" + evm_addr);
+        await fetch("http://127.0.0.1:5000/treasury?profile_number=" + profile_number);
       } catch (error) {}
     }
   }
