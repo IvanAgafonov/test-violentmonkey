@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         talentum
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://monad.talentum.id/tasks/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/talentum.user.js
@@ -88,6 +88,13 @@ async function autoBuy() {
     await sleep(getRandomDelay(4000, 5000));
   }
 
+  up = Array.from(document.querySelectorAll("path[d='M20.5304 7.53039L10.5304 17.5304C10.3897 17.671 10.199 17.7501 10.0001 17.7501C9.80114 17.7501 9.61038 17.671 9.46973 17.5304L4.46973 12.5303L5.53039 11.4697L10.0001 15.9394L19.4697 6.46973L20.5304 7.53039Z']"));
+  if (up.length != 0) {
+    try{
+      await fetch("http://127.0.0.1:5000/talentum?profile_number=" + profile_number + "&badge=" + document.URL.split('/').slice(-1)[0]);
+    } catch (error) {}
+  }
+  
   up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent == " Mint" && el.className.includes("task-condition_card_title"));
   if (up.length != 0){
     triggerEvents(up[0]);
