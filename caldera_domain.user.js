@@ -134,7 +134,7 @@ async function autoBuy() {
                 'Legacy','Sharp','Dead','Mew','Chuckle','Bubba','Bubble','Sandwich','Smasher','Extreme','Multi','Universe','Ultimate','Death','Ready','Monkey','Elevator','Wrench','Grease','Head','Theme','Grand','Cool','Kid','Boy','Girl','Vortex','Paradox'
             ];
     alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    var finalName = nameList[Math.floor( Math.random() * nameList.length )] + nameList[Math.floor( Math.random() * nameList.length )] + alphabet[Math.floor( Math.random() * alphabet.length )];
+    var finalName = nameList[Math.floor( Math.random() * nameList.length )].toLowerCase() + nameList[Math.floor( Math.random() * nameList.length )].toLowerCase() + alphabet[Math.floor( Math.random() * alphabet.length )];
 
   up = document.querySelector("div input");
   if (up) {
