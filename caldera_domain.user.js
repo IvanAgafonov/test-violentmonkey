@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         caldera domain
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://catalyst.caldera.xyz/domain
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/caldera_domain.user.js
@@ -154,6 +154,13 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("h2")).filter(el => el.textContent == "About your domain");
+  if (up.length != 0){
+    try{
+      await fetch("http://127.0.0.1:5000/caldera_domain?profile_number=" + profile_number);
+    } catch (error) {}
   }
 
 
