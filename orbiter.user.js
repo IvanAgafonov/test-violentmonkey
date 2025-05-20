@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         orbiter
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://www.orbiter.finance/?channel=0x3c0ed9ab1a12ba804900da2807c09b8afec10f67
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/orbiter.user.js
@@ -168,7 +168,7 @@ function initializeScript() {
 
     console.log('START claim  ')
 
-    setTimeout(autoBuy, getRandomDelay(16500, 17050));
+    setTimeout(autoBuy, getRandomDelay(21000, 21050));
 }
 
 if (document.readyState === 'loading') {
