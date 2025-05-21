@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         drip_follow
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://drip.haus/fragmetric/home
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/drip_follow.user.js
@@ -103,6 +103,34 @@ async function autoBuy() {
     } catch (error) {}
   }
 
+  up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent.includes("Thank"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  var button = document.querySelector("div.mb-3 input");
+  if (button) {
+    var mynum = getRandomDelay(1,5).toString();
+    const lastValue = button.value;
+    button.value = mynum;
+    const event = new Event("input", { bubbles: true });
+    const tracker = button._valueTracker;
+    if (tracker) {
+      tracker.setValue(lastValue);
+    }
+    button.dispatchEvent(event);
+    await sleep(getRandomDelay(1200, 2000));
+  }
+
+
+
+
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Submit"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
 
 
 }
