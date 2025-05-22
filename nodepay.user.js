@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         nodepay
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://app.nodepay.ai/missions
 // @match        https://app.nodepay.ai/medal
@@ -355,6 +355,128 @@ async function autoBuy() {
       await sleep(getRandomDelay(1000, 1200));
     }
     up3 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == answers[0] && el.className == 'ant-select-item-option-content')
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Submit")
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+  }
+
+  // Shape the Signal Data Layer & earn $5000 USD 🧠
+  paintButton = document.evaluate("//div[text()='Shape the Signal Data Layer & earn $5000 USD 🧠']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer now']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (!paintButton) {
+    paintButton = document.evaluate("//div[text()='Shape the Signal Data Layer & earn $5000 USD 🧠']/parent::div/parent::div/parent::div/parent::div//span[text()='Answer']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  }
+
+  if (paintButton) {
+    triggerEvents(paintButton);
+    await sleep(getRandomDelay(2000, 3000));
+
+    var answers = ["Yes, I'd love to earn by sharing my insights.", "Maybe, if it's easy to do.", "No, that doesn't interest me."];
+    shuffle(answers);
+    var up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Market sentiment (e.g., Bullish or Bearish on $X?)", "Feature feedback on new protocols", "Predictions about upcoming token events", "Community or social sentiment", "Meme/just-for-fun crypto opinions", "I want to submit my own signal questions"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["It's time-sensitive", "It's related to trending topics", "It reflects real market emotion", "It has a clear outcome or reference point", "It helps me feel more aligned with the project"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Yes, if it helped reach 10,000+ views", "Maybe, depends on cost", "No, I wouldn't pay to boost"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["Daily/weekly rewards in $NC", "Leaderboards and rankings", "Ability to influence project research", "Custom dashboards", "Referral rewards"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+    answers = ["KOL / influencer", "Project founder / marketer", "Crypto trader / investor", "Researcher / analyst"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+
+    answers = ["Coming up with engaging questions/signals", "Getting enough responses", "Tracking / visualizing results", "Monetizing engagement", "Lack of incentives for respondents", "Integrating results into my workflow"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[1])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[2])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+
+    answers = ["Pre-made, trending market questions", "Fully customizable questions", "Real-time analytics on answers (charts & trends)", "Referral links & token rewards", "Staking/subscription for higher rewards", "In-app notifications / alerts for new signals"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[0])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[1])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[2])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+
+
+    answers = ["Earning tokens", "Testing market knowledge", "Friendly competition / leaderboards", "Influencing project decisions", "Community engagement", "Access to exclusive insights / alpha", "Recognition (badges / status)", "Learning from top KOLs"];
+    shuffle(answers);
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes(answers[0]))
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[1])
+    if (up3.length != 0){
+      triggerEvents(up3[0]);
+      await sleep(getRandomDelay(1000, 1200));
+    }
+    up3 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == answers[2])
     if (up3.length != 0){
       triggerEvents(up3[0]);
       await sleep(getRandomDelay(1000, 1200));
