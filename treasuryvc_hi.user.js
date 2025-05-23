@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         TreasuryVC hi
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://web.telegram.org/k/*@TreasuryVC
+// @match        https://web.telegram.org/k/*@PrimeGiftsCase
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasuryvc_hi.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/treasuryvc_hi.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
