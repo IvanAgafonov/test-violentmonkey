@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Appcenter claim
-// @version      0.30
+// @version      0.31
 // @author       IvanAgafonov
 // @match        https://tappscenter.org/*
 // @grant        none
@@ -133,25 +133,25 @@ async function autoBuy() {
 
 
 
-    up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(3000, 4000));
-    }
+//     up = Array.from(document.querySelectorAll("div div h4")).filter(el => el.textContent == "Pocket");
+//     if (up.length != 0){
+//       triggerEvents(up[0]);
+//       await sleep(getRandomDelay(3000, 4000));
+//     }
 
-    up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "50 points");
-    if (up.length != 0){
-      triggerEvents(up[0]);
-      await sleep(getRandomDelay(500, 700));
-    }
+//     up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "50 points");
+//     if (up.length != 0){
+//       triggerEvents(up[0]);
+//       await sleep(getRandomDelay(500, 700));
+//     }
 
-    for(var i=0;i<30;i++){
-      up = Array.from(document.querySelectorAll("path[d='M10.0017 17.1431C9.60719 17.1431 9.28739 16.8233 9.28739 16.4288V10.7145L3.5731 10.7145C3.17861 10.7145 2.85882 10.3947 2.85882 10.0002C2.85882 9.60572 3.17861 9.28592 3.5731 9.28592L9.28739 9.28592L9.28739 3.57164C9.28739 3.17715 9.60719 2.85735 10.0017 2.85735C10.3962 2.85735 10.716 3.17715 10.716 3.57164L10.716 9.28592H16.4302C16.8247 9.28592 17.1445 9.60572 17.1445 10.0002C17.1445 10.3947 16.8247 10.7145 16.4302 10.7145H10.716V16.4288C10.716 16.8233 10.3962 17.1431 10.0017 17.1431Z']"));
-      if (up.length != 0){
-        triggerEvents(up[0]);
-      }
-      await sleep(getRandomDelay(1, 10));
-    }
+//     for(var i=0;i<30;i++){
+//       up = Array.from(document.querySelectorAll("path[d='M10.0017 17.1431C9.60719 17.1431 9.28739 16.8233 9.28739 16.4288V10.7145L3.5731 10.7145C3.17861 10.7145 2.85882 10.3947 2.85882 10.0002C2.85882 9.60572 3.17861 9.28592 3.5731 9.28592L9.28739 9.28592L9.28739 3.57164C9.28739 3.17715 9.60719 2.85735 10.0017 2.85735C10.3962 2.85735 10.716 3.17715 10.716 3.57164L10.716 9.28592H16.4302C16.8247 9.28592 17.1445 9.60572 17.1445 10.0002C17.1445 10.3947 16.8247 10.7145 16.4302 10.7145H10.716V16.4288C10.716 16.8233 10.3962 17.1431 10.0017 17.1431Z']"));
+//       if (up.length != 0){
+//         triggerEvents(up[0]);
+//       }
+//       await sleep(getRandomDelay(1, 10));
+//     }
 
 
 }
