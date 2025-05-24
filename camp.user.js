@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         camp
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://testnet.campnetwork.xyz/
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/camp.user.js
@@ -110,6 +110,7 @@ async function autoBuy() {
   }
 
   up = Array.from(document.querySelectorAll("div.quest-card-shadow")).filter(el => !el.style.cssText.includes("grayscale"));
+  shuffle(up);
   if (up.length != 0){
     for (const item of up) {
       item.click();
