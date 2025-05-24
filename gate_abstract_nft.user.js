@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gate_abstract_nft
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://www.gate.io/web3/activities/collect-in-the-moment-digital-collectible-with-oracle-red-bull-racing
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gate_abstract_nft.user.js
@@ -115,6 +115,20 @@ async function autoBuy() {
   if (paintButton) {
     triggerEvents(paintButton);
     await sleep(getRandomDelay(24000, 25000));
+  }
+
+  paintButton = document.evaluate("(//span[text()='Free']//parent::div//parent::div//parent::div//div[text()='Collect'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  console.log(paintButton);
+  if (paintButton) {
+    triggerEvents(paintButton);
+    await sleep(getRandomDelay(10000, 11000));
+  }
+
+  paintButton = document.evaluate("(//span[text()='Free']//parent::div//parent::div//parent::div//div[text()='Collect'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  console.log(paintButton);
+  if (paintButton) {
+    triggerEvents(paintButton);
+    await sleep(getRandomDelay(10000, 11000));
   }
 
   paintButton = document.evaluate("(//span[text()='Free']//parent::div//parent::div//parent::div//div[text()='Collect'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
