@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         camp
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://testnet.campnetwork.xyz/
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/camp.user.js
@@ -110,15 +110,17 @@ async function autoBuy() {
   }
 
   up = Array.from(document.querySelectorAll("div.quest-card-shadow")).filter(el => !el.style.cssText.includes("grayscale"));
-  shuffle(up);
+  // shuffle(up);
   if (up.length != 0){
-    for (const item of up) {
+    for (var item of up) {
+      if (!item.innerHTML.includes("Follow") && !item.innerHTML.includes("on X")) {
       item.click();
       await sleep(getRandomDelay(4000, 5000));
       var up2 = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Claim");
       if (up2.length != 0){
         triggerEvents(up2[0]);
         await sleep(getRandomDelay(1000, 2000));
+      }
       }
     }
   }
