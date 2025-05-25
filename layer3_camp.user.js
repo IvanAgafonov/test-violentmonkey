@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         layer3_camp
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://app.layer3.xyz/activations/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/layer3_camp.user.js
@@ -121,7 +121,7 @@ function initializeScript() {
 
     console.log('START claim  ')
 
-    setTimeout(autoBuy, getRandomDelay(19000, 19050));
+    setTimeout(autoBuy, getRandomDelay(26000, 26050));
 }
 
 if (document.readyState === 'loading') {
