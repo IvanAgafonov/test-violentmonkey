@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         abstract badge
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://portal.abs.xyz/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/abstract_badge.user.js
@@ -118,6 +118,13 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("h3")).filter(el => el.textContent.includes("Silver") && el.textContent.includes("Tier"));
+  if (up.length != 0){
+    try{
+        await fetch("http://127.0.0.1:5000/abs_silver?profile_number=" + profile_number);
+      } catch (error) {}
   }
 
   // up = Array.from(document.querySelectorAll("img[src='https://abs.xyz/imagetransform/width=500,quality=100/https%3A%2F%2Fabstract-assets.abs.xyz%2Fbadges%2Fbadge-dinero.png']"));
