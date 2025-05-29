@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         layer3_camp
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://app.layer3.xyz/activations/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/layer3_camp.user.js
@@ -131,6 +131,16 @@ async function autoBuy() {
       await sleep(getRandomDelay(2000, 3000));
     }
     paintButton = document.evaluate("(//button[text()='Open RewardedTV'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
+      triggerEvents(paintButton);
+      await sleep(getRandomDelay(2000, 3000));
+    }
+    paintButton = document.evaluate("(//button[text()='Open RewardedTV'])[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
+      triggerEvents(paintButton);
+      await sleep(getRandomDelay(2000, 3000));
+    }
+    paintButton = document.evaluate("(//button[text()='Open RewardedTV'])[3]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
       triggerEvents(paintButton);
       await sleep(getRandomDelay(2000, 3000));
