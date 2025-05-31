@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         layer3_camp
-// @version      0.16
+// @name         layer3
+// @version      0.17
 // @author       IvanAgafonov
 // @match        https://app.layer3.xyz/activations/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/layer3_camp.user.js
@@ -90,90 +90,31 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var paintButton = document.evaluate("(//button[contains(@class, 'relative flex w-fit cursor-pointer select-none items-center justify-center whitespace-nowrap font-semibold outline-none transition-all')])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (paintButton && paintButton.textContent.includes('Mint CUBE to claim')) {
-    triggerEvents(paintButton);
-    await sleep(getRandomDelay(30000, 40000));
-  }
-
-  paintButton = document.evaluate("(//button[contains(@class, 'relative flex w-fit cursor-pointer select-none items-center justify-center whitespace-nowrap font-semibold outline-none transition-all')])[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (paintButton && paintButton.textContent.includes('Mint CUBE to claim')) {
-    triggerEvents(paintButton);
-    await sleep(getRandomDelay(30000, 40000));
-  }
-
-  paintButton = document.evaluate("(//button[contains(@class, 'relative flex w-fit cursor-pointer select-none items-center justify-center whitespace-nowrap font-semibold outline-none transition-all')])[3]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (paintButton && paintButton.textContent.includes('Mint CUBE to claim')) {
-    triggerEvents(paintButton);
-    await sleep(getRandomDelay(30000, 40000));
-  }
+  var up = Array.from(document.querySelectorAll("button")).filter(el => ["Mint CUBE to claim"].includes(el.textContent));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(4000000, 5000000));
+    }
 
   for(var i=0;i<20;i++) {
-    paintButton = document.evaluate("(//button[contains(@class, 'relative w-fit cursor-pointer select-none justify-center whitespace-nowrap font-semibold outline-none transition-all')])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
+    up = Array.from(document.querySelectorAll("div h1")).filter(el => ["Activation Completed"].includes(el.textContent));
+    if (up.length != 0){
+      try{
+        await fetch("http://127.0.0.1:5000/layer3?profile_number=" + profile_number + "&src_page=" + document.URL);
+      } catch (error) {}
+      await sleep(getRandomDelay(4000000, 5000000));
     }
 
-    paintButton = document.evaluate("(//button[contains(@class, 'relative flex w-fit cursor-pointer select-none items-center justify-center whitespace-nowrap font-semibold outline-none transition-all')])[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton && !paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[contains(@class, 'relative flex w-fit cursor-pointer select-none items-center justify-center whitespace-nowrap font-semibold outline-none transition-all')])[3]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[contains(@class, 'relative flex w-fit cursor-pointer select-none items-center justify-center whitespace-nowrap font-semibold outline-none transition-all')])[4]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[text()='Open RewardedTV'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[text()='Open RewardedTV'])[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[text()='Open RewardedTV'])[3]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[text()='Open Telegram'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[text()='Open Telegram'])[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[text()='Open Telegram'])[3]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[contains(@class, 'relative flex w-fit cursor-pointer select-none items-center justify-center whitespace-nowrap font-semibold outline-none transition-all')])[5]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
-    }
-    paintButton = document.evaluate("(//button[contains(@class, 'relative flex w-fit cursor-pointer select-none items-center justify-center whitespace-nowrap font-semibold outline-none transition-all')])[6]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (paintButton &&!paintButton.textContent.includes('Mint CUBE to claim')) {
-      triggerEvents(paintButton);
-      await sleep(getRandomDelay(4000, 5000));
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent.includes("Your credential is being minted..."));
+    if (up.length == 0){
+      up = Array.from(document.querySelectorAll("button")).filter(el => ["Open RewardedTV", "Open Telegram", "Explore Summit", "Open Discord", "Open Faucet", "Skip", "Verify", "Continue"].includes(el.textContent));
+      for (var item of up) {
+        triggerEvents(item);
+        await sleep(getRandomDelay(2000, 3000));
+      }
     }
     await sleep(getRandomDelay(1000, 2000));
   }
-
-
 }
 
 
@@ -181,7 +122,7 @@ function initializeScript() {
 
     console.log('START claim  ')
 
-    setTimeout(autoBuy, getRandomDelay(26000, 26050));
+    setTimeout(autoBuy, getRandomDelay(18000, 18050));
 }
 
 if (document.readyState === 'loading') {
