@@ -106,7 +106,8 @@ async function autoBuy() {
     }
 
     up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent.includes("Your credential is being minted..."));
-    if (up.length == 0){
+    var up2 = Array.from(document.querySelectorAll("div h1")).filter(el => el.textContent == "Claim Rewards");
+    if (up.length == 0 && up2.length == 0){
       up = Array.from(document.querySelectorAll("button")).filter(el => ["Open RewardedTV", "Open Telegram", "Explore Summit", "Open Discord", "Open Faucet", "Skip", "Verify", "Continue"].includes(el.textContent));
       for (var item of up) {
         triggerEvents(item);
