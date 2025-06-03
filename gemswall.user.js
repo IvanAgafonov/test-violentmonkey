@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Gemswall
-// @version      0.17
+// @version      0.18
 // @author       IvanAgafonov
 // @match        https://app.gleam.bot/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gemswall.user.js
@@ -94,6 +94,15 @@ async function autoBuy() {
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
     await connectWallet();
+  }
+
+  up = Array.from(document.querySelectorAll("div.text-subhead-2-600"));
+  if (up.length != 0){
+    if (up[0].textContent != "0") {
+      try{
+        await fetch("http://127.0.0.1:5000/gemswall_balance_above_0?profile_number=" + profile_number);
+      } catch (error) {}
+    }
   }
 
 
