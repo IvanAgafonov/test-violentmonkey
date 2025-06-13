@@ -93,7 +93,7 @@ async function autoBuy() {
   console.log(up);
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(16000, 16010));
+    await sleep(getRandomDelay(13000, 16010));
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Claim Badges");
