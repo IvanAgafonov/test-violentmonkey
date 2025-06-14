@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         superchain
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://account.superchain.eco/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/superchain.user.js
@@ -125,6 +125,20 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(13000, 16010));
+  }
+
+  up = Array.from(document.querySelectorAll("a")).filter(el => el.textContent == "Go to the main page");
+  console.log(up);
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(6000, 7100));
+  }
+
+  up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "Badges");
+  console.log(up);
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(13000, 14100));
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Claim Badges");
