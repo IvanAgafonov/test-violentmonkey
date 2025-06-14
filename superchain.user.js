@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         superchain
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://account.superchain.eco/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/superchain.user.js
@@ -89,7 +89,38 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var up = querySelectorAllShadows('wui-button').filter(el => el.textContent.includes("Sign"));
+  var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Connect");
+  console.log(up);
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4010));
+  }
+
+  up = querySelectorAllShadows('wui-text').filter(el => el.textContent.includes("Rabby Wallet"));
+  console.log(up);
+  if (up.length != 0){
+    // triggerEvents(up[0]);
+    up[0].click();
+    await sleep(getRandomDelay(7000, 7010));
+  }
+
+  up = querySelectorAllShadows('wui-button').filter(el => el.textContent.includes("Sign"));
+  console.log(up);
+  if (up.length != 0){
+    triggerEvents(up[0]);
+
+    up = querySelectorAllShadows('wui-flex').filter(el => el.textContent.includes("OP Mainnet"));
+    console.log(up);
+    if (up.length != 0){
+      // triggerEvents(up[0]);
+      up[0].click();
+      await sleep(getRandomDelay(3000, 4010));
+    }
+
+    await sleep(getRandomDelay(13000, 16010));
+  }
+
+  up = querySelectorAllShadows('wui-button').filter(el => el.textContent.includes("Sign"));
   console.log(up);
   if (up.length != 0){
     triggerEvents(up[0]);
