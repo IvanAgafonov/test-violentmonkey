@@ -131,7 +131,7 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("h3")).filter(el => el.textContent.includes("Silver") && el.textContent.includes("Tier"));
   if (up.length != 0){
     try{
-        await fetch("http://127.0.0.1:5000/abs_silver?profile_number=" + profile_number);
+        // await fetch("http://127.0.0.1:5000/abs_silver?profile_number=" + profile_number);
       } catch (error) {}
   }
 
