@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         layer3
-// @version      0.18
+// @version      0.19
 // @author       IvanAgafonov
 // @match        https://app.layer3.xyz/activations/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/layer3_camp.user.js
@@ -90,7 +90,13 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var up = Array.from(document.querySelectorAll("button")).filter(el => ["Mint CUBE to claim"].includes(el.textContent));
+    var up = Array.from(document.querySelectorAll("button")).filter(el => ["Switch to "].includes(el.textContent));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 2100));
+    }
+
+    var up = Array.from(document.querySelectorAll("button")).filter(el => ["Mint CUBE to claim"].includes(el.textContent));
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(4000000, 5000000));
