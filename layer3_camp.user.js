@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         layer3
-// @version      0.17
+// @version      0.18
 // @author       IvanAgafonov
 // @match        https://app.layer3.xyz/activations/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/layer3_camp.user.js
@@ -109,6 +109,7 @@ async function autoBuy() {
     var up2 = Array.from(document.querySelectorAll("div h1")).filter(el => el.textContent == "Claim Rewards");
     if (up.length == 0 && up2.length == 0){
       up = Array.from(document.querySelectorAll("button")).filter(el => ["Open RewardedTV", "Open Telegram", "Explore Summit", "Open Discord", "Open Faucet", "Skip", "Verify", "Continue"].includes(el.textContent));
+      shuffle(up);
       for (var item of up) {
         triggerEvents(item);
         await sleep(getRandomDelay(2000, 3000));
