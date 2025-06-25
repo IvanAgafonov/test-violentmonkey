@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         collectibles
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://mint.collectibles.bot/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/collectibles.user.js
@@ -76,8 +76,14 @@ async function connectWallet(){
 
 async function autoBuy() {
 
+  var up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "X follow: 200 XP");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
 
-  var up = Array.from(document.querySelectorAll("h6")).filter(el => el.textContent == "Connect Wallet" );
+  up = Array.from(document.querySelectorAll("h6")).filter(el => el.textContent == "Connect Wallet");
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
@@ -92,7 +98,7 @@ function initializeScript() {
 
     console.log('START claim  ')
 
-    setTimeout(autoBuy, getRandomDelay(13000, 13050));
+    setTimeout(autoBuy, getRandomDelay(15000, 16050));
 }
 
 if (document.readyState === 'loading') {
