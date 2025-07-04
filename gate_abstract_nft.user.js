@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gate_abstract_nft
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://www.gate.com/web3/activities/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gate_abstract_nft.user.js
@@ -113,37 +113,43 @@ async function autoBuy() {
   console.log(paintButton);
   if (paintButton) {
     triggerEvents(paintButton);
-    await sleep(getRandomDelay(20000, 21000));
+    await sleep(getRandomDelay(28500, 29000));
   }
 
   paintButton = document.evaluate("(//span[text()='Free']//parent::div//parent::div//parent::div//div[text()='Collect'])[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   console.log(paintButton);
   if (paintButton) {
     triggerEvents(paintButton);
-    await sleep(getRandomDelay(24000, 25000));
+    await sleep(getRandomDelay(28500, 29000));
   }
 
   paintButton = document.evaluate("(//span[text()='Free']//parent::div//parent::div//parent::div//div[text()='Collect'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   console.log(paintButton);
   if (paintButton) {
     triggerEvents(paintButton);
-    await sleep(getRandomDelay(10000, 11000));
+    await sleep(getRandomDelay(15000, 16000));
   }
 
   paintButton = document.evaluate("(//span[text()='Free']//parent::div//parent::div//parent::div//div[text()='Collect'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   console.log(paintButton);
   if (paintButton) {
     triggerEvents(paintButton);
-    await sleep(getRandomDelay(10000, 11000));
+    await sleep(getRandomDelay(15000, 16000));
   }
 
   paintButton = document.evaluate("(//span[text()='Free']//parent::div//parent::div//parent::div//div[text()='Collect'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   console.log(paintButton);
   if (paintButton) {
     triggerEvents(paintButton);
-    await sleep(getRandomDelay(10000, 11000));
+    await sleep(getRandomDelay(15000, 16000));
   }
 
+  // paintButton = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Claimed" && el.className.includes("claim-nft-operation-button"))
+  // if (paintButton.length == 2){
+  //   try{
+  //       await fetch("http://127.0.0.1:5000/gate_abs?profile_number=" + profile_number);
+  //     } catch (error) {}
+  // }
 
 }
 
