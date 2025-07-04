@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         gate_abstract_nft
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
-// @match        https://www.gate.io/web3/activities/collect-in-the-moment-digital-collectible-with-oracle-red-bull-racing
+// @match        https://www.gate.com/web3/activities/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gate_abstract_nft.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gate_abstract_nft.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -95,6 +95,12 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("div button div")).filter(el => el.textContent == "Other" );
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3500, 3600));
   }
 
   up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Connect Wallet" );
