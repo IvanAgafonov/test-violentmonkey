@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         collectibles
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://mint.collectibles.bot/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/collectibles.user.js
@@ -76,7 +76,7 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "X follow: 200 XP");
+  var up = Array.from(document.querySelectorAll("p")).filter(el => el.textContent == "Watch video: 10,000 XP");
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
