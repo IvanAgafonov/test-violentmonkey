@@ -95,6 +95,18 @@ async function autoBuy() {
     triggerEvents(up[2]);
     await sleep(getRandomDelay(2000, 4100));
   }
+  if (up.length > 3){
+    triggerEvents(up[3]);
+    await sleep(getRandomDelay(2000, 4100));
+  }
+  if (up.length > 4){
+    triggerEvents(up[4]);
+    await sleep(getRandomDelay(2000, 4100));
+  }
+  if (up.length > 5){
+    triggerEvents(up[5]);
+    await sleep(getRandomDelay(2000, 4100));
+  }
 }
 
 
