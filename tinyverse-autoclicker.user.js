@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @match        https://*.tonverse.app/*
 // @grant        none
-// @version      1.7
+// @version      1.8
 // @author       xz
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tinyverse-autoclicker.user.js
@@ -321,7 +321,17 @@
             count = count + 1;
 
             if (count > 14) {
-              var up2 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Close");
+              var up2 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "New galaxy");
+              if (up2.length != 0){
+                triggerEvents(up2[0].parentElement);
+              }
+
+              up2 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Create another galaxy");
+              if (up2.length != 0){
+                triggerEvents(up2[0].parentElement);
+              }
+
+              up2 = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Close");
               if (up2.length != 0){
                 triggerEvents(up2[0].parentElement);
               }
