@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         debank hi
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://debank.com/hi
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/debank_hi.user.js
@@ -90,7 +90,22 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent.includes("Open and earn"));
+  var up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Connect Wallet");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5000, 6000));
+  }
+
+  if (document.querySelector("rabby-kit") && document.querySelector("rabby-kit").shadowRoot) {
+    up = Array.from(document.querySelector("rabby-kit").shadowRoot.querySelectorAll("span")).filter(el => el.textContent.includes("Rabby Wallet"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(5000, 6000));
+    }
+  }
+
+  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent.includes("Open and earn"));
+
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(5000, 6000));
