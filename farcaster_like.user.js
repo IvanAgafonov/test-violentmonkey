@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         farcaster like
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://farcaster.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/farcaster_like.user.js
@@ -85,27 +85,27 @@ async function autoBuy() {
   console.log(up);
   if (up.length > 0){
       triggerEvents(up[0]);
-      await sleep(getRandomDelay(1000, 2000));
+      await sleep(getRandomDelay(1000, 4000));
   }
   if (up.length > 1 && getRandomDelay(1, 1000) > 500){
     triggerEvents(up[1]);
-    await sleep(getRandomDelay(1000, 2000));
+    await sleep(getRandomDelay(1000, 4000));
   }
   if (up.length > 2 && getRandomDelay(1, 1000) > 500){
     triggerEvents(up[2]);
-    await sleep(getRandomDelay(1000, 2000));
+    await sleep(getRandomDelay(1000, 4000));
   }
   if (up.length > 3 && getRandomDelay(1, 1000) > 500){
     triggerEvents(up[3]);
-    await sleep(getRandomDelay(1000, 2000));
+    await sleep(getRandomDelay(1000, 4000));
   }
   if (up.length > 4 && getRandomDelay(1, 1000) > 500){
     triggerEvents(up[4]);
-    await sleep(getRandomDelay(1000, 2000));
+    await sleep(getRandomDelay(1000, 4000));
   }
   if (up.length > 5 && getRandomDelay(1, 1000) > 500){
     triggerEvents(up[5]);
-    await sleep(getRandomDelay(1000, 2000));
+    await sleep(getRandomDelay(1000, 4000));
   }
 }
 
@@ -114,7 +114,7 @@ function initializeScript() {
 
     console.log('START claim ')
 
-    setTimeout(autoBuy, getRandomDelay(15000, 15050));
+    setTimeout(autoBuy, getRandomDelay(11000, 15050));
 }
 
 if (document.readyState === 'loading') {
