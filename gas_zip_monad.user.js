@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gas zip monad
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://www.gas.zip/faucet/monad
 // @match        https://www.gas.zip/faucet/megaeth
@@ -102,7 +102,13 @@ async function autoBuy() {
     }
   }
 
-  var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("CLAIM"));
+  var up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("CLAIM"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(6000, 7100));
+  }
+
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Claim"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(6000, 7100));
