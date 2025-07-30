@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         twitter
+// @name         twitter like
 // @version      0.1
 // @author       IvanAgafonov
 // @match        https://x.com/home
