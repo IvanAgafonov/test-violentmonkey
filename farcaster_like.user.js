@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         farcaster like
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://farcaster.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/farcaster_like.user.js
@@ -85,27 +85,13 @@ async function autoBuy() {
   console.log(up);
   if (up.length > 0){
       triggerEvents(up[0]);
-      await sleep(getRandomDelay(1000, 4000));
+      await sleep(getRandomDelay(1000, 3000));
   }
-  if (up.length > 1 && getRandomDelay(1, 1000) > 500){
-    triggerEvents(up[1]);
-    await sleep(getRandomDelay(1000, 4000));
-  }
-  if (up.length > 2 && getRandomDelay(1, 1000) > 500){
-    triggerEvents(up[2]);
-    await sleep(getRandomDelay(1000, 4000));
-  }
-  if (up.length > 3 && getRandomDelay(1, 1000) > 500){
-    triggerEvents(up[3]);
-    await sleep(getRandomDelay(1000, 4000));
-  }
-  if (up.length > 4 && getRandomDelay(1, 1000) > 500){
-    triggerEvents(up[4]);
-    await sleep(getRandomDelay(1000, 4000));
-  }
-  if (up.length > 5 && getRandomDelay(1, 1000) > 500){
-    triggerEvents(up[5]);
-    await sleep(getRandomDelay(1000, 4000));
+  for(var i = 1;i<10;i++) {
+    if (up.length > i && getRandomDelay(1, 1000) > 500){
+      triggerEvents(up[i]);
+      await sleep(getRandomDelay(1000, 3000));
+    }
   }
 }
 
