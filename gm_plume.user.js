@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm plume
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://portal.plume.org/daily-spin
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_plume.user.js
@@ -113,11 +113,17 @@ async function autoBuy() {
 
 }
 
+function is_reload() {
+  if (getRandomDelay(1000, 3000) < 2000) {
+    location.reload();
+  }
+}
+
 
 function initializeScript() {
 
     console.log('START claim  ')
-
+    setTimeout(is_reload, getRandomDelay(5000, 7000));
     setTimeout(autoBuy, getRandomDelay(13000, 14050));
 }
 
