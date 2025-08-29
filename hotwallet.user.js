@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hotwallet
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://tgapp.herewallet.app/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hotwallet.user.js
@@ -85,6 +85,27 @@ async function autoBuy() {
   // }
 
   var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Got it" );
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "HOT" );
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Claim HOT" );
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Check NEWS" );
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
