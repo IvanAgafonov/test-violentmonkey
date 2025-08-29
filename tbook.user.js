@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         tbook
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
-// @match        https://i.tbook.com/*
+// @match        https://engage.tbook.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tbook.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tbook.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -82,6 +82,12 @@ async function autoBuy() {
     await sleep(getRandomDelay(12000, 14000));
   }
 
+  up = Array.from(document.querySelectorAll("a[href='/wise-score'] img"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(12000, 14000));
+  }
+
   up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check In"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -97,7 +103,7 @@ async function autoBuy() {
       await sleep(getRandomDelay(7000, 8000));
     }
   }
-  
+
   up = Array.from(document.querySelectorAll("a div")).filter(el => el.textContent.includes("My Rewards"));
   if (up.length != 0){
     triggerEvents(up[0]);
