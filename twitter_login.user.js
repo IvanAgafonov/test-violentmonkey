@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         twitter login
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://x.com/home
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/twitter_login.user.js
@@ -156,7 +156,7 @@ async function autoBuy() {
       }
 
       up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Notifications")
-      if (up.length != 0){
+      if (up.length == 0){
         try{
             GM_xmlhttpRequest( {
                'method' : 'GET',
