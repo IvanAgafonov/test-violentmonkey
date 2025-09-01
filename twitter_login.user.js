@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         twitter login
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://x.com/home
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/twitter_login.user.js
@@ -102,6 +102,7 @@ function makeGetRequest() {
 }
 
 async function autoBuy() {
+
   up = Array.from(document.querySelectorAll("div span span")).filter(el => el.textContent == "Înainte")
   if (up.length != 0){
     var res;
@@ -124,7 +125,7 @@ async function autoBuy() {
           tracker.setValue(lastValue);
         }
         up[0].dispatchEvent(event);
-        await sleep(getRandomDelay(3200, 4000));
+        await sleep(getRandomDelay(1200, 2000));
       }
 
       up = Array.from(document.querySelectorAll("div span span")).filter(el => el.textContent == "Înainte")
@@ -145,24 +146,24 @@ async function autoBuy() {
           tracker.setValue(lastValue);
         }
         up[0].dispatchEvent(event);
-        await sleep(getRandomDelay(3200, 4000));
+        await sleep(getRandomDelay(1200, 2000));
       }
 
       up = Array.from(document.querySelectorAll("div span span")).filter(el => el.textContent == "Conectează-te")
       if (up.length != 0){
         up[0].click()
-        await sleep(getRandomDelay(4000, 5000));
+        await sleep(getRandomDelay(6000, 6000));
       }
 
-      // up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Notifications")
-      // if (up.length != 0){
-      //   try{
-      //       GM_xmlhttpRequest( {
-      //          'method' : 'GET',
-      //          'url' : "http://127.0.0.1:5000/twitter_login_success?profile_number=" + profile_number
-      //         });
-      //     } catch (error) {console.log(error);}
-      // }
+      up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Notifications")
+      if (up.length != 0){
+        try{
+            GM_xmlhttpRequest( {
+               'method' : 'GET',
+               'url' : "http://127.0.0.1:5000/twitter_login_unsuccess?profile_number=" + profile_number
+              });
+          } catch (error) {console.log(error);}
+      }
     }
   }
 }
