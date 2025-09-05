@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm linea
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://linea.build/hub/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_linea.user.js
@@ -131,12 +131,19 @@ async function autoBuy() {
 
 }
 
+function is_reload() {
+  if (getRandomDelay(1000, 3000) < 2000) {
+    location.reload();
+  }
+}
+
 
 function initializeScript() {
 
     console.log('START claim  ')
 
-    setTimeout(autoBuy, getRandomDelay(13000, 14050));
+    setTimeout(is_reload, getRandomDelay(10000, 17000));
+    setTimeout(autoBuy, getRandomDelay(23000, 25050));
 }
 
 if (document.readyState === 'loading') {
