@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Ton society
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://master.*/*
 // @match        https://app.tonsociety.id/*
@@ -89,6 +89,13 @@ async function autoBuy() {
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Get Badge");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div button.items-center")).filter(el => el.textContent == "Sign In");
+  console.log(up);
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
