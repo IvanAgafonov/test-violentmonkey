@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         fuse
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://tma.fuse.store/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/fuse.user.js
@@ -100,7 +100,20 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Join Whitelist");
+  var up = Array.from(document.querySelectorAll("div h3")).filter(el => el.textContent == "Gold Vibes Club");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Connect Wallet");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+    await connectWallet();
+  }
+
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Join Whitelist");
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
