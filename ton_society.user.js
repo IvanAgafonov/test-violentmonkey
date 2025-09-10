@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Ton society
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://master.*/*
 // @match        https://app.tonsociety.id/*
@@ -99,6 +99,25 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div button.items-center")).filter(el => el.textContent == "Choose Wallet");
+  console.log(up);
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+    var up1 = Array.from(document.querySelectorAll("button div span.text-headline-1.font-semibold"));
+    console.log(up1);
+    if (up1.length != 0){
+      triggerEvents(up1[0]);
+      await sleep(getRandomDelay(2000, 3000));
+    }
+    up1 = Array.from(document.querySelectorAll("div button.items-center")).filter(el => el.textContent == "Share");
+    console.log(up1);
+    if (up1.length != 0){
+      triggerEvents(up1[0]);
+      await sleep(getRandomDelay(2000, 3000));
+    }
   }
 
 }
