@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm linea
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://linea.build/hub/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_linea.user.js
@@ -132,7 +132,8 @@ async function autoBuy() {
 }
 
 function is_reload() {
-  if (getRandomDelay(1000, 3000) < 2000) {
+  var up = Array.from(document.querySelectorAll("h1")).filter(el => el.textContent == "Spin to Win")
+  if (up.length == 0){
     location.reload();
   }
 }
