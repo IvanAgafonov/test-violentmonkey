@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         fuse
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://tma.fuse.store/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/fuse.user.js
@@ -104,6 +104,20 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
+  }
+
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Raffle Results");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(5000, 6000));
+  }
+
+  up = Array.from(document.querySelectorAll("div h2")).filter(el => el.textContent == "Not This Time!");
+  if (up.length == 0){
+      try{
+        await fetch("http://127.0.0.1:5000/fuse?profile_number=" + profile_number);
+      } catch (error) {}
+    await sleep(getRandomDelay(5000, 6000));
   }
 
   up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Connect Wallet");
