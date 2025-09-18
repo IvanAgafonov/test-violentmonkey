@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         onefootball
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://app.megaphone.xyz/pages/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/onefootball.user.js
@@ -100,11 +100,20 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var up = Array.from(document.querySelectorAll("span button[data-slot='button']"));
+  var up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Claim now");
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
   }
+
+  up = Array.from(document.querySelectorAll("span button[data-slot='button']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+
+
 }
 
 
@@ -112,7 +121,7 @@ function initializeScript() {
 
     console.log('START claim  ')
 
-    setTimeout(autoBuy, getRandomDelay(15000, 16050));
+    setTimeout(autoBuy, getRandomDelay(10000, 11050));
 }
 
 if (document.readyState === 'loading') {
