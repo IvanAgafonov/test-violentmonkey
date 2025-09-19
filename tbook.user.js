@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tbook
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://engage.tbook.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tbook.user.js
@@ -94,6 +94,12 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check In"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
   up = Array.from(document.querySelectorAll("a div")).filter(el => el.textContent.includes("My Rewards"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -102,6 +108,12 @@ async function autoBuy() {
     if (up.length == 0){
       await sleep(getRandomDelay(7000, 8000));
     }
+  }
+
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check In"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
   }
 
   up = Array.from(document.querySelectorAll("a div")).filter(el => el.textContent.includes("My Rewards"));
@@ -130,6 +142,13 @@ async function autoBuy() {
       await connectWallet();
       await sleep(getRandomDelay(21000, 24000));
     }
+  }
+
+  await sleep(getRandomDelay(3000, 4000));
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check In"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
   }
 
 }
