@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm linea
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://linea.build/hub/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_linea.user.js
@@ -103,6 +103,15 @@ async function autoBuy() {
     await sleep(getRandomDelay(26000, 26010));
   }
 
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent.includes("prizes") || el.textContent.includes("prize"));
+  if (up.length != 0){
+    if (up[0].textContent != "0 prizes") {
+      try{
+          await fetch("http://127.0.0.1:5000/linea_prize?profile_number=" + profile_number);
+        } catch (error) {}
+    }
+  }
+
   up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin the wheel"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -114,6 +123,15 @@ async function autoBuy() {
     triggerEvents(up[1]);
     await sleep(getRandomDelay(26000, 26010));
   }
+
+  // up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent.includes("prizes") || el.textContent.includes("prize"));
+  // if (up.length != 0){
+  //   if (up[0].textContent != "0 prizes") {
+  //     try{
+  //         await fetch("http://127.0.0.1:5000/linea_prize?profile_number=" + profile_number);
+  //       } catch (error) {}
+  //   }
+  // }
 
 //   up = querySelectorAllShadows('wui-text').filter(el => el.textContent.includes("Rabby Wallet"));
 //   console.log(up);
