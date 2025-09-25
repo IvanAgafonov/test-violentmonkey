@@ -128,6 +128,8 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(3000, 4000));
+  } else {
+    await sleep(getRandomDelay(5000, 9900));
   }
 
   up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin the wheel"));
