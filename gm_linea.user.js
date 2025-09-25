@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm linea
-// @version      0.17
+// @version      0.18
 // @author       IvanAgafonov
 // @match        https://linea.build/hub/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_linea.user.js
@@ -113,6 +113,30 @@ async function autoBuy() {
   }
 
   up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin the wheel"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin the wheel"));
+  if (up.length > 1){
+    triggerEvents(up[1]);
+    await sleep(getRandomDelay(26000, 26010));
+  }
+
+  up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin again"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin the wheel"));
+  if (up.length > 1){
+    triggerEvents(up[1]);
+    await sleep(getRandomDelay(26000, 26010));
+  }
+
+  up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin again"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(3000, 4000));
