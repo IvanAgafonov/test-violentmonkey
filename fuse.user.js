@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         fuse
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://tma.fuse.store/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/fuse.user.js
@@ -103,7 +103,7 @@ async function autoBuy() {
   var up = Array.from(document.querySelectorAll("div h3")).filter(el => el.textContent == "GAMEE Tribes");
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(4000, 5000));
+    await sleep(getRandomDelay(6000, 7000));
   }
 
   up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Raffle Results");
