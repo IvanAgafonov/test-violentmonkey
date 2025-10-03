@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         gate_abstract_nft
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://www.gate.com/web3/activities/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gate_abstract_nft.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gate_abstract_nft.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
-// @grant        none
+// @grant        GM_xmlhttpRequest
 
 // ==/UserScript==
 
@@ -35,11 +35,6 @@ function getRandomDelay(min, max) {
 // Триггеры событий
 function triggerEvents(element) {
   const events = [
-      new MouseEvent('mouseover', {
-  'view': window,
-  'bubbles': true,
-  'cancelable': true
-}),
       new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
       new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
       new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
@@ -108,6 +103,8 @@ async function autoBuy() {
     triggerEvents(up[1]);
     await sleep(getRandomDelay(25500, 25600));
   }
+  window.scrollTo(0, document.body.scrollHeight);
+  await sleep(getRandomDelay(2000, 3000));
 
   var paintButton = document.evaluate("(//span[text()='Free']//parent::div//parent::div//parent::div//div[text()='Collect'])[3]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   console.log(paintButton);
@@ -144,12 +141,15 @@ async function autoBuy() {
     await sleep(getRandomDelay(15000, 16000));
   }
 
-  // paintButton = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Claimed" && el.className.includes("claim-nft-operation-button"))
-  // if (paintButton.length == 2){
-  //   try{
-  //       await fetch("http://127.0.0.1:5000/gate_abs?profile_number=" + profile_number);
-  //     } catch (error) {}
-  // }
+  paintButton = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Claimed" && el.className.includes("claim-nft-operation-button"))
+  if (paintButton.length == 2){
+      try{
+      GM_xmlhttpRequest( {
+         'method' : 'GET',
+         'url' : "http://127.0.0.1:5000/gate_abs?profile_number=" + profile_number
+        });
+    } catch (error) {console.log(error);}
+  }
 
 }
 
