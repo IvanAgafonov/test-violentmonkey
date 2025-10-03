@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         magma_monad
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://www.magmastaking.xyz/
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/magma_monad.user.js
@@ -100,17 +100,13 @@ async function autoBuy() {
     await sleep(getRandomDelay(26000, 26010));
   }
 
-  up = Array.from(document.querySelectorAll("div p")).filter(el => (el.textContent.includes("prizes") || el.textContent.includes("prize")) && el.className.includes("tag_tag"));
+
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Unstake");
   if (up.length != 0){
-    if (up[0].textContent != "0 prizes") {
-        try{
-          GM_xmlhttpRequest( {
-             'method' : 'GET',
-             'url' : "http://127.0.0.1:5000/linea_prize?profile_number=" + profile_number
-            });
-        } catch (error) {console.log(error);}
-    }
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 4000));
   }
+
 
   up = Array.from(document.querySelectorAll("div[class='flex items-baseline gap-2']"));
   var mon = 0;
@@ -133,7 +129,7 @@ async function autoBuy() {
         up[0].dispatchEvent(event);
         await sleep(getRandomDelay(2000, 2200));
     }
-    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Stake");
+    up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Unstake");
     if (up.length > 1){
       triggerEvents(up[1]);
       await sleep(getRandomDelay(26000, 26010));
