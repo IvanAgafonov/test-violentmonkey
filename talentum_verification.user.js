@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         talentum_verification
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://monad.talentum.id/verification
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/talentum_verification.user.js
@@ -101,6 +101,13 @@ async function autoBuy() {
   if (paintButton) {
     triggerEvents(paintButton);
     await sleep(getRandomDelay(3000, 4000));
+  }
+
+  paintButton = document.evaluate("//span[contains(text(), 'Talentum ID #')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (paintButton) {
+        try{
+          await fetch("http://127.0.0.1:5000/talentum_verification_pass_minted?profile_number=" + profile_number);
+        } catch (error) {}
   }
 
 
