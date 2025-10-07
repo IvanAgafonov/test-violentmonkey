@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         drip_claim
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
-// @match        https://tma.fuse.stor23e/*
+// @match        https://drip.haus/store/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/drip_claim.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/drip_claim.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
