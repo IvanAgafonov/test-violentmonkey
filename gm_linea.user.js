@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm linea
-// @version      0.21
+// @version      0.22
 // @author       IvanAgafonov
 // @match        https://linea.build/hub/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_linea.user.js
@@ -124,6 +124,16 @@ async function autoBuy() {
     await sleep(getRandomDelay(26000, 26010));
   }
 
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.className.includes("spin-claim") || el.className.includes("spin-lost"));
+  if (up.length != 0){
+      try{
+        GM_xmlhttpRequest( {
+           'method' : 'GET',
+           'url' : "http://127.0.0.1:5000/linea_success_spin?profile_number=" + profile_number
+          });
+      } catch (error) {console.log(error);}
+  }
+
   up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin again"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -138,6 +148,16 @@ async function autoBuy() {
     await sleep(getRandomDelay(26000, 26010));
   }
 
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.className.includes("spin-claim") || el.className.includes("spin-lost"));
+  if (up.length != 0){
+      try{
+        GM_xmlhttpRequest( {
+           'method' : 'GET',
+           'url' : "http://127.0.0.1:5000/linea_success_spin?profile_number=" + profile_number
+          });
+      } catch (error) {console.log(error);}
+  }
   up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin again"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -148,6 +168,16 @@ async function autoBuy() {
   if (up.length > 1){
     triggerEvents(up[1]);
     await sleep(getRandomDelay(26000, 26010));
+  }
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.className.includes("spin-claim") || el.className.includes("spin-lost"));
+  if (up.length != 0){
+      try{
+        GM_xmlhttpRequest( {
+           'method' : 'GET',
+           'url' : "http://127.0.0.1:5000/linea_success_spin?profile_number=" + profile_number
+          });
+      } catch (error) {console.log(error);}
   }
 
   // up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent.includes("prizes") || el.textContent.includes("prize"));
