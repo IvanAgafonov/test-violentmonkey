@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Ton society
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://master.*/*
 // @match        https://app.tonsociety.id/*
@@ -62,19 +62,22 @@ function sleep(ms = 0) {
 }
 
 async function connectWallet(){
-  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On")
+  var up2 = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Wallet On" || el.textContent == "Wallet in")
   if (up2.length != 0){
     triggerEvents(up2[0]);
     await sleep(getRandomDelay(3000, 4100));
-    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram"))
+    up2 = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Open Wallet in Telegram") || el.textContent.includes("Connect Wallet in Telegram on desktop"))
     if (up2.length != 0){
       triggerEvents(up2[0]);
       await sleep(getRandomDelay(10000, 21000));
     }
   }
+  await sleep(getRandomDelay(2000, 3100));
 }
 
 async function autoBuy() {
+
+
 
   var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Choose Wallet to Get Badge");
   if (up.length != 0){
@@ -87,6 +90,15 @@ async function autoBuy() {
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
   }
+
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Connect New Wallet");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(2000, 3000));
+    await connectWallet();
+    await sleep(getRandomDelay(20000, 30000));
+  }
+
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Get Badge");
   if (up.length != 0){
