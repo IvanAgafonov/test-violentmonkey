@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm linea
-// @version      0.22
+// @version      0.23
 // @author       IvanAgafonov
 // @match        https://linea.build/hub/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_linea.user.js
@@ -110,6 +110,16 @@ async function autoBuy() {
             });
         } catch (error) {console.log(error);}
     }
+  }
+
+  up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "x0 Spins")
+  if (up.length != 0){
+        try{
+          GM_xmlhttpRequest( {
+             'method' : 'GET',
+             'url' : "http://127.0.0.1:5000/linea_success_spin?profile_number=" + profile_number
+            });
+        } catch (error) {console.log(error);}
   }
 
   up = querySelectorAllShadows('button span').filter(el => el.textContent.includes("Spin the wheel"));
