@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Ton society
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://master.*/*
 // @match        https://app.tonsociety.id/*
@@ -89,14 +89,14 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
-  }
-
-  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Connect New Wallet");
-  if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(2000, 3000));
-    await connectWallet();
-    await sleep(getRandomDelay(20000, 30000));
+  } else {
+    up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent == "Connect New Wallet");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(2000, 3000));
+      await connectWallet();
+      await sleep(getRandomDelay(20000, 30000));
+    }
   }
 
 
