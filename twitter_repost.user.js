@@ -6,7 +6,7 @@
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/twitter_repost.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/twitter_repost.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
-// @grant        none
+// @grant        GM_xmlhttpRequest
 
 // ==/UserScript==
 
@@ -94,6 +94,13 @@ async function autoBuy() {
   if (paintButton) {
     triggerEvents(paintButton);
     await sleep(getRandomDelay(2000, 3000));
+  } else {
+      try{
+      GM_xmlhttpRequest( {
+         'method' : 'GET',
+         'url' : "http://127.0.0.1:5000/twitter_repost_success?profile_number=" + profile_number
+        });
+    } catch (error) {console.log(error);}
   }
 
   paintButton = document.evaluate("(//div//span[text()='Repost'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
