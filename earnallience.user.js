@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         earnallience
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://www.playfull.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/earnallience.user.js
@@ -35,11 +35,6 @@ function getRandomDelay(min, max) {
 // Триггеры событий
 function triggerEvents(element) {
   const events = [
-      new MouseEvent('mouseover', {
-  'view': window,
-  'bubbles': true,
-  'cancelable': true
-}),
       new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
       new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
       new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
