@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Ybot
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://ref-app.etherean.app/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/ybot.user.js
