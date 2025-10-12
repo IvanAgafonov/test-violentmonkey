@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         x_connect
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://x.com/i/oauth2/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/x_connect.user.js
@@ -49,11 +49,6 @@ function querySelectorAllShadows(selector, el = document.body) {
 // Триггеры событий
 function triggerEvents(element) {
   const events = [
-      new MouseEvent('mouseover', {
-  'view': window,
-  'bubbles': true,
-  'cancelable': true
-}),
       new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
       new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
       new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
