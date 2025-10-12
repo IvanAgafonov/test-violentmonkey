@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tonacad
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://ton-academy.luly.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tonacad.user.js
@@ -33,11 +33,6 @@ function getRandomDelay(min, max) {
 
 function triggerEvents(element) {
   const events = [
-      new MouseEvent('mouseover', {
-  'view': window,
-  'bubbles': true,
-  'cancelable': true
-}),
       new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
       new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
       new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
@@ -50,7 +45,7 @@ function triggerEvents(element) {
   ];
 
   events.forEach((event, index) => {
-      setTimeout(() => element.dispatchEvent(event), index * 10);
+      setTimeout(() => element.dispatchEvent(event), index * 100);
   });
 }
 
