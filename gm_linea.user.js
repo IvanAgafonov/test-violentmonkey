@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm linea
-// @version      0.23
+// @version      0.24
 // @author       IvanAgafonov
 // @match        https://linea.build/hub/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_linea.user.js
@@ -103,12 +103,17 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("div p")).filter(el => (el.textContent.includes("prizes") || el.textContent.includes("prize")) && el.className.includes("tag_tag"));
   if (up.length != 0){
     if (up[0].textContent != "0 prizes") {
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+      up = Array.from(document.querySelectorAll("div div button")).filter(el => el.textContent == "Claim" && el.className.includes("prizes_prizes"));
+      if (up.length != 0){
         try{
           GM_xmlhttpRequest( {
              'method' : 'GET',
              'url' : "http://127.0.0.1:5000/linea_prize?profile_number=" + profile_number
             });
         } catch (error) {console.log(error);}
+      }
     }
   }
 
