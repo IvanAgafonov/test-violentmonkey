@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Gemswall
-// @version      0.18
+// @version      0.19
 // @author       IvanAgafonov
 // @match        https://app.gleam.bot/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gemswall.user.js
