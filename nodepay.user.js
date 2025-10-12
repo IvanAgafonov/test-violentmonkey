@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         nodepay
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://app.nodepay.ai/missions
 // @match        https://app.nodepay.ai/medal
@@ -36,11 +36,6 @@ function getRandomDelay(min, max) {
 // Триггеры событий
 function triggerEvents(element) {
   const events = [
-      new MouseEvent('mouseover', {
-  'view': window,
-  'bubbles': true,
-  'cancelable': true
-}),
       new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
       new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
       new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
