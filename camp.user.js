@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         camp
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://testnet.campnetwork.xyz/
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/camp.user.js
