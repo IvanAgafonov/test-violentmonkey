@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tonacad
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://ton-academy.luly.io/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tonacad.user.js
