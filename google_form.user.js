@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         google form
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://docs.google.com/forms/d/e/1FAIpQLSeCqewfmcxU6lFjLo09VHDthHFYfSuv4fPICrFj9HHfOb5OcA/viewform
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/google_form.user.js
