@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         google form
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://docs.google.com/forms/d/e/1FAIpQLSeCqewfmcxU6lFjLo09VHDthHFYfSuv4fPICrFj9HHfOb5OcA/viewform
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/google_form.user.js
@@ -139,9 +139,9 @@ async function autoBuy() {
         await sleep(getRandomDelay(2200, 3000));
       }
 
-      up = Array.from(document.querySelectorAll("div div span span")).filter(el => el.textContent == "Submit" || el.textContent == "Senden" || el.textContent == "Отправить")
-      if (up.length != 0){
-        up[0].click()
+      var paintButton = document.evaluate("(//div[@role='button' and @aria-label='Submit']//span//span)[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+      if (paintButton){
+        paintButton.click()
         try{
           GM_xmlhttpRequest( {
              'method' : 'GET',
