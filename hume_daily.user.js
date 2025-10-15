@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hume daily
-// @version      0.20
+// @version      0.21
 // @author       IvanAgafonov
 // @match        https://humeworld.xyz/daily-spin
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hume_daily.user.js
@@ -78,7 +78,20 @@ async function autoBuy() {
       await sleep(getRandomDelay(5000, 7100));
     }
 
+
+    var paintButton = document.evaluate("(//button//div//div[text()='100'])[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (paintButton){
+      triggerEvents(paintButton);
+      await sleep(getRandomDelay(3000, 4100));
+    }
+
     up = Array.from(document.querySelectorAll("h2")).filter(el => el.textContent == "You need points");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(27000, 27100));
+    }
+
+    up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Credits are not enough to perform this action");
     if (up.length != 0){
       triggerEvents(up[0]);
       await sleep(getRandomDelay(27000, 27100));
