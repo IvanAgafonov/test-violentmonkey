@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         orbiter
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://www.orbiter.finance/?channel=0x3c0ed9ab1a12ba804900da2807c09b8afec10f67
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/orbiter.user.js
@@ -97,7 +97,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  up = Array.from(document.querySelectorAll("button div div div div")).filter(el => el.textContent == "MetaMask");
+  up = Array.from(document.querySelectorAll("button div div div div")).filter(el => el.textContent == "Rabby Wallet");
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(13000, 14000));
