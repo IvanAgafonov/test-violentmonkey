@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         farcaster like
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://farcaster.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/farcaster_like.user.js
@@ -82,7 +82,7 @@ async function autoBuy() {
       triggerEvents(up[0]);
       await sleep(getRandomDelay(1000, 3000));
   }
-  for(var i = 1;i<10;i++) {
+  for(var i = 1;i<4;i++) {
     if (up.length > i && getRandomDelay(1, 1000) > 500){
       triggerEvents(up[i]);
       await sleep(getRandomDelay(1000, 3000));
