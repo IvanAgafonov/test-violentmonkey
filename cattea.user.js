@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         cattea
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://cdn.cattea.ai/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/cattea.user.js
@@ -33,9 +33,31 @@ function getRandomDelay(min, max) {
 
 
 // Триггеры событий
-function triggerEvents(element) {
-	var posX = 248;
-	var posY = 472;
+function triggerEvents(element, pos_x, pos_y) {
+	var posX = pos_x + getRandomDelay(0, 5);
+	var posY = pos_y + getRandomDelay(0, 5);
+
+  const events = [
+      new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, clientX: posX, clientY: posY, pressure: 0.5, pointerType: "touch" }),
+      new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, clientX: posX, clientY: posY }),
+      new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, clientX: posX, clientY: posY, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseup', { bubbles: true, cancelable: true, isTrusted: true, clientX: posX, clientY: posY }),
+      new PointerEvent('click', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, clientX: posX, clientY: posY, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerout', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, clientX: posX, clientY: posY, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerleave', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, clientX: posX, clientY: posY, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseout', { bubbles: true, cancelable: true, isTrusted: true, clientX: posX, clientY: posY }),
+      new MouseEvent('mouseleave', { bubbles: true, cancelable: true, isTrusted: true, clientX: posX, clientY: posY })
+  ];
+
+  events.forEach((event, index) => {
+      setTimeout(() => element.dispatchEvent(event), index * 100);
+  });
+}
+
+
+function triggerEvents2(element) {
+	var posX = 230 + getRandomDelay(0, 5);
+	var posY = 90 + getRandomDelay(0, 5);
 
   const events = [
       new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, clientX: posX, clientY: posY, pressure: 0.5, pointerType: "touch" }),
@@ -76,9 +98,40 @@ async function autoBuy() {
 
   var up = Array.from(document.querySelectorAll("canvas#layaCanvas"));
   console.log(up);
+
   if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(4000, 5000));
+    triggerEvents(up[0], 310, 410);
+    await sleep(getRandomDelay(1000, 5000));
+  }
+
+  if (up.length != 0){
+    triggerEvents(up[0], 310, 410);
+    await sleep(getRandomDelay(31000, 36000));
+  }
+
+  if (up.length != 0){
+    triggerEvents(up[0], 100, 20);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  if (up.length != 0){
+    triggerEvents(up[0], 200, 600);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  if (up.length != 0){
+    triggerEvents(up[0], 230, 90);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  if (up.length != 0){
+    triggerEvents(up[0], 230, 130);
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  if (up.length != 0){
+    triggerEvents(up[0], 230, 600);
+    await sleep(getRandomDelay(2000, 3000));
   }
 
 }
