@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm linea
-// @version      0.24
+// @version      0.25
 // @author       IvanAgafonov
 // @match        https://linea.build/hub/rewards
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_linea.user.js
@@ -94,10 +94,26 @@ async function autoBuy() {
     await sleep(getRandomDelay(3000, 4000));
   }
 
-  up = querySelectorAllShadows('div span').filter(el => el.textContent.includes("Rabby"));
+  var up = Array.from(document.querySelectorAll("input[placeholder='Search through 415 wallets...']"))
+  if (up.length != 0){
+    up[0].click()
+
+    const lastValue = up[0].value;
+    up[0].value = "Rabby";
+    const event = new Event("input", { bubbles: true });
+    const tracker = up[0]._valueTracker;
+    if (tracker) {
+      tracker.setValue(lastValue);
+    }
+    up[0].dispatchEvent(event);
+    await sleep(getRandomDelay(1200, 2000));
+  }
+
+  up = querySelectorAllShadows('div p').filter(el => el.textContent.includes("Rabby"));
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(26000, 26010));
+    await sleep(getRandomDelay(4000, 5010));
+    location.reload();
   }
 
   up = Array.from(document.querySelectorAll("div p")).filter(el => (el.textContent.includes("prizes") || el.textContent.includes("prize")) && el.className.includes("tag_tag"));
