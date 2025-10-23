@@ -141,7 +141,7 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("button div div div div")).filter(el => el.textContent == "Rabby Wallet");
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(13800, 14000));
+    await sleep(getRandomDelay(18800, 19000));
   }
 
   up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Follow ETHGas on X");
