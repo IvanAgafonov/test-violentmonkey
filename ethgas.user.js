@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ethgas
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://www.ethgas.com/community/onboarding/*
 // @match        https://www.ethgas.com/community/dashboard/
@@ -123,7 +123,7 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Confirm to proceed");
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(3800, 4000));
+    await sleep(getRandomDelay(4800, 5000));
   }
 
   up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "+ Link a Primary Wallet");
