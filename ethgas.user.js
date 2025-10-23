@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ethgas
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://www.ethgas.com/community/onboarding/*
 // @match        https://www.ethgas.com/community/dashboard/
@@ -141,7 +141,7 @@ async function autoBuy() {
   up = Array.from(document.querySelectorAll("button div div div div")).filter(el => el.textContent == "Rabby Wallet");
   if (up.length != 0){
     triggerEvents(up[0]);
-    await sleep(getRandomDelay(18800, 19000));
+    await sleep(getRandomDelay(21800, 22000));
   }
 
   up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "Follow ETHGas on X");
@@ -180,7 +180,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(3800, 4000));
   }
 
-  up = Array.from(document.querySelectorAll("div label")).filter(el => el.textContent == "I understand");
+  up = Array.from(document.querySelectorAll("div label")).filter(el => el.textContent.includes("I understand all of the above and have"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(3800, 4000));
