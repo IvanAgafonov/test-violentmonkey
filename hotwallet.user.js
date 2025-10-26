@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hotwallet
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
 // @match        https://tgapp.herewallet.app/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hotwallet.user.js
@@ -86,11 +86,37 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 3000));
   }
 
+  up = Array.from(document.querySelectorAll("img[src='/assets/easter-eggs/easter-egg.webp']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Continue searching" );
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      // up[0].click();
+      await sleep(getRandomDelay(2000, 3000));
+    }
+  }
+
   up = Array.from(document.querySelectorAll("div p")).filter(el => el.textContent == "HOT" );
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("img[src='/assets/easter-eggs/easter-egg.webp']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Continue searching" );
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      // up[0].click();
+      await sleep(getRandomDelay(2000, 3000));
+    }
   }
 
   up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Claim HOT" );
@@ -100,12 +126,39 @@ async function autoBuy() {
     await sleep(getRandomDelay(2000, 3000));
   }
 
+  up = Array.from(document.querySelectorAll("img[src='/assets/easter-eggs/easter-egg.webp']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Continue searching" );
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      // up[0].click();
+      await sleep(getRandomDelay(2000, 3000));
+    }
+  }
+
   up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Check NEWS" );
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
     await sleep(getRandomDelay(2000, 3000));
   }
+
+  up = Array.from(document.querySelectorAll("img[src='/assets/easter-eggs/easter-egg.webp']"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent == "Continue searching" );
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      // up[0].click();
+      await sleep(getRandomDelay(2000, 3000));
+    }
+  }
+
 
 }
 
