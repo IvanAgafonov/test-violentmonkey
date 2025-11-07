@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hume daily
-// @version      0.21
+// @version      0.22
 // @author       IvanAgafonov
 // @match        https://humeworld.xyz/daily-spin
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/hume_daily.user.js
@@ -83,6 +83,12 @@ async function autoBuy() {
     if (paintButton){
       triggerEvents(paintButton);
       await sleep(getRandomDelay(3000, 4100));
+    } else {
+      paintButton = document.evaluate("(//button//div//div[text()='100'])[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+      if (paintButton){
+        triggerEvents(paintButton);
+        await sleep(getRandomDelay(3000, 4100));
+      }
     }
 
     up = Array.from(document.querySelectorAll("h2")).filter(el => el.textContent == "You need points");
