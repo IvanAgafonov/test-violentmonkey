@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         gm plume
-// @version      0.13
+// @version      0.14
 // @author       IvanAgafonov
 // @match        https://portal.plume.org/daily-spin
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gm_plume.user.js
@@ -85,8 +85,13 @@ async function connectWallet(){
 
 async function autoBuy() {
 
+  var up = querySelectorAllShadows('wui-button').filter(el => el.textContent.includes("Sign"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(13000, 14100));
+  }
 
-  var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Connect")
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Connect")
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(3000, 4000));
@@ -99,6 +104,8 @@ async function autoBuy() {
     up[0].click();
     await sleep(getRandomDelay(18000, 18100));
   }
+
+
 
   var up = Array.from(document.querySelectorAll("path[d=' M43,-20 C43,-20 43,51 43,51 C43,51 -20,51 -20,51 C-20,51 -20,-20 -20,-20 C-20,-20 43,-20 43,-20z']"));
   if (up.length != 0){
