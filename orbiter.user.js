@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         orbiter
-// @version      0.14
+// @version      0.15
 // @author       IvanAgafonov
-// @match        https://www.orbiter.finance/?channel=0x3c0ed9ab1a12ba804900da2807c09b8afec10f67
+// @match        https://www.orbiter.finance/
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/orbiter.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/orbiter.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -89,6 +89,11 @@ async function autoBuy() {
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(3000, 4000));
+    up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "EVM");
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Connect");
@@ -103,11 +108,23 @@ async function autoBuy() {
     await sleep(getRandomDelay(13000, 14000));
   }
 
-  up = Array.from(document.querySelectorAll("img[src='/assets/icon/header/calendar.svg']"));
+  up = Array.from(document.querySelectorAll("img[class='mr-1 rounded-full']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
   }
+
+  up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Check in");;
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(4000, 5000));
+  }
+
+  // up = Array.from(document.querySelectorAll("img[src='/assets/icon/header/calendar.svg']"));
+  // if (up.length != 0){
+  //   triggerEvents(up[0]);
+  //   await sleep(getRandomDelay(4000, 5000));
+  // }
 
   up = Array.from(document.querySelectorAll("div[class='flex gap-1 text-[var(--o-color-text-t1)] o-font-500 justify-center items-center relative z-10 cursor-pointer']"));
   if (up.length != 0){
