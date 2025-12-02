@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         google faucet
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://cloud.google.com/application/web3/faucet/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/google_faucet.user.js
@@ -94,7 +94,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(3200, 5100));
   }
 
-  up = Array.from(document.querySelectorAll("button[color='primary']"));
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent.includes("Get 0.05 Sepolia ETH"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(2000, 3000));
