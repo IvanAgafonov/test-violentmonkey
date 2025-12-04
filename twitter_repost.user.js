@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         twitter repost
-// @version      0.11
+// @version      0.12
 // @author       IvanAgafonov
 // @match        https://x.com/WalletConnect/status/1975561912785207706
+// @match        https://x.com/WalletConnect/status/1991696408928452838
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/twitter_repost.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/twitter_repost.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
@@ -85,7 +86,7 @@ async function connectWallet(){
 
 async function autoBuy() {
 
-  var paintButton = document.evaluate("//article[contains(normalize-space(), 'WalletConnect is set to surpass $400B in annual Total Network Volume.')]//*[local-name() = 'path'][@d='M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  var paintButton = document.evaluate("//article[contains(normalize-space(), 'WalletConnect 2.0 has arrived')]//*[local-name() = 'path'][@d='M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (paintButton) {
     triggerEvents(paintButton);
     await sleep(getRandomDelay(2000, 3000));
