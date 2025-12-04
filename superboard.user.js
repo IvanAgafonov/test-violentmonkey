@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         superboard
-// @version      0.16
+// @version      0.17
 // @author       IvanAgafonov
 // @match        https://superboard.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/superboard.user.js
