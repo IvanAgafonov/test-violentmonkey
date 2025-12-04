@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         google form
-// @version      0.12
+// @version      0.13
 // @author       IvanAgafonov
 // @match        https://docs.google.com/forms/d/e/1FAIpQLSeCqewfmcxU6lFjLo09VHDthHFYfSuv4fPICrFj9HHfOb5OcA/viewform
+// @match        https://docs.google.com/forms/d/e/1FAIpQLScRUeyrBIkTYfldYgrxp8H69ae5r1tPEs2drAi-ouafMccspg/viewform
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/google_form.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/google_form.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
