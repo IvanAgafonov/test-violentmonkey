@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         gate_abstract_nft
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://www.gate.com/web3/activities/*
+// @match        https://www.gate.com/*/web3/activities/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gate_abstract_nft.user.js
 // @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/gate_abstract_nft.user.js
 // @homepage     https://github.com/IvanAgafonov/test-violentmonkey
