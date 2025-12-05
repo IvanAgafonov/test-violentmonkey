@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         guild_base
-// @version      0.1
+// @version      0.11
 // @author       IvanAgafonov
 // @match        https://guild.xyz/base
 // @match        https://guild.xyz/base/stay-connected
@@ -111,6 +111,12 @@ async function autoBuy() {
       triggerEvents(up[0]);
       await sleep(getRandomDelay(23700, 23800));
     }
+  }
+
+  up = Array.from(document.querySelectorAll("button span")).filter(el => el.textContent == "Connect 𝕏");
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(23700, 23800));
   }
 
   up = Array.from(document.querySelectorAll("div span")).filter(el => el.textContent == "Visit link");
