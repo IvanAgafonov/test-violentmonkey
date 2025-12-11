@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         superboard
-// @version      0.17
+// @version      0.18
 // @author       IvanAgafonov
 // @match        https://superboard.xyz/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/superboard.user.js
@@ -114,6 +114,20 @@ async function autoBuy() {
   }
 
   up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Buy 9 Lives" );
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(3000, 3100));
+  }
+
+  up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Start Over" );
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    // up[0].click();
+    await sleep(getRandomDelay(3000, 3100));
+  }
+
+  up = Array.from(document.querySelectorAll("div span span")).filter(el => el.textContent == "TREAT" );
   if (up.length != 0){
     triggerEvents(up[0]);
     // up[0].click();
