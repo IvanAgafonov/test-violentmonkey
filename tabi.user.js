@@ -1,5 +1,263 @@
 // ==UserScript==
 // @name         Tabi claim
+// @version      0.36
+// @author       IvanAgafonov
+// @match        https://front.tabibot.com/*
+// @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
+// @updateURL    https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tabi.user.js
+// @homepage     https://github.com/IvanAgafonov/test-violentmonkey
+// @grant        none
+// ==/UserScript==
+
+
+function shuffle(array) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+}
+
+function getRandomDelay(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function triggerEvents(element) {
+  const events = [
+      new PointerEvent('pointerdown', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0.5, pointerType: "touch" }),
+      new MouseEvent('mousedown', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new PointerEvent('pointerup', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseup', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new PointerEvent('click', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerout', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new PointerEvent('pointerleave', { bubbles: true, cancelable: true, isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, pointerType: "touch" }),
+      new MouseEvent('mouseout', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 }),
+      new MouseEvent('mouseleave', { bubbles: true, cancelable: true, isTrusted: true, screenX: 182, screenY: 877 })
+  ];
+
+  events.forEach((event, index) => {
+      setTimeout(() => element.dispatchEvent(event), index * 100);
+  });
+}
+
+function sleep(ms = 0) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function autoBuy() {
+
+//   var up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "View Rewards");
+//   if (up.length != 0){
+//     up[0].click();
+//     await sleep(getRandomDelay(3000, 4000));
+//   }
+
+//   up = Array.from(document.querySelectorAll("div div div")).filter(el => el.textContent == "Mining Now");
+//   if (up.length != 0){
+//     up[0].click();
+//     await sleep(getRandomDelay(3000, 4000));
+//   }
+
+  var up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent == "Go");
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Join our Telegram Channel") && el.className.includes("flex items-center font-changa-one text-black"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Check") && el.className.includes("font-bold font-changa-one"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("span[class='text-white font-changa-one italic text-[12px]"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("div div div div div.text-white")).filter(el => el.textContent.includes("Upgrade"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 4000));
+  }
+
+  history.back()
+  await sleep(getRandomDelay(1000, 1100));
+
+  up = Array.from(document.querySelectorAll("img[class='w-[50px] cursor-pointer']")).filter(el => el.src.includes("task_icon"));
+  if (up.length != 0){
+     triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("h4")).filter(el => el.textContent.includes("Daily Reward") && el.className.includes("text-black font-changa-one text-sm leading-[14px] capitalize"));
+  if (up.length != 0){
+     triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Claim") && el.className.includes("flex items-center gap-[8px]"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
+
+  history.back()
+  await sleep(getRandomDelay(1000, 1100));
+
+  up = Array.from(document.querySelectorAll("span")).filter(el => el.textContent.includes("Claim") && el.className.includes("mt-[-2px]"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Draw") && el.className.includes("flex flex-col justify-center items-center"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+
+  up = Array.from(document.querySelectorAll("img[src='/assets/casting-plLDyzK1.webp']"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("div[class='absolute top-[-4px] right-[-4px] visible'] span[class='absolute top-[16px] left-[12px] rotate-45 text-white text-center font-changa-one text-[10px] w-[51px] font-normal leading-[normal] capitalize']"));
+    if (up.length != 0){
+      up[0].click();
+      await sleep(getRandomDelay(2000, 3000));
+      up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent.includes("Casting") && el.className.includes("justify-center items-center gap-2.5"));
+      if (up.length != 0){
+        up[0].click();
+        await sleep(getRandomDelay(2000, 3000));
+      }
+    }
+    history.back()
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+
+
+
+  up = Array.from(document.querySelectorAll("img[src='/assets/tabipool-E2YStjK9.webp']"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+    up = Array.from(document.querySelectorAll("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(7) > div:nth-child(1) > div:nth-child(4)"));
+    if (up.length != 0){
+      up[0].click();
+      await sleep(getRandomDelay(2000, 3000));
+      up = Array.from(document.querySelectorAll("div[class='font-changa-one text-[16px] text-center font-normal leading-[20px] capitalize flex w-[335px] justify-center items-center gap-2.5 shadow-[0px_0.8px_1px_0px_rgba(0,0,0,0.34),0px_-2.8px_0px_1px_rgba(0,0,0,0.13)_inset] px-[16px] py-[14px] rounded-[47px] text-white [background:#FD6019] cursor-pointer']"));
+      if (up.length != 0){
+        up[0].click();
+        await sleep(getRandomDelay(2000, 3000));
+      }
+      up = Array.from(document.querySelectorAll("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(7) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)"));
+      if (up.length != 0){
+        triggerEvents(up[0]);
+        await sleep(getRandomDelay(2000, 3000));
+      }
+      up = Array.from(document.querySelectorAll("div div")).filter(el => el.textContent.includes("Stake") && el.className.includes("relative overflow-hidden cursor-pointer flex text-white"));
+      if (up.length != 0){
+        up[0].click();
+        await sleep(getRandomDelay(2000, 3000));
+      }
+    }
+    history.back()
+    await sleep(getRandomDelay(2000, 3000));
+    history.back()
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div[class='flex flex-col justify-center items-center']"));
+  if (up.length > 1){
+    triggerEvents(up[1]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
+
+  for(let i = 0; i < 8; i++) {
+    up = Array.from(document.querySelectorAll("img[class='w-[96px] h-[56px]']"));
+    if (up.length != 0){
+       triggerEvents(up[0]);
+      await sleep(getRandomDelay(3100, 4000));
+    }
+
+    up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Claim") && el.className.includes("justify-center items-center self-stretch"));
+    if (up.length != 0){
+      triggerEvents(up[0]);
+      await sleep(getRandomDelay(1000, 2000));
+    }
+
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("To spin") && el.className.includes("text-nowrap font-changa-one"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(1000, 2000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Spin") && el.className.includes("flex flex-col justify-center items-center"));
+  if (up.length != 0){
+    up[0].click();
+    await sleep(getRandomDelay(2000, 3000));
+  }
+
+  up = Array.from(document.querySelectorAll("div")).filter(el => (el.textContent.includes("1") || el.textContent.includes("2")) && el.className.includes("absolute top-[-18px] left-[36px] bg-[#FF5C01] flex items-center justify-center py-[2px] font-changa-one leading-[12px] text-[#fff] text-[10px] px-[4px] rounded-[5px_5px_5px_0px]"));
+  if (up.length != 0){
+    up = Array.from(up[0].parentElement.querySelectorAll("img[class='w-[40px] cursor-pointer absolute bottom-0 left-0 h-[28px]']"));
+    if (up.length != 0){
+       triggerEvents(up[0]);
+        await sleep(getRandomDelay(1000, 2000));
+    }
+  }
+
+  for(let i = 0; i < 30; i++) {
+    up = Array.from(document.querySelectorAll("img[class='w-[118px] h-[48px] cursor-pointer mb-1 mr-1']"));
+    if (up.length != 0){
+       triggerEvents(up[0]);
+      await sleep(getRandomDelay(3000, 4000));
+    }
+
+    // up = Array.from(document.querySelectorAll("div")).filter(el => el.textContent.includes("Watch Ads Now") && el.className.includes("rounded-[47px] mx-auto text-white mt-[30px] text-nowrap font-bold font-changa-one"));
+    // if (up.length != 0){
+    //   triggerEvents(up[0]);
+    //   await sleep(getRandomDelay(2000, 3000));
+    // }
+  }
+
+  await sleep(3400);
+}
+
+
+function initializeScript() {
+
+    console.log('START Tabi claim')
+
+    setTimeout(autoBuy, getRandomDelay(9000, 11500));
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeScript);
+} else {
+    initializeScript();
+}
+// ==UserScript==
+// @name         Tabi claim
 // @version      0.35
 // @author       IvanAgafonov
 // @match        https://front.tabibot.com/*
@@ -190,7 +448,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(1000, 2000));
   }
 
-  for(let i = 0; i < 6; i++) {
+  for(let i = 0; i < 12; i++) {
     up = Array.from(document.querySelectorAll("img[class='w-[96px] h-[56px]']"));
     if (up.length != 0){
        triggerEvents(up[0]);
