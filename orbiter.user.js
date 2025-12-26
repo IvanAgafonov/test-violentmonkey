@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         orbiter
-// @version      0.15
+// @version      0.16
 // @author       IvanAgafonov
 // @match        https://www.orbiter.finance/
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/orbiter.user.js
@@ -83,6 +83,15 @@ async function connectWallet(){
   await sleep(getRandomDelay(2000, 3100));
 }
 
+function clickOnElement(element, x, y) {
+  mouseEventOf('click')(element, x, y)
+}
+
+function hoverOnElement(element, x, y) {
+  mouseEventOf('mousemove')(element, x, y)
+  mouseEventOf('mouseover')(element, x, y)
+}
+
 async function autoBuy() {
 
   var up = Array.from(document.querySelectorAll("button")).filter(el => el.textContent == "Connect Wallet");
@@ -108,7 +117,7 @@ async function autoBuy() {
     await sleep(getRandomDelay(13000, 14000));
   }
 
-  up = Array.from(document.querySelectorAll("img[class='mr-1 rounded-full']"));
+  up = Array.from(document.querySelectorAll("img[class='w-5 h-5 rounded-md mr-2']"));
   if (up.length != 0){
     triggerEvents(up[0]);
     await sleep(getRandomDelay(4000, 5000));
@@ -128,8 +137,10 @@ async function autoBuy() {
 
   up = Array.from(document.querySelectorAll("div[class='flex gap-1 text-[var(--o-color-text-t1)] o-font-500 justify-center items-center relative z-10 cursor-pointer']"));
   if (up.length != 0){
-    triggerEvents(up[0]);
-    await sleep(getRandomDelay(100, 500));
+    up[0].focus();
+    up[0].click();
+    await sleep(getRandomDelay(200, 300));
+
   }
 
   var chains = ['base', 'opbnb', 'Ink', 'linea'];
