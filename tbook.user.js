@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         tbook
-// @version      0.17
+// @version      0.18
 // @author       IvanAgafonov
 // @match        https://engage.tbook.com/*
 // @downloadURL  https://github.com/IvanAgafonov/test-violentmonkey/raw/main/tbook.user.js
@@ -105,6 +105,11 @@ async function autoBuy() {
     }
   }
 
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check-in to Unlock Bookies NFT"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
   up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check In"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -140,6 +145,11 @@ async function autoBuy() {
   }
 
   await sleep(getRandomDelay(3000, 4000));
+  up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check-in to Unlock Bookies NFT"));
+  if (up.length != 0){
+    triggerEvents(up[0]);
+    await sleep(getRandomDelay(3000, 4000));
+  }
   up = Array.from(document.querySelectorAll("div button")).filter(el => el.textContent.includes("Check In"));
   if (up.length != 0){
     triggerEvents(up[0]);
@@ -153,7 +163,7 @@ function initializeScript() {
 
     console.log('START claim')
 
-    setTimeout(autoBuy, getRandomDelay(12000, 13050));
+    setTimeout(autoBuy, getRandomDelay(16000, 16050));
 }
 
 if (document.readyState === 'loading') {
